@@ -6,7 +6,7 @@ latest version: 2.0.0
 author: Barzaghi, Sebastian
 format: JSON-LD, RDF/XML, N-Triples, Turtle
 license: https://creativecommons.org/licenses/by/4.0/
-cite as: Barzaghi, S. (2023). ATLAS Data Model (2.0.0). Zenodo. https://doi.org/10.5281/zenodo.10225594
+cite as: Barzaghi, S. (2023). Heritage Risk Assessment Ontology. https://w3id.org/sirius/ontology/hero.
 ---
 
 # HeRO

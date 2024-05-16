@@ -1,0 +1,168 @@
+@prefix : <https://w3id.org/sirius/ontology/development/02/schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/sirius/ontology/development/02/schema/> .
+
+<https://w3id.org/sirius/ontology/development/02/schema> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/02/schema/identifies
+:identifies rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/describes
+:describes rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/isClassifiedBy
+:isClassifiedBy rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/isClassifiedByAgent
+:isClassifiedByAgent rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/isClassifiedByType
+:isClassifiedByType rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/isClassifiedByLayer
+:isClassifiedByLayer rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/atTime
+:atTime rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/isDocumentedBy
+:isDocumentedBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/02/schema/hasNote
+:hasNote rdf:type owl:DatatypeProperty .
+
+
+### https://w3id.org/sirius/ontology/development/02/schema/hasStartDate
+:hasStartDate a owl:DatatypeProperty .
+
+
+### https://w3id.org/sirius/ontology/development/02/schema/hasEndDate
+:hasEndDate a owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/02/schema/AgentOfDeterioration
+:AgentOfDeterioration rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/HeritageAsset
+:HeritageAsset rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/Risk
+:Risk rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/IdentificationDescription
+:IdentificationDescription rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/Document
+:Document rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/Layer
+:Layer rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/TimeInterval
+:TimeInterval rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/RiskType
+:RiskType rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/02/schema/dissociation
+:dissociation rdf:type owl:NamedIndividual ,
+                       :AgentOfDeterioration .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/pests
+:pests rdf:type owl:NamedIndividual ,
+                :AgentOfDeterioration .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/physical-forces
+:physical-forces rdf:type owl:NamedIndividual ,
+                          :AgentOfDeterioration .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/water
+:water rdf:type owl:NamedIndividual ,
+                :AgentOfDeterioration .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/building
+:building rdf:type owl:NamedIndividual ,
+                   :Layer .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/common
+:common rdf:type owl:NamedIndividual ,
+                 :RiskType .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/cumulative
+:cumulative rdf:type owl:NamedIndividual ,
+                     :RiskType .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/fitting
+:fitting rdf:type owl:NamedIndividual ,
+                  :Layer .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/rare
+:rare rdf:type owl:NamedIndividual ,
+               :RiskType .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/region
+:region rdf:type owl:NamedIndividual ,
+                 :Layer .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/room
+:room rdf:type owl:NamedIndividual ,
+               :Layer .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/site
+:site rdf:type owl:NamedIndividual ,
+               :Layer .
+
+
+###  https://w3id.org/sirius/ontology/development/02/schema/support
+:support rdf:type owl:NamedIndividual ,
+                  :Layer .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

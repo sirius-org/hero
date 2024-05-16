@@ -1,0 +1,1977 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/sirius/ontology/hero/"
+     xml:base="https://w3id.org/sirius/ontology/hero/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="http://schema.org/"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
+    <owl:Ontology rdf:about="https://w3id.org/sirius/ontology/hero/">
+        <owl:versionIRI rdf:resource="https://w3id.org/sirius/ontology/hero/2.0.0/"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#"/>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#"/>
+        <terms:abstract xml:lang="en">The Heritage Risk Assessment Ontology (HeRO, https://w3id.org/sirius/ontology/hero) is an OWL 2 DL ontology for describing risk assessment activities related to heritage in a FAIR-compliant, machine-actionable format.</terms:abstract>
+        <terms:bibliographicCitation xml:lang="en">Barzaghi, S. (2023). Heritage Risk Assessment Ontology. https://w3id.org/sirius/ontology/hero.</terms:bibliographicCitation>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-30</terms:created>
+        <terms:creator rdf:resource="https://orcid.org/0000-0002-0799-1527"/>
+        <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-30</terms:issued>
+        <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-30</terms:modified>
+        <terms:source xml:lang="en">
+https://doi.org/10.6084/M9.FIGSHARE.3189769.V2
+</terms:source>
+        <terms:source xml:lang="en">
+https://www.canada.ca/en/conservation-institute/services/risk-management-heritage-collections/abc-method-risk-management-approach.html
+</terms:source>
+        <terms:source xml:lang="en">
+https://www.iccrom.org/sites/default/files/2017-12/risk_manual_2016-eng.pdf
+</terms:source>
+        <terms:title xml:lang="en">Heritage Risk Assessment Ontology (HeRO)</terms:title>
+        <vann:preferredNamespacePrefix xml:lang="en">hero</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri xml:lang="en">https://w3id.org/sirius/ontology/hero/</vann:preferredNamespaceUri>
+        <schema:codeRepository rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://github.com/sirius-org/hero</schema:codeRepository>
+        <schema:image rdf:resource="https://github.com/sirius-org/hero/docs/current/diagrams/hero.png"/>
+        <rdfs:comment xml:lang="en">
+## Description
+
+The _Heritage Risk Assessment Ontology_ (HeRO, https://w3id.org/sirius/ontology/hero) is a OWL 2 DL ontology for describing risk assessment activities in the cultural and environmental heritage domain in a machine-actionable format. It was developed by using a slightly modified version of the [Simplified Agile Methodology for Ontology Development (SAMOD)](http://dx.doi.org/10.6084/m9.figshare.3189769). 
+
+Both HeRO and its [documentation](https://w3id.org/sirius/ontology/hero) are living artefacts that have been and still are being drafted in the context of the [Project CHANGES](https://sites.google.com/uniroma1.it/changes/) (&quot;Cultural Heritage Active Innovation For Next-Gen Sustainable Society&quot;), an EU-funded project that aims at increasing, in the Italian context, the curation, and management of cultural heritage artefacts in all forms, expanding the involvement of the general public, making the exhibition potential more sustainable, and including crucial social functions (accessibility, inclusiveness, critical thinking, participation, enjoyment, sustainability) into the cultural heritage environment.
+
+Currently, HeRO is able to describe the following entities:
+* Assessment activities and their provenance information (who carried out or participated in an activity, when, where, what was done, and how);
+* Linguistic objects (scientific observations, statements, assertions, speculations, etc.), assigned to objects being examined during assessment activites;
+* Information objects (concepts, classifications, categories, etc.), referred to by the linguistic objects and representing the aspects and attributes related in some way to the objects being examined during assessment activities.
+
+The current version of HeRO reuses a series of Ontology Design Patterns (ODPs) by defining its own set of classes and properties and conceptualizing them as subclasses and subproperties of the reused ODPs&apos; entities. More specifically, HeRO reuses the following models:
+
+* [Basic Plan Execution ODP](http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#)
+* [Componency ODP](http://www.ontologydesignpatterns.org/cp/owl/componency.owl#)
+* [Friend Of A Friend](http://xmlns.com/foaf/0.1/)
+* [Intension Extension ODP](http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#)
+* [Object Role ODP](http://www.ontologydesignpatterns.org/cp/owl/objectrole.owl#)
+* [Participation ODP](http://www.ontologydesignpatterns.org/cp/owl/participation.owl#)
+* [Place ODP](http://www.ontologydesignpatterns.org/cp/owl/place.owl#)
+* [Provenance Ontology](http://www.w3.org/ns/prov#)
+* [Sequence ODP](http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#)
+* [Situation ODP](http://www.ontologydesignpatterns.org/cp/owl/situation.owl#)
+* [Dublin Core Terms](http://purl.org/dc/terms/)
+* [Time Indexed Situation ODP](http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#)
+* [Time Interval ODP](http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#)
+
+A full version of HeRO is available at [https://w3id.org/sirius/ontology/hero](https://w3id.org/sirius/ontology/hero).
+
+The next subsections provide a quick overview of all the entities defined, some exemple of usage, and some of the queries that HeRO can answer.
+
+### Assessment activities
+In HeRO, the concept of assessment activity represents the core abstraction around which the rest of the ontology is built. As shown in the following diagram, an assessment activity is a first-class object related to a series of other entities that populate and signify its context. 
+
+![A diagram of an assessment activity, the core entity of HeRO.](diagrams/assessment-activity.png)
+
+As previously mentioned, HeRO draws constructs from ODPs and uses them as super classes and super properties of its own entities to accurately represent the processes outlined by a risk assessment endeavor, as well as the concepts and relations implicitly expressed in such processes. In particular, an assessment activity (`hero:Activity`) is a situated action that involves gaining and producing scientific knowledge about some entity being observed by assigning to that entity a series of assertions referring to concepts used to make the assessment. As a result, it has been modelled as a subclass of `tisit:TimeIndexedSituation` and `planex:Action` that assigns to a object (`owl:Thing`) a series of &quot;linguistic objects&quot; (`hero:LinguisticObject`) representing scientific observations, statements or assertions related to that object. Multiple activities can be sequentialized one after the other with `hero:precedes`. In addition, an assessment activity is enriched with a packet of additional information covering its type (`hero:Type`), its temporal horizon (`ti:TimeInterval`), its geographic context (`place:Place`), the agents involved in its realization (`foaf:Agent`), the material documenting how the activity was carried out and based on what sources (`foaf:Document`), and its textual description (`hero:hasNote`).
+
+### Scientific assertions and concepts
+As illustrated in the previous section, an assessment activity assigns a series of assertions to the objects being examined. As shown in the following diagram, an assertion (`hero:LinguisticObject`) is modelled as a subclass of `hero:InformationObject`, thus incorporating the idea of an assertion as a piece of information, independently from how it is concretely realized. In turn, an assertion refers to some qualitative, quantitative or interpretative conceptual object (`hero:InformationObject`), modelled as a subclass of `intensionextension:InformationObject`, that carries some information that is deemed relevant in the context of risk assessment.
+
+![A diagram of a linguistic object and an information object, the other core entities of HeRO.](diagrams/objects.png)
+
+In addition to referring to some concept, an assertion can be classified according to external categorization schemes (`hero:Type`), can be documented by some document (`foaf:Document`), can be also motivated by other concepts referred to in other assertions, and expresses some kind of content or value (`hero:hasContent`). A concept, while also being characterized by a type (`hero:Type`) and a content (`hero:hasContent`), can be composed of other conceptual objects (`hero:hasComponent`).
+
+## Examples of use
+HeRO can be used for modelling scenarios related to heritage risk assessment. Note that, due to the wide scope of the classes and properties it uses, the way it has been modelled, and its dependency on external vocabularies for typification, HeRO can be used to model any situation involving assigning scientific assertions expressing some kind of conceptual content to an object in order to examine it. 
+
+In the following subsections we introduce some scenarios pertaining to the cultural heritage risk domain, and we accompany them with exemplar instantiations. 
+
+The prefixes that are used in all the examples provided below are defined as follows:
+
+    @prefix : &lt;https://w3id.org/sirius/ontology/hero/data/example/&gt; .
+    @prefix aat: &lt;http://vocab.getty.edu/page/aat/&gt; .
+    @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+    @prefix freq: &lt;http://publications.europa.eu/resource/authority/frequency/&gt; .
+    @prefix hero: &lt;https://w3id.org/sirius/ontology/hero/&gt; .
+    @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+    @prefix place: &lt;http://www.ontologydesignpatterns.org/cp/owl/place.owl#&gt; .
+    @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+    @prefix ti: &lt;http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#&gt; .
+    @prefix wd: &lt;http://www.wikidata.org/entity/&gt; .
+
+### Scenario 1
+An assessment activity `:assessment-activity-01` consisting in the context description of a CHO `:baptistery`, is taking place in Ravenna, is being carried out by the expert Sara Fiorentino (with the involvement of other stakeholders, such as Comune di Ravenna, Soprintendenza di Ravenna and Università di Bologna), in the time interval starting from 2024-02-01 to 2024-03-01, and is being annotated with the following text: &quot;Octagonal building with sloping roof, featuring four apsidioles corresponding to the cardinal points (partially buried). The mosaic decoration is preserved only on the dome, creating a striking contrast with the rough surface of exposed bricks in the lower part. The mosaic depicts in the center the baptism of Christ in the River Jordan, surrounded by a band with the twelve apostles parading in two rows, meeting at the throne of the etimasia, symbol of the invisible presence of Christ.&quot;
+It is composed of six statements, each assigned to the CHO in question:
+1. `:observation-01`, which is a descriptive statement referring to the physical properties of the CHO (`:concept-01`) with the following content: &quot;The Baptistery is externally visible on the N, NW, and NE sides. The west side overlooks the gardens of a private residence, while the south, SW, and SE sides overlook the garden of the Department of Cultural Heritage (University of Bologna).&quot;
+2. `:observation-02`, which is a descriptive statement referring to the social environment surrounding the CHO (`:concept-02`) with the following content: &quot;Monumental site in an urban area, open to tourists (with prior admission ticket). The small square where the building is located suffers from a bad reputation, being labeled as a &apos;socially risky area and a neglected place&apos; (reported incident of an abandoned bed frame found at night in the Baptistery&apos;s trench, 11.07.2006, Source: Zaccarini, 2015). Despite the establishment of regulations in 2012 restricting vehicle access to the square, transit and parking for loading/unloading goods are still permitted.&quot;
+3. `:observation-03`, which is a descriptive statement referring to the political environment surrounding the CHO (`:concept-03`) with the following content: &quot;The monument is often a subject of debate among various political parties and the Municipality of Ravenna.&quot;. It is documented by `:document-01`
+4. `:observation-04`, which is a descriptive statement referring to the legal status of the CHO (`:concept-04`) with the following content: &quot;Owned by the State Property / Ministry of Culture. Since 1996, it has been part of the UNESCO World Heritage Sites list in Italy (&apos;Early Christian Monuments of Ravenna&apos;).&quot;
+5. `:observation-05`, which is a descriptive statement referring to the administration of the CHO (`:concept-05`) with the following content: &quot;Since December 2019, it has been managed by the Regional Directorate of Museums of Emilia Romagna, located in Ravenna.&quot;
+6. `:observation-06`, which is a descriptive statement referring to the economic environment surrounding the CHO (`:concept-06`) with the following content: &quot;The Law No. 77 of February 20, 2006, establishes that UNESCO sites are excellences of the Italian cultural, landscape, and natural heritage, fundamental elements of our country&apos;s representation at the international level, and states that interventions on them have priority even in terms of the allocation of financial resources.&quot;
+
+```
+:assessment-activity-01 a hero:Activity ;
+    hero:assigns :observation-01 ,
+        :observation-02 ,
+        :observation-03 ,
+        :observation-04 ,
+        :observation-05 ,
+        :observation-06&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;Octagonal building with sloping roof, featuring four apsidioles corresponding
+     to the cardinal points (partially buried). The mosaic decoration is preserved only on the
+     dome, creating a striking contrast with the rough surface of exposed bricks in the lower
+     part. The mosaic depicts in the center the baptism of Christ in the River Jordan,
+     surrounded by a band with the twelve apostles parading in two rows, meeting at the throne
+     of the etimasia, symbol of the invisible presence of Christ.&apos;&apos;&apos;@en ;
+    hero:hasParticipant :comune-di-ravenna ,
+        :sara-fiorentino ,
+        :soprintendenza-di-ravenna ,
+        :universita-di-bologna&gt; ;
+    hero:hasTimeInterval :time-interval-01&gt; ;
+    hero:hasType wd:Q1137655 ;
+    hero:isCarriedOutBy :sara-fiorentino .
+
+:concept-01 a hero:InformationObject ;
+    hero:hasType wd:Q4373292 .
+
+:concept-02 a hero:InformationObject ;
+    hero:hasType wd:Q8425 .
+
+:concept-03 a hero:InformationObject ;
+    hero:hasType wd:Q7163 .
+
+:concept-04 a hero:InformationObject ;
+    hero:hasType wd:Q2628882 .
+
+:concept-05 a hero:InformationObject ;
+    hero:hasType wd:Q5283295 .
+
+:concept-06 a hero:InformationObject ;
+    hero:hasType wd:Q8134 .
+
+:document-01 a foaf:Document .
+
+:observation-01 a hero:LinguisticObject ;
+    hero:hasContent &apos;&apos;&apos;The Baptistery is externally visible on the N, NW, and NE sides. The west 
+    side overlooks the gardens of a private residence, while the south, SW, and SE sides 
+    overlook the garden of the Department of Cultural Heritage (University of Bologna).&apos;&apos;&apos;@en ;
+    hero:hasType aat:300435416 ;
+    hero:refersTo :concept-01 .
+
+:observation-02 a hero:LinguisticObject ;
+    hero:hasContent &apos;&apos;&apos;Monumental site in an urban area, open to tourists (with prior admission 
+    ticket). The small square where the building is located suffers from a bad reputation, being 
+    labeled as a &apos;socially risky area and a neglected place&apos; (reported incident of an abandoned 
+    bed frame found at night in the Baptistery&apos;s trench, 11.07.2006, Source: Zaccarini, 2015). 
+    Despite the establishment of regulations in 2012 restricting vehicle access to the square, 
+    transit and parking for loading/unloading goods are still permitted.&apos;&apos;&apos;@en ;
+    hero:hasType aat:300435416 ;
+    hero:refersTo :concept-02 .
+
+:observation-03 a hero:LinguisticObject ;
+    hero:hasContent &apos;&apos;&apos;The monument is often a subject of debate among various political parties 
+    and the Municipality of Ravenna.&apos;&apos;&apos;@en ;
+    hero:hasType aat:300435416 ;
+    hero:isDocumentedBy :document-01&gt; ;
+    hero:refersTo :concept-03 .
+
+:observation-04 a hero:LinguisticObject ;
+    hero:hasContent &apos;&apos;&apos;Owned by the State Property / Ministry of Culture. Since 1996, it has been 
+    part of the UNESCO World Heritage Sites list in Italy (&apos;Early Christian Monuments of 
+    Ravenna&apos;).&apos;&apos;&apos;@en ;
+    hero:hasType aat:300435416 ;
+    hero:refersTo :concept-04 .
+
+:observation-05 a hero:LinguisticObject ;
+    hero:hasContent &apos;&apos;&apos;Since December 2019, it has been managed by the Regional Directorate of 
+    Museums of Emilia Romagna, located in Ravenna.&apos;&apos;&apos;@en ;
+    hero:hasType aat:300435416 ;
+    hero:refersTo :concept-05 .
+
+:observation-06 a hero:LinguisticObject ;
+    hero:hasContent &quot;The Law No. 77 of February 20, 2006, establishes that UNESCO sites are excellences of the Italian cultural, landscape, and natural heritage, fundamental elements of our country&apos;s representation at the international level, and states that interventions on them have priority even in terms of the allocation of financial resources.&quot;@en ;
+    hero:hasType aat:300435416 ;
+    hero:refersTo :concept-06 .
+
+:time-interval-01 a ti:TimeInterval ;
+    ti:hasIntervalEndDate &quot;2024-03-01T23:59:59Z&quot; ;
+    ti:hasIntervalStartDate &quot;2024-02-01T00:00:00Z&quot; .
+
+:baptistery a owl:Thing .
+
+:ravenna a place:Place .
+
+:sara-fiorentino a foaf:Agent .
+
+:soprintendenza-di-ravenna a foaf:Agent .
+
+:universita-di-bologna a foaf:Agent .
+
+```
+
+### Scenario 2
+Two assessment activities consisting in the identification of risks related to the CHO `:baptistery`, are taking place in Ravenna and are being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-03-01 to 2024-04-01. They are:
+* `assessment-activity-03`, annotated with the text &quot;Floods and heavy rains induce erosion of the baptistery walls&quot;. It is composed of three statements assigned to the CHO:
+    1. `:observation-10`, which is a condition description referring to the potential damage of water-related hazards (`:concept-10`);
+    2. `:observation-11`, which is a dimensions description referring to the annual occurrence of the potential hazardous event (`:concept-11`);
+    3. `:observation-12`, which is a location description referring to the region surrounding the CHO as the location of occurrence of the potential hazardous event (`:concept-12`).
+
+* `assessment-activity-04`, which is composed of three statements assigned to the CHO:
+    1. `:observation-13`, which is a condition description referring to the potential damage of fire-related hazards (`:concept-13`);
+    2. `:observation-14`, which is a dimensions description referring to the centennial occurrence of the potential hazardous event (`:concept-14`);
+    3. `:observation-15`, which is a location description referring to the building in which the CHO is situated as the location of occurrence of the potential hazardous event (`:concept-15`).
+
+```
+:assessment-activity-03 a hero:Activity ;
+    hero:assigns :observation-10 ,
+        :observation-11 ,
+        :observation-12&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &quot;Floods and heavy rains induce erosion of the baptistery walls.&quot;@en ;
+    hero:hasTimeInterval :time-interval-02&gt; ;
+    hero:hasType wd:Q5687675 ;
+    hero:isCarriedOutBy :sara-fiorentino .
+
+:assessment-activity-04 a hero:Activity ;
+    hero:assigns :observation-13 ,
+        :observation-14 ,
+        :observation-15&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasTimeInterval :time-interval-02&gt; ;
+    hero:hasType wd:Q5687675 ;
+    hero:isCarriedOutBy :sara-fiorentino .
+
+:concept-10 a hero:InformationObject ;
+    hero:hasType wd:Q19289049 .
+
+:concept-11 a hero:InformationObject ;
+    hero:hasType freq:ANNUAL .
+
+:concept-12 a hero:InformationObject ;
+    hero:hasType wd:Q82794 .
+
+:concept-13 a hero:InformationObject ;
+    hero:hasType wd:Q56497979 .
+
+:concept-14 a hero:InformationObject ;
+    hero:hasType freq:OTHER .
+
+:concept-15 a hero:InformationObject ;
+    hero:hasType wd:Q41176 .
+
+:observation-10 a hero:LinguisticObject ;
+    hero:hasType aat:300435425 ;
+    hero:refersTo :concept-10 .
+
+:observation-11 a hero:LinguisticObject ;
+    hero:hasType aat:300435430 ;
+    hero:refersTo :concept-11 .
+
+:observation-12 a hero:LinguisticObject ;
+    hero:hasType aat:300435449 ;
+    hero:refersTo :concept-12 .
+
+:observation-13 a hero:LinguisticObject ;
+    hero:hasType aat:300435425 ;
+    hero:refersTo :concept-13 .
+
+:observation-14 a hero:LinguisticObject ;
+    hero:hasType aat:300435430 ;
+    hero:refersTo :concept-14 .
+
+:observation-15 a hero:LinguisticObject ;
+    hero:hasType aat:300435449 ;
+    hero:refersTo :concept-15 .
+
+:time-interval-02 a ti:TimeInterval ;
+    ti:hasIntervalEndDate &quot;2024-04-01T23:59:59Z&quot; ;
+    ti:hasIntervalStartDate &quot;2024-03-01T00:00:00Z&quot; .
+
+:baptistery a owl:Thing .
+
+:ravenna a place:Place .
+
+:sara-fiorentino a foaf:Agent .
+
+```
+
+### Scenario 3
+An assessment activity `:assessment-activity-05`, consisting in the analysis of risks related to a CHO `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-03`. It is annotated with the following text: &quot;A flood event is expected in the baptistery approximately once every 25 years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.&quot; It is composed of four statements, each assigned to the CHO in question:
+1. `:observation-16`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-16`). In turn, the frequency is composed of three other concepts:
+    * low estimate (`:concept-16a`), with a value of &quot;3.0&quot;;
+    * probable estimate (`:concept-16b`), with a value of &quot;3.5&quot;;
+    * high estimate (`:concept-16c`), with a value of &quot;4.0&quot;.
+2. `:observation-17`, which is a dimensions description referring to the fractional value loss determined by the risk occurrence (`:concept-17`). In turn, the fractional value loss is composed of three other concepts:
+    * low estimate (`:concept-17a`), with a value of &quot;4.5&quot;;
+    * probable estimate (`:concept-17b`), with a value of &quot;5.0&quot;;
+    * high estimate (`:concept-17c`), with a value of &quot;5.0&quot;.
+3. `:observation-18`, , which is a dimensions description referring to the exposure determined by the risk occurrence (`:concept-18`). In turn, the exposure is composed of three other concepts:
+    * low estimate (`:concept-18a`), with a value of &quot;1.5&quot;;
+    * probable estimate (`:concept-18b`), with a value of &quot;2.0&quot;;
+    * high estimate (`:concept-18c`), with a value of &quot;2.5&quot;.
+4. `:observation-19`, , which is a dimensions description referring to the magnitude of the risk occurrence (`:concept-19`). In turn, the magnitude is composed of three other concepts:
+    * low estimate (`:concept-19a`), with a value of &quot;9.0&quot;;
+    * probable estimate (`:concept-19b`), with a value of &quot;10.5&quot;;
+    * high estimate (`:concept-19c`), with a value of &quot;11.5&quot;.
+
+Another assessment activity `:assessment-activity-06`, consisting in the analysis of risks related to  `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-04`. It is annotated with the following text: &quot;A large fire event is expected in the museum approximately once every 300 years, with the fire affecting all or most of the heritage asset value, causing total or almost total loss of value in each affected item.&quot; It consists of four statements:
+1. `:observation-20`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-20`). In turn, the frequency is composed of three other concepts:
+    * low estimate (`:concept-20a`), with a value of &quot;2.0&quot;;
+    * probable estimate (`:concept-20b`), with a value of &quot;2.5&quot;;
+    * high estimate (`:concept-20c`), with a value of &quot;3.0&quot;.
+2. `:observation-21`, which is a dimensions description referring to the fractional value loss determined by the risk occurrence (`:concept-21`). In turn, the fractional value loss is composed of three other concepts:
+    * low estimate (`:concept-21a`), with a value of &quot;4.5&quot;;
+    * probable estimate (`:concept-21b`), with a value of &quot;5.0&quot;;
+    * high estimate (`:concept-21c`), with a value of &quot;5.0&quot;.
+3. `:observation-22`, which is a dimensions description referring to the exposure determined by the risk occurrence (`:concept-22`). In turn, the exposure is composed of three other concepts:
+    * low estimate (`:concept-22a`), with a value of &quot;4.5&quot;;
+    * probable estimate (`:concept-22b`), with a value of &quot;5.0&quot;;
+    * high estimate (`:concept-22c`), with a value of &quot;5.0&quot;.
+4. `:observation-23`, which is a dimensions description referring to the magnitude of the risk occurrence (`:concept-23`). In turn, the magnitude is composed of three other concepts:
+    * low estimate (`:concept-23a`), with a value of &quot;11.0&quot;;
+    * probable estimate (`:concept-23b`), with a value of &quot;12.5&quot;;
+    * high estimate (`:concept-23c`), with a value of &quot;13.0&quot;.
+
+```
+:assessment-activity-05 a hero:Activity ;
+    hero:assigns :observation-16 ,
+        :observation-17 ,
+        :observation-18 ,
+        :observation-19&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;A flood event is expected in the baptistery approximately once every 25 
+    years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-03&gt; ;
+    hero:hasType wd:Q217602 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isDocumentedBy :document-03&gt; ;
+    hero:precedes :assessment-activity-03 .
+
+:document-03 a foaf:Document .
+
+:assessment-activity-06 a hero:Activity ;
+    hero:assigns :observation-20 ,
+        :observation-21 ,
+        :observation-22 ,
+        :observation-23&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;A large fire event is expected in the museum approximately once every 300 
+    years, with the fire affecting all or most of the heritage asset value, causing total or 
+    almost total loss of value in each affected item.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-03&gt; ;
+    hero:hasType wd:Q217602 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isDocumentedBy :document-03&gt; ;
+    hero:precedes :assessment-activity-04 .
+
+:concept-16 a hero:InformationObject ;
+    hero:hasComponent :concept-16a ,
+        :concept-16b ,
+        :concept-16c&gt; ;
+    hero:hasType wd:Q11652 .
+
+:concept-16a a hero:InformationObject ;
+    hero:hasContent &quot;3.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-16b a hero:InformationObject ;
+    hero:hasContent &quot;3.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-16c a hero:InformationObject ;
+    hero:hasContent &quot;4.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-17 a hero:InformationObject ;
+    hero:hasComponent :concept-17a ,
+        :concept-17b ,
+        :concept-17c&gt; ;
+    hero:hasType wd:Q7523953 .
+
+:concept-17a a hero:InformationObject ;
+    hero:hasContent &quot;4.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-17b a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-17c a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-18 a hero:InformationObject ;
+    hero:hasComponent :concept-18a ,
+        :concept-18b ,
+        :concept-18c&gt; ;
+    hero:hasType wd:Q107642367 .
+
+:concept-18a a hero:InformationObject ;
+    hero:hasContent &quot;1.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-18b a hero:InformationObject ;
+    hero:hasContent &quot;2.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-18c a hero:InformationObject ;
+    hero:hasContent &quot;2.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-19 a hero:InformationObject ;
+    hero:hasComponent :concept-19a ,
+        :concept-19b ,
+        :concept-19c&gt; ;
+    hero:hasType wd:Q2154759 .
+
+:concept-23 a hero:InformationObject ;
+    hero:hasComponent :concept-23a ,
+        :concept-23b ,
+        :concept-23c&gt; ;
+    hero:hasType wd:Q2154759 .
+
+:concept-19a a hero:InformationObject ;
+    hero:hasContent &quot;9.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-19b a hero:InformationObject ;
+    hero:hasContent &quot;10.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-19c a hero:InformationObject ;
+    hero:hasContent &quot;11.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-20 a hero:InformationObject ;
+    hero:hasComponent :concept-20a ,
+        :concept-20b ,
+        :concept-20c&gt; ;
+    hero:hasType wd:Q11652 .
+
+:concept-20a a hero:InformationObject ;
+    hero:hasContent &quot;2.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-20b a hero:InformationObject ;
+    hero:hasContent &quot;2.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-20c a hero:InformationObject ;
+    hero:hasContent &quot;3.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-21 a hero:InformationObject ;
+    hero:hasComponent :concept-21a ,
+        :concept-21b ,
+        :concept-21c&gt; ;
+    hero:hasType wd:Q7523953 .
+
+:concept-21a a hero:InformationObject ;
+    hero:hasContent &quot;4.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-21b a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-21c a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-22 a hero:InformationObject ;
+    hero:hasComponent :concept-22a ,
+        :concept-22b ,
+        :concept-22c&gt; ;
+    hero:hasType wd:Q107642367 .
+
+:concept-22a a hero:InformationObject ;
+    hero:hasContent &quot;4.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-22b a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-22c a hero:InformationObject ;
+    hero:hasContent &quot;5.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:concept-23a a hero:InformationObject ;
+    hero:hasContent &quot;11.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10585806 .
+
+:concept-23b a hero:InformationObject ;
+    hero:hasContent &quot;12.5&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+:concept-23c a hero:InformationObject ;
+    hero:hasContent &quot;13.0&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q10578722 .
+
+:time-interval-03 a ti:TimeInterval ;
+    ti:hasIntervalEndDate &quot;2024-05-01T23:59:59Z&quot; ;
+    ti:hasIntervalStartDate &quot;2024-04-01T00:00:00Z&quot; .
+
+:baptistery a owl:Thing .
+
+:ravenna a place:Place .
+
+:sara-fiorentino a foaf:Agent .
+
+```
+
+#### Scenario 4
+An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: &quot;The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2.&quot; It consists of one statement assigned to the CHO in question:
+1. `:observation-24`, which is a diagnosis motivated by `:parameter-19` and referring to a high level of priority(`:concept-24`).
+
+Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: &quot;The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2.&quot; It consists of one statement assigned to the CHO in question:
+1. `:observation-26`, which is a diagnosis motivated by  `:parameter-23` and referring to a extreme level of priority (`:concept-26`).
+
+```
+:assessment-activity-07 a hero:Activity ;
+    hero:assigns :observation-24&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller 
+    than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. 
+    A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value 
+    every 100 years (or 3% per millennium). The museum direction considers this level of risk as 
+    just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and 
+    the value of uncertainty is higher than 2.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-04&gt; ;
+    hero:hasType wd:Q1379672 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:precedes :assessment-activity-05 .
+
+:assessment-activity-08 a hero:Activity ;
+    hero:assigns :observation-26&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;The risk of a large fire affecting the baptistery and its contents (MR = 12.5) 
+    has an extreme priority. The uncertainty that has been measured amounts to a value equal to 
+    1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value 
+    every 10 years (or 30% per century, or 100% in about 300 years). The museum direction 
+    considers this level of risk as ‘not acceptable’, since as a condition the value of MR is 
+    higher than 10 and the value of uncertainty is lower than 2.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-04&gt; ;
+    hero:hasType wd:Q1379672 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:precedes :assessment-activity-06 .
+
+:concept-24 a hero:InformationObject ;
+    hero:hasType wd:Q125584111 .
+
+:concept-26 a hero:InformationObject ;
+    hero:hasType wd:Q2154759 .
+
+:observation-24 a hero:LinguisticObject ;
+    hero:hasType aat:300438433 ;
+    hero:isMotivatedBy :concept-19&gt; ;
+    hero:refersTo :concept-24 .
+
+:observation-26 a hero:LinguisticObject ;
+    hero:hasType aat:300438433 ;
+    hero:isMotivatedBy :concept-23&gt; ;
+    hero:refersTo :concept-26 .
+
+:time-interval-04 a ti:TimeInterval ;
+    ti:hasIntervalEndDate &quot;2024-06-01T23:59:59Z&quot; ;
+    ti:hasIntervalStartDate &quot;2024-05-01T00:00:00Z&quot; .
+
+:baptistery a owl:Thing .
+
+:ravenna a place:Place .
+
+:sara-fiorentino a foaf:Agent .
+
+```
+
+#### Scenario 5
+An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time&quot;. It consists of three statements, each assigned to the CHO in question:
+1. `:observation-29`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-29`);
+2. `:observation-30`, which is a budget description referring to a capital cost (`:concept-30`) to implement such action, amounting to &quot;3200&quot; euros.
+3. `:observation-31`, which is a budget description referring to a maintenance cost (`:concept-31`) to implement such action, amounting to &quot;120&quot; euros.
+
+Another assessment activity `:assessment-activity-10` consisting in the treatment of risks related to a heritage asset `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;Use fire-resistant materials: Consider using fire-resistant coatings, fire-rated doors, and fireproof insulation to minimize fire damage.&quot; It consists of three statements, each assigned to the CHO in question:
+1. `:observation-32`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-32`);
+2. `:observation-33`, which is a budget description referring to a capital cost (`:concept-33`) amounting to &quot;5000&quot; euros;
+3. `:observation-34`, which is a budget description referring to a maintenance cost (`:concept-34`), amounting to &quot;375&quot; euros per month.
+
+```
+:assessment-activity-09 a hero:Activity ;
+    hero:assigns :observation-29 ,
+        :observation-30 ,
+        :observation-31&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;One possible action to protect a baptistery from water damage could be to 
+    install a waterproof membrane or coating on the exterior surfaces. This would help prevent 
+    water infiltration and damage to the structure. Additionally, regular maintenance such as 
+    inspecting for cracks or leaks and repairing them promptly can help mitigate water damage 
+    over time.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-05&gt; ;
+    hero:hasType wd:Q2251595 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:precedes :assessment-activity-07 .
+
+:assessment-activity-10 a hero:Activity ;
+    hero:assigns :observation-32 ,
+        :observation-33 ,
+        :observation-34&gt; ;
+    hero:assignsTo :baptistery&gt; ;
+    hero:hasLocation :ravenna&gt; ;
+    hero:hasNote &apos;&apos;&apos;Use fire-resistant materials: Consider using fire-resistant coatings, 
+    fire-rated doors, and fireproof insulation to minimize fire damage.&apos;&apos;&apos;@en ;
+    hero:hasTimeInterval :time-interval-05&gt; ;
+    hero:hasType wd:Q2251595 ;
+    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:precedes :assessment-activity-08 .
+
+:concept-29 a hero:InformationObject ;
+    hero:hasType wd:Q2956685 .
+
+:concept-30 a hero:InformationObject ;
+    hero:hasContent &quot;3200&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q302208 .
+
+:concept-31 a hero:InformationObject ;
+    hero:hasContent &quot;120&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q831940 .
+
+:concept-32 a hero:InformationObject ;
+    hero:hasType wd:Q2956685 .
+
+:concept-33 a hero:InformationObject ;
+    hero:hasContent &quot;5000&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q302208 .
+
+:concept-34 a hero:InformationObject ;
+    hero:hasContent &quot;375&quot;^^rdfs:Literal ;
+    hero:hasType wd:Q831940 .
+
+:observation-24 a hero:LinguisticObject ;
+    hero:hasType aat:300438433 ;
+    hero:isMotivatedBy :concept-19&gt; ;
+    hero:refersTo :concept-24 .
+
+:observation-26 a hero:LinguisticObject ;
+    hero:hasType aat:300438433 ;
+    hero:isMotivatedBy :concept-23&gt; ;
+    hero:refersTo :concept-26 .
+
+:observation-29 a hero:LinguisticObject ;
+    hero:hasType wd:Q1371819 ;
+    hero:refersTo :concept-29 .
+
+:observation-30 a hero:LinguisticObject ;
+    hero:hasType aat:300027514 ;
+    hero:refersTo :concept-30 .
+
+:observation-31 a hero:LinguisticObject ;
+    hero:hasType aat:300027514 ;
+    hero:refersTo :concept-31 .
+
+:observation-32 a hero:LinguisticObject ;
+    hero:hasType wd:Q1371819 ;
+    hero:refersTo :concept-32 .
+
+:observation-33 a hero:LinguisticObject ;
+    hero:hasType aat:300027514 ;
+    hero:refersTo :concept-33 .
+
+:observation-34 a hero:LinguisticObject ;
+    hero:hasType aat:300027514 ;
+    hero:refersTo :concept-34 .
+
+:time-interval-05 a ti:TimeInterval ;
+    ti:hasIntervalEndDate &quot;2024-07-01T23:59:59Z&quot; ;
+    ti:hasIntervalStartDate &quot;2024-06-01T00:00:00Z&quot; .
+
+:baptistery a owl:Thing .
+
+:ravenna a place:Place .
+
+:sara-fiorentino a foaf:Agent .
+
+```
+
+### Competency questions
+HeRO can be used for answering several questions related to risk assessment activities in the cultural and environmental heirtage domains. In the following subsections, we introduce some of them, and we accompany them with exemplar SPARQL queries. 
+
+The prefixes that are used in all the SPARQL queries provided below are defined as follows:
+
+    PREFIX : &lt;https://w3id.org/sirius/ontology/hero/data/example/&gt;
+    PREFIX aat: &lt;http://vocab.getty.edu/page/aat/&gt;
+    PREFIX hero: &lt;https://w3id.org/sirius/ontology/hero/&gt;
+    PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+    PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    PREFIX ti: &lt;http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#&gt;
+    PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;
+
+
+#### Question 1
+What are the statements assigned to a cultural heritage object that are part of the assessment activity describing its context?
+
+    SELECT ?statement ?note ?document ?concept ?concept_type ?activity ?agent ?place ?start_date ?end_date
+    WHERE {
+        ?activity a hero:Activity ;
+            hero:hasType wd:Q1137655 ; 
+            hero:assigns ?statement ;
+            hero:hasTimeInterval [ 
+                ti:hasIntervalStartDate ?start_date ;
+                ti:hasIntervalEndDate ?end_date 
+            ] ;
+            hero:hasLocation ?place ;
+            hero:isCarriedOutBy ?agent .
+        ?statement hero:hasContent ?note ;
+            hero:refersTo ?concept .
+        ?concept hero:hasType ?concept_type .
+        OPTIONAL {
+            ?statement hero:isDocumentedBy ?document .
+        }
+    }
+
+
+#### Question 2
+Which are the hazards, the types of risk occurence and the risk locations referred to by statements assigned to a cultural heritage object by identification activities?
+
+    SELECT ?activity ?hazard_type ?occurrence_type ?location_type ?agent ?place ?start_date ?end_date
+    WHERE {
+        ?activity a hero:Activity ;
+            hero:isCarriedOutBy ?agent ;
+            hero:hasType wd:Q5687675 ;
+            hero:hasTimeInterval [ 
+                ti:hasIntervalStartDate ?start_date ;
+                ti:hasIntervalEndDate ?end_date 
+            ] ;
+            hero:hasLocation ?place ;
+            hero:assigns ?statement_1 ,
+            ?statement_2 ,
+            ?statement_3 .
+        ?statement_1 hero:hasType aat:300435425 ;
+            hero:refersTo [
+                hero:hasType ?hazard_type 
+            ] .
+        ?statement_2 hero:hasType aat:300435430 ;
+            hero:refersTo [
+                hero:hasType ?occurrence_type 
+            ] .
+        ?statement_3 hero:hasType aat:300435449 ;
+            hero:refersTo [
+                hero:hasType ?location_type 
+            ] .
+    }
+
+
+#### Question 3
+What are the low, probable and high estimates of the measures that are referred to by statements assigned to a cultural heirtage object by analysis activities?
+
+    SELECT DISTINCT ?activity ?statement ?type ?low_estimate_value ?prob_estimate_value ?high_estimate_value ?agent ?place ?start_date ?end_date
+    WHERE {
+        ?activity a hero:Activity ;
+            hero:hasType wd:Q217602 ;
+            hero:isCarriedOutBy ?agent ;
+            hero:hasTimeInterval [ 
+                ti:hasIntervalStartDate ?start_date ;
+                ti:hasIntervalEndDate ?end_date 
+            ] ;
+            hero:hasLocation ?place ;
+            hero:assigns ?statement .
+        ?statement hero:hasType aat:300435430 ;
+            hero:refersTo ?concept .
+        ?concept hero:hasType ?type ;
+            hero:hasComponent ?low_estimate ,
+            ?prob_estimate , 
+            ?high_estimate .
+        ?low_estimate hero:hasType wd:Q10585806 ;
+            hero:hasContent ?low_estimate_value .
+        ?prob_estimate hero:hasType wd:Q226995 ;
+            hero:hasContent ?prob_estimate_value .
+        ?high_estimate hero:hasType wd:Q10578722 ;
+            hero:hasContent ?high_estimate_value .
+    }
+
+
+#### Question 4
+What are the priority levels referred to by statements assigned to a cultural heritage object by evaluation activities?
+
+    SELECT ?activity ?note ?priority_level ?agent ?place ?start_date ?end_date
+    WHERE {
+        ?activity a hero:Activity ;
+            hero:hasType wd:Q1379672 ;
+            hero:hasNote ?note ;
+            hero:isCarriedOutBy ?agent ;
+            hero:hasTimeInterval [ 
+                ti:hasIntervalStartDate ?start_date ;
+                ti:hasIntervalEndDate ?end_date 
+            ] ;
+            hero:hasLocation ?place ;
+            hero:assigns [
+                hero:hasType aat:300438433 ;
+                hero:refersTo [ 
+                    hero:hasType ?priority_level 
+                ]
+            ]
+    }
+
+
+#### Question 5
+What are the treatment actions, capital costs and maintenance costs being referred to by the statements assigned to a cultural heritage object by treatment activities?
+
+    SELECT DISTINCT ?activity ?note ?action ?capital_cost_value ?maintenance_cost_value ?agent ?place ?start_date ?end_date
+    WHERE {
+        ?activity a hero:Activity ;
+            hero:hasType wd:Q2251595 ;
+            hero:hasNote ?note ;
+            hero:isCarriedOutBy ?agent ;
+            hero:hasTimeInterval [ 
+                ti:hasIntervalStartDate ?start_date ;
+                ti:hasIntervalEndDate ?end_date 
+            ] ;
+            hero:hasLocation ?place ;
+            hero:assigns ?statement_1 ,
+            ?statement_2 ,
+            ?statement_3 .
+        ?statement_1 hero:hasType wd:Q1371819 ;
+            hero:refersTo ?concept_1 .
+        ?concept_1 hero:hasType ?action .
+        ?statement_2 hero:hasType aat:300027514 ;
+            hero:refersTo ?capital_cost .
+        ?capital_cost hero:hasType wd:Q302208 ;
+            hero:hasContent ?capital_cost_value .
+        ?statement_3 hero:hasType aat:300027514 ;
+            hero:refersTo ?maintenance_cost .
+        ?maintenance_cost hero:hasType wd:Q831940 ;
+            hero:hasContent ?maintenance_cost_value .
+    }
+
+  </rdfs:comment>
+        <owl:incompatibleWith rdf:resource="https://w3id.org/sirius/ontology/hero/1.0.0/"/>
+        <owl:priorVersion rdf:resource="https://w3id.org/sirius/ontology/hero/1.0.0/"/>
+        <owl:versionInfo>2.0.0</owl:versionInfo>
+        <ns:status xml:lang="en">work in progress</ns:status>
+        <foaf:logo rdf:resource="https://github.com/sirius-org/hero/docs/current/logo.png"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/example -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/example"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- http://schema.org/codeRepository -->
+
+
+    <owl:AnnotationProperty rdf:about="http://schema.org/codeRepository"/>
+    
+
+
+    <!-- http://schema.org/image -->
+
+
+    <owl:AnnotationProperty rdf:about="http://schema.org/image"/>
+    
+
+
+    <!-- http://www.linkedmodel.org/schema/vaem#rationale -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.linkedmodel.org/schema/vaem#rationale"/>
+    
+
+
+    <!-- http://www.w3.org/2003/06/sw-vocab-status/ns#status -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#status"/>
+    
+
+
+    <!-- http://www.w3.org/2003/06/sw-vocab-status/ns#term_status -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/logo -->
+
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/logo"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/type -->
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/type"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#atTime -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#atTime"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#isTimeIndexFor -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#isTimeIndexFor"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#influenced -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#influenced"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#wasInfluencedBy -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/assigns -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/assigns">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <vann:example xml:lang="en">
+        ### An example of activity assigning an observation to a cultural heritage object
+        
+        :assessment-activity-01 a hero:Activity ;
+        hero:assigns :observation ;
+        hero:assignsTo :baptistery .
+    </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to link activities with the statements used during the activity to assess the object being examined.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assessment activity and an observation, assertion or statement it assigns to some entity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">assigns</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/assignsTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/assignsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <vann:example xml:lang="en">
+    ### An example of activity assigning an observation to a cultural heritage object
+    
+    :assessment-activity-01 a hero:Activity ;
+      hero:assigns :observation ;
+      hero:assignsTo :baptistery .
+    
+    :baptistery a obj:Object .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to link activities with the object being examined during the assessment.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assessment activity, expressed through a series of assertions, and an object being examined.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">assigns to</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/carriesOut -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/carriesOut">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/sirius/ontology/hero/isParticipantIn"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/isCarriedOutBy"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:isCarriedOutBy&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">carries out</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/documents -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/documents">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#influenced"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/isDocumentedBy"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Activity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Entity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:isDocumentedBy&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">documents</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/follows -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/follows">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#follows"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/precedes"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:precedes&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">follows</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasComponent -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasComponent">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#hasComponent"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <vann:example xml:lang="en">
+    ### An example of a concept (frequency) having a set of 
+    ### other concepts (estimates) as components
+
+    :frequency a hero:InformationObject ;
+      hero:hasComponent :low-estimate ,
+          :probable-estimate ,
+          :high-estimate ;
+      hero:hasType wd:Q11652 .
+    
+    :low-estimate a hero:InformationObject ;
+      hero:hasContent &quot;3.0&quot;^^rdfs:Literal ;
+      hero:hasType wd:Q10585806 .
+
+    :probable-estimate a hero:InformationObject ;
+      hero:hasContent &quot;3.5&quot;^^rdfs:Literal ;
+      hero:hasType wd:Q226995 .
+
+    :high-estimate a hero:InformationObject ;
+      hero:hasContent &quot;4.0&quot;^^rdfs:Literal ;
+      hero:hasType wd:Q10578722 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to allow modelling assessment concepts in more detail, such as measurements (frequency, magnitude, etc.), which in various risk assessment methodologies (like the ABC method) tend to be expressed through multiple estimates so as to take uncertainty into account.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between two entities, expressing a non-transitive componency relation in which one entity is part of the other.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has component</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasLocation -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasLocation">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl#hasLocation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl#Place"/>
+        <vann:example xml:lang="en">
+    ### An example of activity being localized in Ravenna
+
+    :assessment-activity-01 a hero:Activity ;
+      hero:hasLocation :ravenna .
+    
+    :ravenna a place:Place .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track geographic information of assessment activities, expressed as places where such activities are localized.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assessment activity and a place where that activity is localized.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has location</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasParticipant -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasParticipant">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <vann:example xml:lang="en">
+    ### An example of activity having the University of 
+    ### Bologna as participant
+
+    :assessment-activity-01 a hero:Activity ;
+      hero:hasParticipant :university-of-bologna .
+
+    :university-of-bologna a foaf:Agent .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track the responsibility information of assessment activities, expressed as agents that somehow participated in such activities, with a varying degree of accountability.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assessment activity and an agent participating in it, either directly or indirectly.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasTimeInterval -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasTimeInterval">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#atTime"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+        <vann:example xml:lang="en">
+    ### An example of activity occurring within the entirety of the 29th of April, 2024
+    
+    :assessment-activity-01 a hero:Activity ;
+      hero:hasTimeInterval :2024-04-29 .
+
+    :2024-04-29 a ti:TimeInterval .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track the temporal information of assessment activities, expressed as time intervals with a start date and an end date.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assessment activity and a time interval.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has time interval</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasType -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasType">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/type"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="https://w3id.org/sirius/ontology/hero/Type"/>
+        <vann:example xml:lang="en">
+    ### An example of assertion having the type &apos;descriptive note&apos; (`aat:300435416`)
+    
+    :observation a hero:LinguisticObject ;
+      hero:hasContent &quot;The Baptistery is externally visible on the N, NW, and NE sides.&quot;@en ;
+      hero:hasType aat:300435416 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to allow entity categorization in HeRO.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an entity and a conceptual category it can be classified with.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has type</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isAssignedBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isAssignedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#hasTimeIndexedSetting"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/assigns"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:assigns&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is assigned by</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isAttributedBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isAttributedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/assignsTo"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:assignsTo&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is attributed by of</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isCarriedOutBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isCarriedOutBy">
+        <rdfs:subPropertyOf rdf:resource="https://w3id.org/sirius/ontology/hero/hasParticipant"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <vann:example xml:lang="en">
+    ### An example of activity being carried out by Sara Fiorentino
+
+    :assessment-activity-01 a hero:Activity ;
+      hero:isCarriedOutBy :sara-fiorentino .
+
+    :sara-fiorentino a foaf:Agent .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track responsibility information of assessment activities, expressed as agents that directly participated in such activities, with a major degree of accountability.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relation between an assessment activity and the agent carrying it out directly.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is carried out by</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isComponentOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isComponentOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#isComponentOf"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/hasComponent"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:hasComponent&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is component of</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isDocumentedBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isDocumentedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasInfluencedBy"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Activity"/>
+                    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Entity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <vann:example xml:lang="en">
+    ### An example of activity being documented by a document
+
+    :assessment-activity-01 a hero:Activity ;
+      hero:isDocumentedBy :document-01 .
+    
+    :document-01 a foaf:Document.
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to integrate external documents that may contain any kind of information related to activities, assertions or concepts, and deemed to be useful with respect to assessment purposes.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an activity or an assertion and a document that records information about it.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is documented by</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isLocationOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isLocationOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl#isLocationOf"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/hasLocation"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl#Place"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:hasLocation&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is location of</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isMotivatedBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isMotivatedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <vann:example xml:lang="en">
+    ### An example of an assertion (expressed as &apos;status note&apos;, 
+    ### using `aat:300438433`) evaluating the status of the object 
+    ### (expressed as &apos;extreme priority level&apos;, using `wd:Q125584111`), 
+    ### which was motivated by the risk magnitude (`wd:Q2154759`) 
+    ### referred to in another assertion
+
+    :observation-01 a hero:LinguisticObject ;
+      hero:hasType aat:300438433 ;
+      hero:isMotivatedBy :risk-magnitude ;
+      hero:refersTo :high-priority-level .
+
+    observation-01 a hero:LinguisticObject ;
+      hero:hasType aat:300435430 ;
+      hero:refersTo :risk-magnitude .
+
+    :risk-magnitude a hero:InformationObject ;
+      hero:hasType wd:Q2154759 .
+
+    :high-priority-level a hero:InformationObject ;
+      hero:hasType wd:Q125584111 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to link entities (like assertions and concepts) in a way that expresses an existing cause-effect relationship between them (for example, during an evaluation activity a risk is given a high priority on the basis of the risk magnitude calculated during a previous analysis activity.) </vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between two entities, expressing the fact that one entity somehow came into existence as an effect of using the other entity in some way.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is motivated by</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isParticipantIn -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isParticipantIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#isParticipantIn"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/hasParticipant"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:hasParticipant&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is participant in</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isReferredToBy -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isReferredToBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#isExpressedBy"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/refersTo"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#SocialObject"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:refersTo&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is referred to by</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/isTimeIntervalOf -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/isTimeIntervalOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#isTimeIndexFor"/>
+        <owl:inverseOf rdf:resource="https://w3id.org/sirius/ontology/hero/hasTimeInterval"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+        <rdfs:comment xml:lang="en">The inverse property of &apos;hero:hasTimeInterval&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">is time interval of</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/precedes -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/precedes">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#precedes"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <vann:example xml:lang="en">
+    ### An example of activity preceding another activity
+    
+    :assessment-activity-01 a hero:Activity ;
+      hero:precedes :assessment-activity-02 .
+    
+    :assessment-activity-02 a hero:Activity .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to allow sequencing activities within a larger assessment endeavor.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between two entities, expressing a sequence schema existing between them according to which the former entity precedes the latter.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">precedes</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/refersTo -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/refersTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#expresses"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#SocialObject"/>
+        <vann:example xml:lang="en">
+    ### An example of assertion (&apos;descriptive note&apos;, expressed 
+    ### as `aat:300435416`) referring to the physical properties 
+    ### (`wd:Q4373292`) of the object being assessed
+    
+    :observation a hero:LinguisticObject ;
+      hero:hasContent &apos;&apos;&apos;The Baptistery is externally visible 
+        on the N, NW, and NE sides.&apos;&apos;&apos;@en ;
+      hero:hasType aat:300435416 ;
+      hero:refersTo :physical-properties .
+
+    :physical-properties a hero:InformationObject ;
+      hero:hasType wd:Q4373292 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to link assertion assigned to the object being assessed during an activity and the conceptual constructs expressed in that assertion (such as the physical properties of the object, its socio-economic context, its aesthetic value, the fire-related damage it received at some point in its lifecycle, and so on), and used to rethorically build the assessment itself.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an assertion and the concept it refers to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">expresses</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalEndDate -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalEndDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <vann:example xml:lang="en">
+    ### An example of time interval with both its start and 
+    ### end dates specified
+
+    :2024-04-29 a ti:TimeInterval ;
+      ti:hasIntervalStartDate &quot;2024-04-29T00:00:00Z&quot;^^xsd:dateTime ;
+      ti:hasIntervalEndDate &quot;2024-04-29T23:59:59Z&quot;^^xsd:dateTime .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track the chronological information about an activity, specifically the end date of the time interval in which it occurs.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A property specifying the end date of a time interval.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
+        <rdfs:label xml:lang="en">interval has end date</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalDate"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <vann:example xml:lang="en">
+    ### An example of time interval with both its start and 
+    ### end dates specified
+
+    :2024-04-29 a ti:TimeInterval ;
+      ti:hasIntervalStartDate &quot;2024-04-29T00:00:00Z&quot;^^xsd:dateTime ;
+      ti:hasIntervalEndDate &quot;2024-04-29T23:59:59Z&quot;^^xsd:dateTime .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to track the chronological information about an activity, specifically the start date of the time interval in which it occurs.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A property specifying the start date of a time interval.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
+        <rdfs:label xml:lang="en">interval has start date</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#value -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#value"/>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasContent -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasContent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#value"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <vann:example xml:lang="en">
+    ### An example of the low estimate (`wd:Q10585806`) of 
+    ### a frequency having &apos;3.0&apos; as content
+    
+    :low-estimate a hero:InformationObject ;
+      hero:hasContent &quot;3.0&quot;^^rdfs:Literal ;
+      hero:hasType wd:Q10585806 .
+  </vann:example>
+        <vaem:rationale xml:lang="en"></vaem:rationale>
+        <rdfs:comment xml:lang="en">A property expressing the content or value of an entity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has content</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/hasNote -->
+
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/sirius/ontology/hero/hasNote">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/description"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <vann:example xml:lang="en">
+    ### An example of activity having a note attached to it
+    
+    :assessment-activity-01 a hero:Activity ;
+      hero:hasNote &apos;&apos;&apos;Octagonal building with sloping roof, 
+        featuring four apsidioles corresponding to the cardinal 
+        points (partially buried). The mosaic decoration is 
+        preserved only on the dome, creating a striking contrast 
+        with the rough surface of exposed bricks in the lower 
+        part. The mosaic depicts in the center the baptism of 
+        Christ in the River Jordan, surrounded by a band with 
+        the twelve apostles parading in two rows, meeting at 
+        the throne of the etimasia, symbol of the invisible 
+        presence of Christ.&apos;&apos;&apos;@en .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to allow describing any kind of entity involved in assessment endeavors with textual descriptions in natural language.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A property that attaches a textual description to an entity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">has note</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/place.owl#Place -->
+
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/place.owl#Place">
+        <vann:example xml:lang="en">
+    ### An example of location (Ravenna)
+
+    :ravenna a place:Place .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to track geographic information of assessment activities.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A geographic location.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl"/>
+        <rdfs:label xml:lang="en">Place</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation -->
+
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval -->
+
+
+    <owl:Class rdf:about="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval">
+        <vann:example xml:lang="en">
+    ### An example of time interval (the full day of 29th of April 2024)
+
+    :2024-04-29 a ti:TimeInterval ;
+      ti:hasIntervalStartDate &quot;2024-04-29T00:00:00Z&quot;^^xsd:dateTime ;
+      ti:hasIntervalEndDate &quot;2024-04-29T23:59:59Z&quot;^^xsd:dateTime .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to track chronological information related to assessment activities.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A dimensional space representing time as a period delimited by a start date time and an end date time.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
+        <rdfs:label xml:lang="en">Time interval</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity"/>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+        <vann:example xml:lang="en">
+    ### Examples of agents: Sara Fiorentino (a person), University of Bologna (an organization)
+
+    :sara-fiorentino a foaf:Agent .
+
+    :university-of-bologna a foaf:Agent .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to track responsibility information related to assessment activities.</vaem:rationale>
+        <rdfs:comment xml:lang="en">An entity with the capability of performing actions (eg. person, group, software, etc.).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <rdfs:label xml:lang="en">Agent</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Document">
+        <vann:example xml:lang="en">
+    ### Example of a document
+
+    :document-01 a foaf:Document .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to track the documents used to record and present information about assessment decisions, activities, statements and concepts examined during assessment endeavors.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A written, drawn, presented, or memorialized representation of information.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/Activity -->
+
+
+    <owl:Class rdf:about="https://w3id.org/sirius/ontology/hero/Activity">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#Action"/>
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
+        <vann:example xml:lang="en">
+    ### An example of an activity (&apos;inspection&apos;, expressed 
+    ### with `wd:Q1137655`) examining the context of a cultural 
+    ### object (`:baptistery`) by assigning two assertions 
+    ### (`:observation-01` and `:observation-02`) to it
+    
+    :assessment-activity-01 a hero:Activity ;
+      hero:assigns :observation-01 ,
+        :observation-02 ;
+      hero:assignsTo :baptistery ;
+      hero:hasLocation :ravenna ;
+      hero:hasNote &apos;&apos;&apos;Octagonal building with sloping roof, featuring four 
+        apsidioles corresponding to the cardinal points (partially buried). 
+        The mosaic decoration is preserved only on the dome, creating a 
+        striking contrast with the rough surface of exposed bricks in the 
+        lower part. The mosaic depicts in the center the baptism of Christ 
+        in the River Jordan, surrounded by a band with the twelve apostles 
+        parading in two rows, meeting at the throne of the etimasia, symbol 
+        of the invisible presence of Christ.&apos;&apos;&apos;@en ;
+      hero:hasParticipant :universita-di-bologna ;
+      hero:hasTimeInterval :2024-04-29 ;
+      hero:hasType wd:Q1137655 ;
+      hero:isCarriedOutBy :sara-fiorentino .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to represent the core entity of HeRO, a detailed description of a risk assessment sub-process in which both descriptive elements (assertions, concepts, notes, content, etc.) and provenance (who carried out and/or participated in the activity, when, where, how).</vaem:rationale>
+        <rdfs:comment xml:lang="en">
+    A situated action representing an assessment that involves gaining and producing scientific knowledge about some entity being observed. An activity assigns to that entity a series of linguistic objects (e.g. assertions, observations) referring to concepts used to make the assessment.
+    </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/InformationObject -->
+
+
+    <owl:Class rdf:about="https://w3id.org/sirius/ontology/hero/InformationObject">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject"/>
+        <vann:example xml:lang="en">
+    ### An example of information object (the concept of 
+    ### &apos;pysical properties&apos;, expressed through `wd:Q4373292`)
+    
+    :concept-01 a hero:InformationObject ;
+      hero:hasType wd:Q4373292 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to represent the concepts referred to by assertions generated during assessment activities and assigned to the examined object.</vaem:rationale>
+        <rdfs:comment xml:lang="en">
+    A qualitative, quantitative or interpretative conceptual object that carries some information.
+    </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl"/>
+        <rdfs:label xml:lang="en">Information object</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/LinguisticObject -->
+
+
+    <owl:Class rdf:about="https://w3id.org/sirius/ontology/hero/LinguisticObject">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/sirius/ontology/hero/InformationObject"/>
+        <vann:example xml:lang="en">
+    ### An example of linguistic object (a &apos;descriptive note&apos;, 
+    ### expressed through `aat:300435416`)
+
+    :observation-01 a hero:LinguisticObject ;
+      hero:hasContent &apos;&apos;&apos;The Baptistery is externally visible on 
+        the N, NW, and NE sides. The west side overlooks the 
+        gardens of a private residence, while the south, SW, 
+        and SE sides overlook the garden of the Department of 
+        Cultural Heritage (University of Bologna).&apos;&apos;&apos;@en ;
+      hero:hasType aat:300435416 ;
+      hero:refersTo :concept-01 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to represent the assertion produced and assigned to the object being examined during an assessment activity.</vaem:rationale>
+        <rdfs:comment xml:lang="en">
+    A piece of information, such as a statement, an observation, an assertion, generated and used for communication purposes.
+    </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl"/>
+        <rdfs:label xml:lang="en">Linguistic object</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/Type -->
+
+
+    <owl:Class rdf:about="https://w3id.org/sirius/ontology/hero/Type">
+        <vann:example xml:lang="en">
+    ### An example of type, used to categorize a linguistic 
+    ### object as a &apos;descriptive note&apos; (instantiating the 
+    ### type by reusing the value &apos;300435416&apos; from the AAT 
+    ### controlled vocabulary).
+    
+    :observation-01 a hero:LinguisticObject ;
+      hero:hasType aat:300435416 .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This class was added to allow classifying HeRO core entities (activities, linguistic objects and information objects) according to existing knowledge organization systems, such as thesauri, controlled vocabularies and glossaries.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A categorization of an entity according to a shared conceptualization.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">Type</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/ -->
+
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/sirius/ontology/hero/">
+        <terms:description xml:lang="en">The Heritage Risk Assessment Ontology (HeRO, https://w3id.org/sirius/ontology/hero) is an OWL 2 DL ontology for describing risk assessment activities related to heritage in a FAIR-compliant, machine-actionable format.</terms:description>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,29 @@
+|                       | **TBox term**        | **Model**                      | **Refactored term**    | **Full URI**                                                                       | **Note** |
+|-----------------------|----------------------|--------------------------------|------------------------|------------------------------------------------------------------------------------|----------|
+| **Classes**           |                      |                                |                        |                                                                                    |          |
+|                       | `Thing`              | OWL                            | `Thing`                | http://www.w3.org/2002/07/owl#Thing                                                |          |
+|                       | `WorkflowExecution`  | PWO                            | `WorkflowExecution`    | http://purl.org/spar/pwo/WorkflowExecution                                         |          |
+|                       | `Workflow`           | PWO                            | `Workflow`             | http://purl.org/spar/pwo/Workflow                                                  |          |
+|                       | `Step`               | PWO                            | `Step`                 | http://purl.org/spar/pwo/Step                                                      |          |
+|                       | `AssessmentActivity` | HeRO                           | `AssessmentActivity`   | https://w3id.org/sirius/ontology/hero/AssessmentActivity                           |          |
+|                       | `Agent`              | FOAF                           | `Agent`                | http://xmlns.com/foaf/0.1/Agent                                                    |          |
+|                       | `TimeInterval`       | Time Interval pattern          | `TimeInterval`         | http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#                     |          |
+|                       | `Document`           | FOAF                           | `Document`             | http://xmlns.com/foaf/0.1/Document                                                 |          |
+|                       | `Duration`           | TIME                           | `DurationDescription`  | http://www.w3.org/2006/time#DurationDescription                                    |          |
+| **Object properties** |                      |                                |                        |                                                                                    |          |
+|                       | `executes`           | PWO                            | `executes`             | http://purl.org/spar/pwo/executes                                                  |          |
+|                       | `involvesActivity`   | PWO                            | `involvesAction`       | http://purl.org/spar/pwo/involvesAction                                            |          |
+|                       | `hasStep`            | PWO                            | `hasStep`              | http://purl.org/spar/pwo/hasStep                                                   |          |
+|                       | `hasFirstStep`       | PWO                            | `hasFirstStep`         | http://purl.org/spar/pwo/hasFirstStep                                              |          |
+|                       | `hasNextStep`        | PWO                            | `hasNextStep`          | http://purl.org/spar/pwo/hasNextStep                                               |          |
+|                       | `hasDuration`        | Parameter pattern              | `hasParameter`         | http://www.ontologydesignpatterns.org/cp/owl/parameter.owl#Parameter               |          |
+|                       | `isExecutedIn`       | Task Execution pattern         | `isExecutedIn`         | http://www.ontologydesignpatterns.org/cp/owl/taskexecution.owl#isExecutedIn        |          |
+|                       | `isDocumentedBy`     | HeRO                           | `isDocumentedBy`       | https://w3id.org/sirius/ontology/hero/isDocumentedBy                               |          |
+|                       | `atTime`             | Time Indexed Situation pattern | `atTime`               | http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#atTime       |          |
+|                       | `targets`            | HeRO                           | `targets`              | https://w3id.org/sirius/ontology/hero/targets                                      |          |
+|                       | `assesses`           | HeRO                           | `assesses`             | https://w3id.org/sirius/ontology/hero/assesses                                     |          |
+|                       | `hasParticipant`     | Participation pattern          | `hasParticipant`       | http://www.ontologydesignpatterns.org/cp/owl/participation.owl#hasParticipant      |          |
+| **Data properties**   |                      |                                |                        |                                                                                    |          |
+|                       | `hasStartDate`       | Time Interval pattern          | `hasIntervalStartDate` | http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate |          |
+|                       | `hasEndDate`         | Time Interval pattern          | `hasIntervalEndDate`   | http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalEndDate   |          |
+|                       | `hasDays`            | TIME                           | `days`                 | http://www.w3.org/2006/time#days                                                   |          |

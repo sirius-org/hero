@@ -1,0 +1,149 @@
+@prefix : <https://w3id.org/sirius/ontology/data/03/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hero: <https://w3id.org/sirius/ontology/hero/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+@prefix tis: <http://ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#> .
+@base <https://w3id.org/sirius/ontology/data/03/> .
+
+<https://w3id.org/sirius/ontology/data/03/> rdf:type owl:Ontology ;
+                                                        owl:imports <https://w3id.org/sirius/ontology/model> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum
+:museum rdf:type owl:NamedIndividual ,
+                 crm:E24_Physical_Human-Made_Thing .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-fire
+:museum-fire rdf:type owl:NamedIndividual ,
+                      hero:Risk .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-fire-a
+:museum-fire-a rdf:type owl:NamedIndividual ,
+                        hero:Frequency ;
+               hero:isDocumentedBy :national-statistics ;
+               hero:hasHighEstimate 3 ;
+               hero:hasLowEstimate 2 ;
+               hero:hasNote "National statistics from different countries show that the average time between large fire events for museums with basic fire control measures is about 300 years. The A-score in this case would be A=2½, indicating an expectation of a large fire once every 300 years."^^rdfs:Literal ;
+               hero:hasProbableEstimate 2.5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-fire-b
+:museum-fire-b rdf:type owl:NamedIndividual ,
+                        hero:FractionalValueLoss ;
+               hero:hasHighEstimate 5 ;
+               hero:hasLowEstimate 4.5 ;
+               hero:hasNote "Considering the combustible nature of the museum building and its contents, a total or almost total loss of value is expected in each item affected by the fire."^^rdfs:Literal ;
+               hero:hasProbableEstimate 5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-fire-c
+:museum-fire-c rdf:type owl:NamedIndividual ,
+                        hero:Exposure ;
+               hero:hasHighEstimate 5 ;
+               hero:hasLowEstimate 4.5 ;
+               hero:hasNote "Given the characteristics of the building and its contents, it is expected that all or most of the heritage asset and its value would be affected in the event of a large fire."^^rdfs:Literal ;
+               hero:hasProbableEstimate 5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-fire-mr
+:museum-fire-mr rdf:type owl:NamedIndividual ,
+                         hero:Magnitude ;
+                hero:hasHighEstimate 13 ;
+                hero:hasLowEstimate 12 ;
+                hero:hasProbableEstimate 12.5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-theft
+:museum-theft rdf:type owl:NamedIndividual ,
+                       hero:Risk .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-theft-a
+:museum-theft-a rdf:type owl:NamedIndividual ,
+                         hero:Frequency ;
+                hero:isDocumentedBy :staff-notes ;
+                hero:hasHighEstimate 4 ;
+                hero:hasLowEstimate 3 ;
+                hero:hasNote "Staff memory indicates that the collection has suffered 3 theft events affecting objects on display in the past 75 years, estimating an average time of 25 years between theft events."^^rdfs:Literal ;
+                hero:hasProbableEstimate 3.5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-theft-b
+:museum-theft-b rdf:type owl:NamedIndividual ,
+                         hero:FractionalValueLoss ;
+                hero:hasHighEstimate 5 ;
+                hero:hasLowEstimate 4.5 ;
+                hero:hasNote "A stolen item results in a complete loss of value for the museum and its public."^^rdfs:Literal ;
+                hero:hasProbableEstimate 5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-theft-c
+:museum-theft-c rdf:type owl:NamedIndividual ,
+                         hero:Exposure ;
+                hero:hasHighEstimate 2.5 ;
+                hero:hasLowEstimate 1.5 ;
+                hero:hasNote "The most probable scenario is the opportunistic theft of a small, original object of the collection displayed without protection."^^rdfs:Literal ;
+                hero:hasProbableEstimate 2 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/museum-theft-mr
+:museum-theft-mr rdf:type owl:NamedIndividual ,
+                          hero:Magnitude ;
+                 hero:hasHighEstimate 11 ;
+                 hero:hasLowEstimate 10 ;
+                 hero:hasProbableEstimate 10.5 .
+
+
+###  https://w3id.org/sirius/ontology/data/03/national-statistics
+:national-statistics rdf:type owl:NamedIndividual ,
+                              foaf:Document .
+
+
+###  https://w3id.org/sirius/ontology/data/03/analysis-fire
+:analysis-fire rdf:type owl:NamedIndividual ,
+                               hero:AnalysisDescription ;
+                      hero:analyses :museum-fire ;
+                      hero:describes :museum ;
+                      tis:atTime :2020-10-10 ;
+             hero:quantifies :museum-fire-a ,
+                               :museum-fire-b ,
+                               :museum-fire-c ,
+                               :museum-fire-mr .
+
+
+###  https://w3id.org/sirius/ontology/data/03/analysis-theft
+:analysis-theft rdf:type owl:NamedIndividual ,
+                                hero:AnalysisDescription ;
+                       hero:analyses :museum-theft ;
+                       hero:describes :museum ;
+                       tis:atTime :2020-10-10 ;
+              hero:quantifies :museum-theft-a ,
+                                :museum-theft-b ,
+                                :museum-theft-c ,
+                                :museum-theft-mr .
+
+
+###  https://w3id.org/sirius/ontology/data/03/staff-notes
+:staff-notes rdf:type owl:NamedIndividual ,
+                      foaf:Document .
+
+
+###  https://w3id.org/sirius/ontology/data/03/2020-10-10
+:2020-10-10 rdf:type owl:NamedIndividual ,
+                      ti:TimeInterval ;
+            ti:hasIntervalEndDate "2020-10-10T23:59:59Z"^^xsd:dateTime ;
+            ti:hasIntervalStartDate "2020-10-10T00:00:00Z"^^xsd:dateTime .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

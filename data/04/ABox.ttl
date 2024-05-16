@@ -1,0 +1,311 @@
+@prefix : <https://w3id.org/sirius/ontology/data/04/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hero: <https://w3id.org/sirius/ontology/hero/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+@prefix tis: <http://ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#> .
+@base <https://w3id.org/sirius/ontology/data/04/> .
+
+<https://w3id.org/sirius/ontology/data/04/> rdf:type owl:Ontology ;
+                                                        owl:imports <https://w3id.org/sirius/ontology/model/> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/sirius/ontology/data/04/building
+:building rdf:type owl:NamedIndividual ,
+                   crm:E24_Physical_Human-Made_Thing .
+
+
+###  https://w3id.org/sirius/ontology/data/04/document-a
+:document-a rdf:type owl:NamedIndividual ,
+                     foaf:Document .
+
+
+###  https://w3id.org/sirius/ontology/data/04/document-b
+:document-b rdf:type owl:NamedIndividual ,
+                     foaf:Document .
+
+
+###  https://w3id.org/sirius/ontology/data/04/document-c
+:document-c rdf:type owl:NamedIndividual ,
+                     foaf:Document .
+
+
+###  https://w3id.org/sirius/ontology/data/04/furniture
+:furniture rdf:type owl:NamedIndividual ,
+                    crm:E24_Physical_Human-Made_Thing .
+
+
+###  https://w3id.org/sirius/ontology/data/04/house
+:house rdf:type owl:NamedIndividual ,
+                crm:E24_Physical_Human-Made_Thing ;
+       crm:P46_is_composed_of :building ,
+                    :furniture ,
+                    :mosaics ,
+                    :paintings .
+
+
+###  https://w3id.org/sirius/ontology/data/04/mosaics
+:mosaics rdf:type owl:NamedIndividual ,
+                  crm:E24_Physical_Human-Made_Thing .
+
+
+###  https://w3id.org/sirius/ontology/data/04/paintings
+:paintings rdf:type owl:NamedIndividual ,
+                    crm:E24_Physical_Human-Made_Thing .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-01
+:value-01 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.74 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-10
+:value-10 rdf:type owl:NamedIndividual ,
+                   hero:Value ;
+          hero:hasScore 3.98 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-02
+:value-02 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.33 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-03
+:value-03 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.26 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-04
+:value-04 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.38 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-05
+:value-05 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.65 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-06
+:value-06 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.75 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-07
+:value-07 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 4 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-08
+:value-08 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 3.57 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-09
+:value-09 rdf:type owl:NamedIndividual ,
+                  hero:Value ;
+         hero:hasScore 4.45 .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-01
+:value-assessment-01 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-01 ;
+                    tis:atTime :2020-11-21 ;
+                    hero:isDocumentedBy :document-a ;
+                    hero:withinDimension hero:artistic ;
+                    hero:withinAspect hero:form ;
+                    hero:assessesPercentage 50 ;
+                    hero:hasNote "With simplicity and minimal manipulation creatively retained and upgraded Kashani's house artistic values."^^rdfs:Literal ;
+                    hero:describes :building .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-10
+:value-assessment-10 rdf:type owl:NamedIndividual ,
+                              hero:ValueDescription ;
+                     hero:assigns :value-10 ;
+                               tis:atTime :2020-11-11 ;
+          hero:isDocumentedBy :document-c ;
+          hero:withinDimension hero:historic ;
+          hero:withinAspect hero:setting ;
+          hero:assessesPercentage 10 ;
+          hero:hasNote "It has revived the sense of a Qajar house in Kashan. Representing textile art caused Kashan people to take pride in their historical art."^^rdfs:Literal ;
+                     hero:describes :paintings .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-02
+:value-assessment-02 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-02 ;
+                             tis:atTime :2020-10-19 ;
+         hero:isDocumentedBy :document-a ;
+         hero:withinDimension hero:historic ;
+         hero:withinAspect hero:form ;
+         hero:assessesPercentage 50 ;
+         hero:hasNote "It is an example of a Qajar house which has been refurbished like other contemporary houses based on historical documents and comparative studies."^^rdfs:Literal ;
+                    hero:describes :building .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-03
+:value-assessment-03 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-03 ;
+                             tis:atTime :2021-01-03 ;
+         hero:isDocumentedBy :document-a ;
+         hero:withinDimension hero:social ;
+         hero:withinAspect hero:function ;
+         hero:assessesPercentage 50 ;
+         hero:hasNote "The house design and decoration represents the middle social class in the Qajar era."^^rdfs:Literal ;
+                    hero:describes :building .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-04
+:value-assessment-04 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-04 ;
+                             tis:atTime :2020-11-21 ;
+         hero:isDocumentedBy :document-b ;
+         hero:withinDimension hero:scientific ;
+         hero:withinAspect hero:form ;
+         hero:assessesPercentage 20 ;
+         hero:hasNote "The remains of the building forms and original shapes are the credible scientific source for recognition typology, structure and the idea of creating spaces in the historic Qajar houses of Kashan."^^rdfs:Literal ;
+                    hero:describes :furniture .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-05
+:value-assessment-05 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-05 ;
+                             tis:atTime :2021-01-05 ;
+         hero:isDocumentedBy :document-b ;
+         hero:withinDimension hero:artistic ;
+         hero:withinAspect hero:substance ;
+         hero:assessesPercentage 20 ;
+         hero:hasNote "Used Original materials generally had a good condition and new materials used in a simple but innovative way in respect to historical values."^^rdfs:Literal ;
+                    hero:describes :furniture .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-06
+:value-assessment-06 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-06 ;
+                             tis:atTime :2020-12-06 ;
+         hero:isDocumentedBy :document-b ;
+         hero:withinDimension hero:historic ;
+         hero:withinAspect hero:function ;
+         hero:assessesPercentage 20 ;
+         hero:hasNote "Hotels for temporary residence are selected in accordance with the historical values of the house."^^rdfs:Literal ;
+                    hero:describes :mosaics .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-07
+:value-assessment-07 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-07 ;
+                             tis:atTime :2020-11-12 ;
+         hero:isDocumentedBy :document-c ;
+         hero:withinDimension hero:social ;
+         hero:withinAspect hero:tradition ;
+         hero:assessesPercentage 20 ;
+         hero:hasNote "Taking advantage of professional craftsmen with different specialties played an important role in the construction and restoration of a historic house in Kashan. Weaving workshop has revived this art in Kashan"^^rdfs:Literal ;
+                    hero:describes :mosaics .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-08
+:value-assessment-08 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-08 ;
+                             tis:atTime :2020-10-18 ;
+         hero:isDocumentedBy :document-c ;
+         hero:withinDimension hero:scientific ;
+         hero:withinAspect hero:tradition ;
+         hero:assessesPercentage 20 ;
+         hero:hasNote "The principal of scientific techniques and traditional construction process related to the formation period extensively displayed and made it possible to study them and showed traditional textile method to be taught."^^rdfs:Literal ;
+                    hero:describes :mosaics .
+
+
+###  https://w3id.org/sirius/ontology/data/04/value-assessment-09
+:value-assessment-09 rdf:type owl:NamedIndividual ,
+                             hero:ValueDescription ;
+                    hero:assigns :value-09 ;
+                             tis:atTime :2020-11-21 ;
+         hero:isDocumentedBy :document-c ;
+         hero:withinDimension hero:social ;
+         hero:withinAspect hero:setting ;
+         hero:assessesPercentage 10 ;
+         hero:hasNote "Social and security level of the neighborhood has been increased. Reuse prosperity in Kashan caused job creation in construction industry and services."^^rdfs:Literal ;
+                    hero:describes :paintings .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-10-18
+:2020-10-18 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-10-18T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-10-18T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-10-19
+:2020-10-19 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-10-19T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-10-19T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-11-11
+:2020-11-11 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-11-21T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-11-21T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-11-12
+:2020-11-12 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-11-12T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-11-12T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-11-21
+:2020-11-21 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-11-21T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-11-21T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2020-12-06
+:2020-12-06 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-12-06T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-12-06T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2021-01-03
+:2021-01-03 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2021-01-03T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2021-01-03T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/04/2021-01-05
+:2021-01-05 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2021-01-05T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2021-01-05T00:00:00Z"^^xsd:dateTime .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

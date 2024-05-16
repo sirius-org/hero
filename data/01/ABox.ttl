@@ -1,0 +1,205 @@
+@prefix : <https://w3id.org/sirius/ontology/data/01/> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hero: <https://w3id.org/sirius/ontology/hero/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ti: <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#> .
+@prefix tis: <http://ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#> .
+@base <https://w3id.org/sirius/ontology/data/01/> .
+
+<https://w3id.org/sirius/ontology/data/01/> rdf:type owl:Ontology ;
+                                                        owl:imports <https://w3id.org/sirius/ontology/model> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/sirius/ontology/data/01/administrative-context-baptistery
+:administrative-context-baptistery rdf:type owl:NamedIndividual ,
+                                                         hero:Observation ;
+                                                hero:inDate "2020-10-11T00:00:00Z"^^xsd:dateTime ;
+                                                hero:hasParameter hero:administrative ;
+                                                hero:hasNote "Dal dicembre 2019 è gestito da Direzione regionale Musei dell’Emilia Romagna, sede di Ravenna."@it .
+
+
+###  https://w3id.org/sirius/ontology/data/01/contextualization-baptistery
+:contextualization-baptistery rdf:type owl:NamedIndividual ,
+                                             hero:ContextDescription ;
+                                    hero:describes :baptistery ;
+                                    tis:atTime :2020-10-10 ;
+                                    hero:hasObservation :administrative-context-baptistery ,
+                                                      :economic-context-baptistery ,
+                                                      :legal-context-baptistery ,
+                                                      :physical-context-baptistery ,
+                                                      :political-context-baptistery ,
+                                                      :socio-cultural-context-baptistery ;
+                                    hero:hasParticipant :cittadinanza ,
+                                                   :comune-di-ravenna ,
+                                                   :fondazioni-locali ,
+                                                   :soprintendenza-di-ravenna ,
+                                                   :turisti ,
+                                                   :università-di-bologna .
+
+
+###  https://w3id.org/sirius/ontology/data/01/2020-10-10
+:2020-10-10 rdf:type owl:NamedIndividual ,
+                                                                          ti:TimeInterval ;
+                                                                 ti:hasIntervalEndDate "2020-10-10T23:59:59Z"^^xsd:dateTime ;
+                                                                 ti:hasIntervalStartDate "2020-10-10T00:00:00Z"^^xsd:dateTime .
+
+
+###  https://w3id.org/sirius/ontology/data/01/baptistery
+:baptistery rdf:type owl:NamedIndividual ,
+                                  crm:E24_Physical_Human-Made_Thing ;
+                         crm:P55_has_current_location :piazzetta-degli-ariani ;
+                         hero:hasNote "Edificio a pianta ottagonale con copertura a spioventi, presenta quattro absidiole in corrispondenza dei punti cardinali (parzialmente interrate). La decorazione musiva è conservata sulla sola cupola, creando un sorprendente contrasto con la superficie grezza dei mattoni a vista nella parte inferiore. Il mosaico rappresenta al centro il battesimo di Cristo nel fiume Giordano, attorno ad esso una fascia con i dodici apostoli che sfilano in due teorie, incontrandosi presso il trono dell'etimasìa, simbolo della presenza invisibile di Cristo."@it ;
+                         dcterms:alternative "Oratorio di Santa Maria in Cosmedin"@it ;
+                         dcterms:title "Battistero degli Ariani"@it .
+
+
+###  https://w3id.org/sirius/ontology/data/01/cittadinanza
+:cittadinanza rdf:type owl:NamedIndividual ,
+                       foaf:Agent ;
+              foaf:name "Cittadinanza"@it .
+
+
+###  https://w3id.org/sirius/ontology/data/01/comune-di-ravenna
+:comune-di-ravenna rdf:type owl:NamedIndividual ,
+                            foaf:Agent ;
+                   foaf:name "Comune di Ravenna"@it .
+
+
+###  https://w3id.org/sirius/ontology/data/01/creation-baptistery
+:creation-baptistery rdf:type owl:NamedIndividual ,
+                                           crm:E12_Production ;
+                                  crm:P108_has_produced :baptistery ;
+                                  crm:P4_has_time-span :timespan-baptistery .
+
+
+###  https://w3id.org/sirius/ontology/data/01/document-1-baptistery
+:document-1-baptistery rdf:type owl:NamedIndividual ,
+                                             foaf:Document ;
+                                    hero:documents :political-context-baptistery ;
+                                    hero:hasNote "an article of Ravenna In Comune"@en ;
+                                    dcterms:title "TELECAMERE DI SORVEGLIANZA ALL’ASSALTO DEL BATTISTERO DEGLI ARIANI"@it ;
+                                    rdfs:seeAlso "http://www.ravennaincomune.it/wp/index.php/2020/05/23/telecamere-di-sorveglianza-allassalto-del-battistero-degli-ariani" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/document-2-baptistery
+:document-2-baptistery rdf:type owl:NamedIndividual ,
+                                             foaf:Document ;
+                                    hero:documents :political-context-baptistery ;
+                                    hero:hasNote "an article of Ravena Today" ;
+                                    dcterms:title "Telecamere nelle millenarie mura del Battistero degli Ariani, protesta Italia Nostra" ;
+                                    rdfs:seeAlso "https://www.ravennatoday.it/cronaca/telecamere-nelle-millenarie-mura-del-battistero-degli-ariani-protesta-italia-nostra.html" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/document-3-baptistery
+:document-3-baptistery rdf:type owl:NamedIndividual ,
+                                             foaf:Document ;
+                                    hero:documents :political-context-baptistery ;
+                                    hero:hasNote "an article of Ravenna e Dintorni" ;
+                                    dcterms:title "Ravenna, polemica per le telecamere sui muri millenari del battistero degli Ariani" ;
+                                    rdfs:seeAlso "https://www.ravennaedintorni.it/societa/2020/05/30/telecamere-battistero-ariani/" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/document-4-baptistery
+:document-4-baptistery rdf:type owl:NamedIndividual ,
+                                             foaf:Document ;
+                                    hero:documents :political-context-baptistery ;
+                                    hero:hasNote "an article of Ravennanotizie" ;
+                                    dcterms:title "Italia Nostra Ravenna protesta per le telecamere al Battistero degli Ariani, uno “sfregio ai monumenti”" ;
+                                    rdfs:seeAlso "https://www.ravennanotizie.it/cultura-spettacolo/2020/05/30/" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/document-5-baptistery
+:document-5-baptistery rdf:type owl:NamedIndividual ,
+                                             foaf:Document ;
+                                    hero:documents :political-context-baptistery ;
+                                    dcterms:title "Ravenna, telecamere installate nelle millenarie mura del Battistero" ,
+                                                  "an article of Corriere Romagna" ;
+                                    rdfs:seeAlso "https://www.corriereromagna.it/ravenna-telecamere-installate-nelle-millenarie-mura-del-battistero/" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/economic-context-baptistery
+:economic-context-baptistery rdf:type owl:NamedIndividual ,
+                                                   hero:Observation ;
+                                          hero:hasParameter hero:economic ;
+                                          hero:inDate "2020-10-11T00:00:00Z"^^xsd:dateTime ;
+                                          hero:hasNote "La Legge n. 77 del 20 febbraio 2006, stabilisce che i siti UNESCO sono eccellenze del Patrimonio culturale, paesaggistico e naturale italiano, elementi fondanti della rappresentazione del nostro Paese a livello internazionale e afferma che gli interventi su di essi hanno la priorità anche in ordine all'assegnazione delle risorse finanziarie" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/fondazioni-locali
+:fondazioni-locali rdf:type owl:NamedIndividual ,
+                            foaf:Agent ;
+                   foaf:name "Fondazioni locali" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/legal-context-baptistery
+:legal-context-baptistery rdf:type owl:NamedIndividual ,
+                                                hero:Observation ;
+                                       hero:hasParameter hero:legal ;
+                                       hero:inDate "2020-10-11T00:00:00Z"^^xsd:dateTime ;
+                                       hero:hasNote "Di proprietà del Demanio di Stato / MiC. Dal 1996 fa parte della lista dei siti italiani patrimonio dell'umanità UNESCO («Monumenti paleocristiani di Ravenna»)." .
+
+
+###  https://w3id.org/sirius/ontology/data/01/physical-context-baptistery
+:physical-context-baptistery rdf:type owl:NamedIndividual ,
+                                                   hero:Observation ;
+                                          hero:hasParameter hero:physical ;
+                                          hero:inDate "2020-10-11T00:00:00Z"^^xsd:dateTime ;
+                                          hero:hasNote "Il Battistero è visibile esternamente sui lati N, NO, NE. Il lato O affaccia sui giardini di un’abitazione privata, mentre i lati S, SO, SE, affacciano sul giardino del Dipartimento di Beni Culturali (Università di Bologna)." .
+
+
+###  https://w3id.org/sirius/ontology/data/01/piazzetta-degli-ariani
+:piazzetta-degli-ariani rdf:type owl:NamedIndividual ,
+                                 crm:E53_Place ;
+                        crm:P168_place_is_defined_by "44.41871491574331, 12.20247187841604" ;
+                        rdfs:label "Piazzetta degli Ariani, 48121 Ravenna" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/political-context-baptistery
+:political-context-baptistery rdf:type owl:NamedIndividual ,
+                                                    hero:Observation ;
+                                           hero:hasParameter hero:political ;
+                                           hero:hasNote "Il monumento è spesso motivo di dibattito tra i vari partiti ed il Comune di Ravenna" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/socio-cultural-context-baptistery
+:socio-cultural-context-baptistery rdf:type owl:NamedIndividual ,
+                                                         hero:Observation ;
+                                                hero:hasParameter hero:socio-cultural ;
+                                                hero:inDate "2020-10-11T00:00:00Z"^^xsd:dateTime ;
+                                                hero:hasNote "Sito monumentale di area urbana, visitabile dai turisti (previo biglietto d’ingresso). La Piazzetta in cui è collocato l’edificio risente di una cattiva fama, in quanto “zona a rischio sociale e luogo dimesso” (si riporta il caso di una rete da letto abbandonata di notte nella trincea del Battistero, 11.07.2006, Fonte: Zaccarini, 2015). Nonostante l’istituzione nel 2012 di una regolamentazione all’accesso dei veicoli alla Piazzetta, resta consentito il transito e la sosta per carico/scarico merci." .
+
+
+###  https://w3id.org/sirius/ontology/data/01/soprintendenza-di-ravenna
+:soprintendenza-di-ravenna rdf:type owl:NamedIndividual ,
+                                    foaf:Agent ;
+                           foaf:name "Soprintendenza" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/timespan-baptistery
+:timespan-baptistery rdf:type owl:NamedIndividual ,
+                                           crm:E52_Time-Span ;
+                                  crm:P82_at_some_time_within "Late fifth century A.D." .
+
+
+###  https://w3id.org/sirius/ontology/data/01/turisti
+:turisti rdf:type owl:NamedIndividual ,
+                  foaf:Agent ;
+         foaf:name "Turisti" .
+
+
+###  https://w3id.org/sirius/ontology/data/01/università-di-bologna
+:università-di-bologna rdf:type owl:NamedIndividual ,
+                                foaf:Agent ;
+                       foaf:name "Università di Bologna" .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

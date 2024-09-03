@@ -21,11 +21,17 @@
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
     hero:hasNote """
-        The Classense Library, situated in Ravenna, Italy, occupies a historic building originally used as a convent. Its architecture boasts intricate details, including vaulted ceilings and ornate furnishings, characteristic of the region's cultural heritage.
-
-        Inside, visitors encounter a diverse collection of books, manuscripts, and artworks spanning various disciplines such as literature, history, art, and philosophy. The library's holdings include rare manuscripts and valuable editions, providing insights into Ravenna's cultural and intellectual traditions.
-
-        Beyond its archival resources, the Classense Library serves as a venue for exhibitions, lectures, and cultural events, fostering a dynamic atmosphere of intellectual exchange. It attracts scholars, researchers, and the public alike, offering opportunities for exploration and discovery.
+        The Classense Library, situated in Ravenna, Italy, occupies a historic building 
+        originally used as a convent. Its architecture boasts intricate details, including 
+        vaulted ceilings and ornate furnishings, characteristic of the region's cultural heritage.
+        Inside, visitors encounter a diverse collection of books, manuscripts, and artworks 
+        spanning various disciplines such as literature, history, art, and philosophy. The 
+        library's holdings include rare manuscripts and valuable editions, providing insights into 
+        Ravenna's cultural and intellectual traditions.
+        Beyond its archival resources, the Classense Library serves as a venue for exhibitions, 
+        lectures, and cultural events, fostering a dynamic atmosphere of intellectual exchange. It 
+        attracts scholars, researchers, and the public alike, offering opportunities for exploration 
+        and discovery.
     """@en ;
     hero:hasParticipant <https://w3id.org/sirius/ontology/hero/examples/01/comune-di-ravenna>,
         <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino>,
@@ -41,7 +47,12 @@
         <https://w3id.org/sirius/ontology/hero/examples/01/observation-09> ;
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
-    hero:hasNote "The digital collection of the Classense Library offers a comprehensive and accessible resource for scholars, researchers, and enthusiasts interested in exploring the cultural heritage of Ravenna. With its diverse array of digitized manuscripts, rare books, and artworks, the collection provides invaluable insights into the region's history, art, and literature."@en ;
+    hero:hasNote """
+        The digital collection of the Classense Library offers a comprehensive and accessible resource 
+        for scholars, researchers, and enthusiasts interested in exploring the cultural heritage of 
+        Ravenna. With its diverse array of digitized manuscripts, rare books, and artworks, the collection 
+        provides invaluable insights into the region's history, art, and literature.
+    """@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-01> ;
     hero:hasType wd:Q4008379 ;
     hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-01> ;
@@ -53,7 +64,10 @@
         <https://w3id.org/sirius/ontology/hero/examples/01/observation-31> ;
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
-    hero:hasNote "Regular backups should be performed, and multiple copies of the digital collection should be stored securely in different locations."@en ;
+    hero:hasNote """
+        Regular backups should be performed, and multiple copies of the digital collection should be 
+        stored securely in different locations.
+    """@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-05> ;
     hero:hasType wd:Q2251595 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
@@ -67,7 +81,10 @@
         <https://w3id.org/sirius/ontology/hero/examples/01/observation-12> ;
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
-    hero:hasNote "Storage devices such as hard drives or servers storing the digital collection may experience hardware failures, leading to data loss or corruption."@en ;
+    hero:hasNote """
+        Storage devices such as hard drives or servers storing the digital collection 
+        may experience hardware failures, leading to data loss or corruption.
+    """@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-02> ;
     hero:hasType wd:Q5687675 ;
     hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-02> ;
@@ -80,7 +97,10 @@
         <https://w3id.org/sirius/ontology/hero/examples/01/observation-19> ;
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
-    hero:hasNote "A dissociation event related to hardware failure is expected in the library approximately once every five years."@en ;
+    hero:hasNote """
+        A dissociation event related to hardware failure is expected in the library 
+        approximately once every five years.
+    """@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-03> ;
     hero:hasType wd:Q217602 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
@@ -91,7 +111,13 @@
     hero:assigns <https://w3id.org/sirius/ontology/hero/examples/01/observation-24> ;
     hero:assignsTo <https://w3id.org/sirius/ontology/hero/examples/01/library> ;
     hero:hasLocation <https://w3id.org/sirius/ontology/hero/examples/01/ravenna> ;
-    hero:hasNote "The risk of hardware failure (MR = 12.5) has an extreme priority. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2."@en ;
+    hero:hasNote """
+        The risk of hardware failure (MR = 12.5) has an extreme priority. A risk of 
+        this magnitude is equivalent to losing about 3% of the heritage asset value every 10 
+        years (or 30% per century, or 100% in about 300 years). The museum direction considers 
+        this level of risk as ‘not acceptable’, since as a condition the value of MR is higher 
+        than 10 and the value of uncertainty is lower than 2.
+    """@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-04> ;
     hero:hasType wd:Q1379672 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
@@ -226,33 +252,62 @@
 <https://w3id.org/sirius/ontology/hero/examples/01/document-01> a foaf:Document .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-01> a hero:LinguisticObject ;
-    hero:hasContent "The Classense Library in Ravenna features a blend of architectural elements that combine historical charm with modern utility. Housed within a former convent, the building's exterior reflects intricate craftsmanship typical of its era. Inside, visitors encounter spacious rooms with vaulted ceilings and simple yet elegant furnishings. The layout provides ample space for browsing through its collection of books and manuscripts."@en ;
+    hero:hasContent """
+        The Classense Library in Ravenna features a blend of architectural elements that 
+        combine historical charm with modern utility. Housed within a former convent, the 
+        building's exterior reflects intricate craftsmanship typical of its era. Inside, 
+        visitors encounter spacious rooms with vaulted ceilings and simple yet elegant 
+        furnishings. The layout provides ample space for browsing through its collection 
+        of books and manuscripts.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-01> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-02> a hero:LinguisticObject ;
-    hero:hasContent "The Classense Library in Ravenna holds significance within its social context as a hub for intellectual and cultural exchange. Situated in a community known for its appreciation of art and history, the library serves as a focal point for residents and visitors alike. Its presence reflects a commitment to preserving and sharing knowledge, fostering a sense of collective identity and pride."@en ;
+    hero:hasContent """
+        The Classense Library in Ravenna holds significance within its social context as a 
+        hub for intellectual and cultural exchange. Situated in a community known for its 
+        appreciation of art and history, the library serves as a focal point for residents 
+        and visitors alike. Its presence reflects a commitment to preserving and sharing 
+        knowledge, fostering a sense of collective identity and pride.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-02> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-03> a hero:LinguisticObject ;
-    hero:hasContent "The Classense Library in Ravenna operates within a political context that values the preservation of cultural heritage and the promotion of education. As a public institution, it receives support from local government entities committed to fostering literacy and intellectual growth."@en ;
+    hero:hasContent """
+        The Classense Library in Ravenna operates within a political context that values the 
+        preservation of cultural heritage and the promotion of education. As a public institution, 
+        it receives support from local government entities committed to fostering literacy and 
+        intellectual growth.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:isDocumentedBy <https://w3id.org/sirius/ontology/hero/examples/01/document-01> ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-03> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-04> a hero:LinguisticObject ;
-    hero:hasContent "The Classense Library in Ravenna operates within a legal framework that governs its establishment, operation, and obligations as a public institution. Its legal status is defined by statutes and regulations that outline its organizational structure, funding mechanisms, and responsibilities to the community."@en ;
+    hero:hasContent """
+        The Classense Library in Ravenna operates within a legal framework that governs its 
+        establishment, operation, and obligations as a public institution. Its legal status is 
+        defined by statutes and regulations that outline its organizational structure, funding 
+        mechanisms, and responsibilities to the community.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-04> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-05> a hero:LinguisticObject ;
-    hero:hasContent "Administratively, the library is overseen by local authorities responsible for its strategic direction and resource allocation."@en ;
+    hero:hasContent """
+        Administratively, the library is overseen by local authorities responsible for its 
+        strategic direction and resource allocation.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-05> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/observation-06> a hero:LinguisticObject ;
-    hero:hasContent "Its presence contributes to the city's cultural economy, attracting visitors interested in exploring its rich literary heritage and historical significance."@en ;
+    hero:hasContent """
+        Its presence contributes to the city's cultural economy, attracting visitors interested
+        in exploring its rich literary heritage and historical significance.
+    """@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo <https://w3id.org/sirius/ontology/hero/examples/01/concept-06> .
 

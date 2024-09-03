@@ -44,6 +44,7 @@
     hero:hasNote "The digital collection of the Classense Library offers a comprehensive and accessible resource for scholars, researchers, and enthusiasts interested in exploring the cultural heritage of Ravenna. With its diverse array of digitized manuscripts, rare books, and artworks, the collection provides invaluable insights into the region's history, art, and literature."@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-01> ;
     hero:hasType wd:Q4008379 ;
+    hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-01> ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-09> a hero:Activity ;
@@ -56,7 +57,7 @@
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-05> ;
     hero:hasType wd:Q2251595 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
-    hero:precedes <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-07> .
+    hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-07> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/document-02> a foaf:Document .
 
@@ -69,6 +70,7 @@
     hero:hasNote "Storage devices such as hard drives or servers storing the digital collection may experience hardware failures, leading to data loss or corruption."@en ;
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-02> ;
     hero:hasType wd:Q5687675 ;
+    hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-02> ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-05> a hero:Activity ;
@@ -83,7 +85,7 @@
     hero:hasType wd:Q217602 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
     hero:isDocumentedBy <https://w3id.org/sirius/ontology/hero/examples/01/document-03> ;
-    hero:precedes <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-03> .
+    hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-03> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-07> a hero:Activity ;
     hero:assigns <https://w3id.org/sirius/ontology/hero/examples/01/observation-24> ;
@@ -93,7 +95,7 @@
     hero:hasTimeInterval <https://w3id.org/sirius/ontology/hero/examples/01/time-interval-04> ;
     hero:hasType wd:Q1379672 ;
     hero:isCarriedOutBy <https://w3id.org/sirius/ontology/hero/examples/01/sara-fiorentino> ;
-    hero:precedes <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-05> .
+    hero:follows <https://w3id.org/sirius/ontology/hero/examples/01/assessment-activity-05> .
 
 <https://w3id.org/sirius/ontology/hero/examples/01/comune-di-ravenna> a foaf:Agent .
 

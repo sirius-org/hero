@@ -11,6 +11,8 @@ cite as: Barzaghi, S. (2023). Heritage Risk Assessment Ontology. https://w3id.or
 
 # HeRO
 
+[![DOI](https://zenodo.org/badge/754074315.svg)](https://doi.org/10.5281/zenodo.13857430)
+
 ## Description
 The _Heritage Risk Assessment Ontology_ (HeRO, https://w3id.org/sirius/ontology/hero) is a OWL 2 DL ontology for describing risk assessment activities in the cultural, environmental and digital heritage domain in a machine-actionable format. It was developed by using a slightly modified version of the [Simplified Agile Methodology for Ontology Development (SAMOD)](http://dx.doi.org/10.6084/m9.figshare.3189769). 
 

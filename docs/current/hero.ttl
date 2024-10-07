@@ -7,7 +7,7 @@
 @base <https://w3id.org/sirius/ontology/hero/> .
 
 <https://w3id.org/sirius/ontology/hero/> rdf:type owl:Ontology ;
-                                          owl:versionIRI <https://w3id.org/sirius/ontology/hero/2.0.0/> ;
+                                          owl:versionIRI <https://w3id.org/sirius/ontology/hero/2.1.0/> ;
                                           owl:imports <http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#> ,
                                                       <http://www.ontologydesignpatterns.org/cp/owl/componency.owl#> ,
                                                       <http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#> ,
@@ -21,7 +21,8 @@
                                           <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-0799-1527> ;
                                           <http://purl.org/dc/terms/issued> "2023-11-30"^^xsd:date ;
                                           <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/> ;
-                                          <http://purl.org/dc/terms/modified> "2024-04-30"^^xsd:date ;
+                                          <http://purl.org/dc/terms/modified> "2024-10-07"^^xsd:date ;
+                                          <http://purl.org/dc/terms/publisher> <https://zenodo.org/> ;
                                           <http://purl.org/dc/terms/source> """
 https://doi.org/10.6084/M9.FIGSHARE.3189769.V2
 """@en ,
@@ -32,6 +33,8 @@ https://www.canada.ca/en/conservation-institute/services/risk-management-heritag
 https://www.iccrom.org/sites/default/files/2017-12/risk_manual_2016-eng.pdf
 """@en ;
                                           <http://purl.org/dc/terms/title> "Heritage Risk Assessment Ontology (HeRO)"@en ;
+                                          <http://purl.org/ontology/bibo/doi> "10.5281/zenodo.13857429" ;
+                                          <http://purl.org/ontology/bibo/status> <http://purl.org/ontology/bibo/status/published> ;
                                           <http://purl.org/vocab/vann/preferredNamespacePrefix> "hero"@en ;
                                           <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/sirius/ontology/hero/"@en ;
                                           <http://schema.org/codeRepository> "https://github.com/sirius-org/hero"^^xsd:anyURI ;
@@ -71,16 +74,16 @@ The next subsections provide a quick overview of all the entities defined, some 
 ### Assessment activities
 In HeRO, the concept of assessment activity represents the core abstraction around which the rest of the ontology is built. As shown in the following diagram, an assessment activity is a first-class object related to a series of other entities that populate and signify its context. 
 
-![A diagram of an assessment activity, the core entity of HeRO.](diagrams/assessment-activity.png)
+![A diagram of an assessment activity, the core entity of HeRO.](/docs/current/diagrams/assessment-activity.png)
 
 As previously mentioned, HeRO draws constructs from ODPs and uses them as super classes and super properties of its own entities to accurately represent the processes outlined by a risk assessment endeavor, as well as the concepts and relations implicitly expressed in such processes. In particular, an assessment activity (`hero:Activity`) is a situated action that involves gaining and producing scientific knowledge about some entity being observed by assigning to that entity a series of assertions referring to concepts used to make the assessment. As a result, it has been modelled as a subclass of `tisit:TimeIndexedSituation` and `planex:Action` that assigns to a object (`owl:Thing`) a series of \"linguistic objects\" (`hero:LinguisticObject`) representing scientific observations, statements or assertions related to that object. Multiple activities can be sequentialized one after the other with `hero:precedes`. In addition, an assessment activity is enriched with a packet of additional information covering its type (`hero:Type`), its temporal horizon (`ti:TimeInterval`), its geographic context (`place:Place`), the agents involved in its realization (`foaf:Agent`), the material documenting how the activity was carried out and based on what sources (`foaf:Document`), and its textual description (`hero:hasNote`).
 
 ### Scientific assertions and concepts
-As illustrated in the previous section, an assessment activity assigns a series of assertions to the objects being examined. As shown in the following diagram, an assertion (`hero:LinguisticObject`) is modelled as a subclass of `hero:InformationObject`, thus incorporating the idea of an assertion as a piece of information, independently from how it is concretely realized. In turn, an assertion refers to some qualitative, quantitative or interpretative conceptual object (`hero:InformationObject`), modelled as a subclass of `intensionextension:InformationObject`, that carries some information that is deemed relevant in the context of risk assessment.
+As illustrated in the previous section, an assessment activity assigns a series of assertions to the objects being examined. As shown in the following diagram, an assertion (`hero:LinguisticObject`) is modelled as a subclass of `hero:InformationObject`, thus incorporating the idea of an assertion as a piece of information, independently from how it is concretely realized. In turn, an assertion refers to some qualitative, quantitative or interpretative conceptual object (`hero:InformationObject`), modelled as a subclass of `intensionextension:InformationObject`, that carries some information that is deemed relevant in the context of risk assessment. Finally, an assessment activity can be motivated by any entity that corroborates it, and can use any kind of object in order to be carried out or as a basis for its assertions.
 
-![A diagram of a linguistic object and an information object, the other core entities of HeRO.](diagrams/objects.png)
+![A diagram of a linguistic object and an information object, the other core entities of HeRO.](/docs/current/diagrams/objects.png)
 
-In addition to referring to some concept, an assertion can be classified according to external categorization schemes (`hero:Type`), can be documented by some document (`foaf:Document`), can be also motivated by other concepts referred to in other assertions, and expresses some kind of content or value (`hero:hasContent`). A concept, while also being characterized by a type (`hero:Type`) and a content (`hero:hasContent`), can be composed of other conceptual objects (`hero:hasComponent`).
+In addition to referring to some concept, an assertion can be classified according to external categorization schemes (`hero:Type`), can be documented by some document (`foaf:Document`), and expresses some kind of content or value (`hero:hasContent`). A concept, while also being characterized by a type (`hero:Type`) and a content (`hero:hasContent`), can be composed of other conceptual objects (`hero:hasComponent`).
 
 ## Examples of use
 HeRO can be used for modelling scenarios related to heritage risk assessment. Note that, due to the wide scope of the classes and properties it uses, the way it has been modelled, and its dependency on external vocabularies for typification, HeRO can be used to model any situation involving assigning scientific assertions expressing some kind of conceptual content to an object in order to examine it. 
@@ -101,7 +104,7 @@ The prefixes that are used in all the examples provided below are defined as fol
     @prefix wd: <http://www.wikidata.org/entity/> .
 
 ### Scenario 1
-An assessment activity `:assessment-activity-01` consisting in the context description of a CHO `:baptistery`, is taking place in Ravenna, is being carried out by the expert Sara Fiorentino (with the involvement of other stakeholders, such as Comune di Ravenna, Soprintendenza di Ravenna and Università di Bologna), in the time interval starting from 2024-02-01 to 2024-03-01, and is being annotated with the following text: \"Octagonal building with sloping roof, featuring four apsidioles corresponding to the cardinal points (partially buried). The mosaic decoration is preserved only on the dome, creating a striking contrast with the rough surface of exposed bricks in the lower part. The mosaic depicts in the center the baptism of Christ in the River Jordan, surrounded by a band with the twelve apostles parading in two rows, meeting at the throne of the etimasia, symbol of the invisible presence of Christ.\"
+An assessment activity `:assessment-activity-01` consisting in the context description of a CHO `:baptistery`, is taking place in Ravenna, is being carried out by the expert Laura Casocchi (with the involvement of other stakeholders, such as Comune di Ravenna, Soprintendenza di Ravenna and Università di Bologna), in the time interval starting from 2024-02-01 to 2024-03-01, and is being annotated with the following text: \"Octagonal building with sloping roof, featuring four apsidioles corresponding to the cardinal points (partially buried). The mosaic decoration is preserved only on the dome, creating a striking contrast with the rough surface of exposed bricks in the lower part. The mosaic depicts in the center the baptism of Christ in the River Jordan, surrounded by a band with the twelve apostles parading in two rows, meeting at the throne of the etimasia, symbol of the invisible presence of Christ.\"
 It is composed of six statements, each assigned to the CHO in question:
 1. `:observation-01`, which is a descriptive statement referring to the physical properties of the CHO (`:concept-01`) with the following content: \"The Baptistery is externally visible on the N, NW, and NE sides. The west side overlooks the gardens of a private residence, while the south, SW, and SE sides overlook the garden of the Department of Cultural Heritage (University of Bologna).\"
 2. `:observation-02`, which is a descriptive statement referring to the social environment surrounding the CHO (`:concept-02`) with the following content: \"Monumental site in an urban area, open to tourists (with prior admission ticket). The small square where the building is located suffers from a bad reputation, being labeled as a 'socially risky area and a neglected place' (reported incident of an abandoned bed frame found at night in the Baptistery's trench, 11.07.2006, Source: Zaccarini, 2015). Despite the establishment of regulations in 2012 restricting vehicle access to the square, transit and parking for loading/unloading goods are still permitted.\"
@@ -117,9 +120,9 @@ It is composed of six statements, each assigned to the CHO in question:
         :observation-03 ,
         :observation-04 ,
         :observation-05 ,
-        :observation-06> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-06 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''Octagonal building with sloping roof, featuring four apsidioles corresponding
      to the cardinal points (partially buried). The mosaic decoration is preserved only on the
      dome, creating a striking contrast with the rough surface of exposed bricks in the lower
@@ -127,12 +130,12 @@ It is composed of six statements, each assigned to the CHO in question:
      surrounded by a band with the twelve apostles parading in two rows, meeting at the throne
      of the etimasia, symbol of the invisible presence of Christ.'''@en ;
     hero:hasParticipant :comune-di-ravenna ,
-        :sara-fiorentino ,
+        :laura-casocchi ,
         :soprintendenza-di-ravenna ,
-        :universita-di-bologna> ;
-    hero:hasTimeInterval :time-interval-01> ;
+        :universita-di-bologna ;
+    hero:hasTimeInterval :time-interval-01 ;
     hero:hasType wd:Q1137655 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :concept-01 a hero:InformationObject ;
     hero:hasType wd:Q4373292 .
@@ -175,7 +178,7 @@ It is composed of six statements, each assigned to the CHO in question:
     hero:hasContent '''The monument is often a subject of debate among various political parties 
     and the Municipality of Ravenna.'''@en ;
     hero:hasType aat:300435416 ;
-    hero:isDocumentedBy :document-01> ;
+    hero:isDocumentedBy :document-01 ;
     hero:refersTo :concept-03 .
 
 :observation-04 a hero:LinguisticObject ;
@@ -192,19 +195,22 @@ It is composed of six statements, each assigned to the CHO in question:
     hero:refersTo :concept-05 .
 
 :observation-06 a hero:LinguisticObject ;
-    hero:hasContent \"The Law No. 77 of February 20, 2006, establishes that UNESCO sites are excellences of the Italian cultural, landscape, and natural heritage, fundamental elements of our country's representation at the international level, and states that interventions on them have priority even in terms of the allocation of financial resources.\"@en ;
+    hero:hasContent '''The Law No. 77 of February 20, 2006, establishes that UNESCO sites are 
+    excellences of the Italian cultural, landscape, and natural heritage, fundamental elements 
+    of our country's representation at the international level, and states that interventions on 
+    them have priority even in terms of the allocation of financial resources.'''@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo :concept-06 .
 
 :time-interval-01 a ti:TimeInterval ;
-    ti:hasIntervalEndDate \"2024-03-01T23:59:59Z\" ;
-    ti:hasIntervalStartDate \"2024-02-01T00:00:00Z\" .
+    ti:hasIntervalEndDate \"2024-03-01T23:59:59Z\"^^xsd:dateTime ;
+    ti:hasIntervalStartDate \"2024-02-01T00:00:00Z\"^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 :soprintendenza-di-ravenna a foaf:Agent .
 
@@ -213,7 +219,7 @@ It is composed of six statements, each assigned to the CHO in question:
 ```
 
 ### Scenario 2
-Two assessment activities consisting in the identification of risks related to the CHO `:baptistery`, are taking place in Ravenna and are being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-03-01 to 2024-04-01. They are:
+Two assessment activities consisting in the identification of risks related to the CHO `:baptistery`, are taking place in Ravenna and are being carried out by the expert Laura Casocchi, in the time interval starting from 2024-03-01 to 2024-04-01. They are:
 * `assessment-activity-03`, annotated with the text \"Floods and heavy rains induce erosion of the baptistery walls\". It is composed of three statements assigned to the CHO:
     1. `:observation-10`, which is a condition description referring to the potential damage of water-related hazards (`:concept-10`);
     2. `:observation-11`, which is a dimensions description referring to the annual occurrence of the potential hazardous event (`:concept-11`);
@@ -228,23 +234,23 @@ Two assessment activities consisting in the identification of risks related to t
 :assessment-activity-03 a hero:Activity ;
     hero:assigns :observation-10 ,
         :observation-11 ,
-        :observation-12> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-12 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote \"Floods and heavy rains induce erosion of the baptistery walls.\"@en ;
-    hero:hasTimeInterval :time-interval-02> ;
+    hero:hasTimeInterval :time-interval-02 ;
     hero:hasType wd:Q5687675 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :assessment-activity-04 a hero:Activity ;
     hero:assigns :observation-13 ,
         :observation-14 ,
-        :observation-15> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
-    hero:hasTimeInterval :time-interval-02> ;
+        :observation-15 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
+    hero:hasTimeInterval :time-interval-02 ;
     hero:hasType wd:Q5687675 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :concept-10 a hero:InformationObject ;
     hero:hasType wd:Q19289049 .
@@ -289,19 +295,19 @@ Two assessment activities consisting in the identification of risks related to t
     hero:refersTo :concept-15 .
 
 :time-interval-02 a ti:TimeInterval ;
-    ti:hasIntervalEndDate \"2024-04-01T23:59:59Z\" ;
-    ti:hasIntervalStartDate \"2024-03-01T00:00:00Z\" .
+    ti:hasIntervalEndDate \"2024-04-01T23:59:59Z\"^^xsd:dateTime ;
+    ti:hasIntervalStartDate \"2024-03-01T00:00:00Z\"^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 ### Scenario 3
-An assessment activity `:assessment-activity-05`, consisting in the analysis of risks related to a CHO `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-03`. It is annotated with the following text: \"A flood event is expected in the baptistery approximately once every 25 years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.\" It is composed of four statements, each assigned to the CHO in question:
+An assessment activity `:assessment-activity-05`, consisting in the analysis of risks related to a CHO `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-03`. It is annotated with the following text: \"A flood event is expected in the baptistery approximately once every 25 years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.\" Moreover, it uses a dataset `:dati_subsidenza_2011-2016.zip` as a basis for its analysis. It is composed of four statements, each assigned to the CHO in question:
 1. `:observation-16`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-16`). In turn, the frequency is composed of three other concepts:
     * low estimate (`:concept-16a`), with a value of \"3.0\";
     * probable estimate (`:concept-16b`), with a value of \"3.5\";
@@ -319,7 +325,7 @@ An assessment activity `:assessment-activity-05`, consisting in the analysis of 
     * probable estimate (`:concept-19b`), with a value of \"10.5\";
     * high estimate (`:concept-19c`), with a value of \"11.5\".
 
-Another assessment activity `:assessment-activity-06`, consisting in the analysis of risks related to  `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-04`. It is annotated with the following text: \"A large fire event is expected in the museum approximately once every 300 years, with the fire affecting all or most of the heritage asset value, causing total or almost total loss of value in each affected item.\" It consists of four statements:
+Another assessment activity `:assessment-activity-06`, consisting in the analysis of risks related to  `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-04`. It is annotated with the following text: \"A large fire event is expected in the museum approximately once every 300 years, with the fire affecting all or most of the heritage asset value, causing total or almost total loss of value in each affected item.\" It consists of four statements:
 1. `:observation-20`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-20`). In turn, the frequency is composed of three other concepts:
     * low estimate (`:concept-20a`), with a value of \"2.0\";
     * probable estimate (`:concept-20b`), with a value of \"2.5\";
@@ -342,15 +348,15 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:assigns :observation-16 ,
         :observation-17 ,
         :observation-18 ,
-        :observation-19> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-19 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''A flood event is expected in the baptistery approximately once every 25 
     years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.'''@en ;
-    hero:hasTimeInterval :time-interval-03> ;
+    hero:hasTimeInterval :time-interval-03 ;
     hero:hasType wd:Q217602 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
-    hero:isDocumentedBy :document-03> ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isDocumentedBy :document-03 ;
     hero:precedes :assessment-activity-03 .
 
 :document-03 a foaf:Document .
@@ -359,22 +365,22 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:assigns :observation-20 ,
         :observation-21 ,
         :observation-22 ,
-        :observation-23> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-23 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''A large fire event is expected in the museum approximately once every 300 
     years, with the fire affecting all or most of the heritage asset value, causing total or 
     almost total loss of value in each affected item.'''@en ;
-    hero:hasTimeInterval :time-interval-03> ;
+    hero:hasTimeInterval :time-interval-03 ;
     hero:hasType wd:Q217602 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
-    hero:isDocumentedBy :document-03> ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isDocumentedBy :document-03 ;
     hero:precedes :assessment-activity-04 .
 
 :concept-16 a hero:InformationObject ;
     hero:hasComponent :concept-16a ,
         :concept-16b ,
-        :concept-16c> ;
+        :concept-16c ;
     hero:hasType wd:Q11652 .
 
 :concept-16a a hero:InformationObject ;
@@ -392,7 +398,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-17 a hero:InformationObject ;
     hero:hasComponent :concept-17a ,
         :concept-17b ,
-        :concept-17c> ;
+        :concept-17c ;
     hero:hasType wd:Q7523953 .
 
 :concept-17a a hero:InformationObject ;
@@ -410,7 +416,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-18 a hero:InformationObject ;
     hero:hasComponent :concept-18a ,
         :concept-18b ,
-        :concept-18c> ;
+        :concept-18c ;
     hero:hasType wd:Q107642367 .
 
 :concept-18a a hero:InformationObject ;
@@ -428,13 +434,13 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-19 a hero:InformationObject ;
     hero:hasComponent :concept-19a ,
         :concept-19b ,
-        :concept-19c> ;
+        :concept-19c ;
     hero:hasType wd:Q2154759 .
 
 :concept-23 a hero:InformationObject ;
     hero:hasComponent :concept-23a ,
         :concept-23b ,
-        :concept-23c> ;
+        :concept-23c ;
     hero:hasType wd:Q2154759 .
 
 :concept-19a a hero:InformationObject ;
@@ -452,7 +458,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-20 a hero:InformationObject ;
     hero:hasComponent :concept-20a ,
         :concept-20b ,
-        :concept-20c> ;
+        :concept-20c ;
     hero:hasType wd:Q11652 .
 
 :concept-20a a hero:InformationObject ;
@@ -470,7 +476,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-21 a hero:InformationObject ;
     hero:hasComponent :concept-21a ,
         :concept-21b ,
-        :concept-21c> ;
+        :concept-21c ;
     hero:hasType wd:Q7523953 .
 
 :concept-21a a hero:InformationObject ;
@@ -488,7 +494,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-22 a hero:InformationObject ;
     hero:hasComponent :concept-22a ,
         :concept-22b ,
-        :concept-22c> ;
+        :concept-22c ;
     hero:hasType wd:Q107642367 .
 
 :concept-22a a hero:InformationObject ;
@@ -516,53 +522,58 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:hasType wd:Q10578722 .
 
 :time-interval-03 a ti:TimeInterval ;
-    ti:hasIntervalEndDate \"2024-05-01T23:59:59Z\" ;
-    ti:hasIntervalStartDate \"2024-04-01T00:00:00Z\" .
+    ti:hasIntervalEndDate \"2024-05-01T23:59:59Z\"^^xsd:dateTime ;
+    ti:hasIntervalStartDate \"2024-04-01T00:00:00Z\"^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 #### Scenario 4
-An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: \"The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2.\" It consists of one statement assigned to the CHO in question:
-1. `:observation-24`, which is a diagnosis motivated by `:parameter-19` and referring to a high level of priority(`:concept-24`).
+An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: \"The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2.\" It consists of one statement assigned to the CHO in question:
+1. `:observation-24`, which is a diagnosis referring to a high level of priority(`:concept-24`).
 
-Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: \"The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2.\" It consists of one statement assigned to the CHO in question:
-1. `:observation-26`, which is a diagnosis motivated by  `:parameter-23` and referring to a extreme level of priority (`:concept-26`).
+This assessment activity is motivated by the magnitude of risk calculated in a previous activity (`:concept-19`).
+
+Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: \"The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2.\" It consists of one statement assigned to the CHO in question:
+1. `:observation-26`, which is a diagnosis referring to a extreme level of priority (`:concept-26`).
+
+This assessment activity is motivated by the magnitude of risk calculated in a previous activity (`:concept-23`).
 
 ```
 :assessment-activity-07 a hero:Activity ;
-    hero:assigns :observation-24> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+    hero:assigns :observation-24 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller 
     than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. 
     A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value 
     every 100 years (or 3% per millennium). The museum direction considers this level of risk as 
     just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and 
     the value of uncertainty is higher than 2.'''@en ;
-    hero:hasTimeInterval :time-interval-04> ;
+    hero:hasTimeInterval :time-interval-04 ;
     hero:hasType wd:Q1379672 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
+    hero:isCarriedOutBy :laura-casocchi ;
     hero:precedes :assessment-activity-05 .
 
 :assessment-activity-08 a hero:Activity ;
-    hero:assigns :observation-26> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+    hero:assigns :observation-26 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''The risk of a large fire affecting the baptistery and its contents (MR = 12.5) 
     has an extreme priority. The uncertainty that has been measured amounts to a value equal to 
     1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value 
     every 10 years (or 30% per century, or 100% in about 300 years). The museum direction 
     considers this level of risk as ‘not acceptable’, since as a condition the value of MR is 
     higher than 10 and the value of uncertainty is lower than 2.'''@en ;
-    hero:hasTimeInterval :time-interval-04> ;
+    hero:hasTimeInterval :time-interval-04 ;
     hero:hasType wd:Q1379672 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isMotivatedBy :concept-19, :concept-23 ;
     hero:precedes :assessment-activity-06 .
 
 :concept-24 a hero:InformationObject ;
@@ -573,33 +584,31 @@ Another assessment activity `:assessment-activity-08` consisting in the evaluati
 
 :observation-24 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-19> ;
     hero:refersTo :concept-24 .
 
 :observation-26 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-23> ;
     hero:refersTo :concept-26 .
 
 :time-interval-04 a ti:TimeInterval ;
-    ti:hasIntervalEndDate \"2024-06-01T23:59:59Z\" ;
-    ti:hasIntervalStartDate \"2024-05-01T00:00:00Z\" .
+    ti:hasIntervalEndDate \"2024-06-01T23:59:59Z\"^^xsd:dateTime ;
+    ti:hasIntervalStartDate \"2024-05-01T00:00:00Z\"^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 #### Scenario 5
-An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: \"One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time\". It consists of three statements, each assigned to the CHO in question:
+An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: \"One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time\". It consists of three statements, each assigned to the CHO in question:
 1. `:observation-29`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-29`);
 2. `:observation-30`, which is a budget description referring to a capital cost (`:concept-30`) to implement such action, amounting to \"3200\" euros.
 3. `:observation-31`, which is a budget description referring to a maintenance cost (`:concept-31`) to implement such action, amounting to \"120\" euros.
 
-Another assessment activity `:assessment-activity-10` consisting in the treatment of risks related to a heritage asset `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: \"Use fire-resistant materials: Consider using fire-resistant coatings, fire-rated doors, and fireproof insulation to minimize fire damage.\" It consists of three statements, each assigned to the CHO in question:
+Another assessment activity `:assessment-activity-10` consisting in the treatment of risks related to a heritage asset `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: \"Use fire-resistant materials: Consider using fire-resistant coatings, fire-rated doors, and fireproof insulation to minimize fire damage.\" It consists of three statements, each assigned to the CHO in question:
 1. `:observation-32`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-32`);
 2. `:observation-33`, which is a budget description referring to a capital cost (`:concept-33`) amounting to \"5000\" euros;
 3. `:observation-34`, which is a budget description referring to a maintenance cost (`:concept-34`), amounting to \"375\" euros per month.
@@ -608,30 +617,31 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
 :assessment-activity-09 a hero:Activity ;
     hero:assigns :observation-29 ,
         :observation-30 ,
-        :observation-31> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-31 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''One possible action to protect a baptistery from water damage could be to 
     install a waterproof membrane or coating on the exterior surfaces. This would help prevent 
     water infiltration and damage to the structure. Additionally, regular maintenance such as 
     inspecting for cracks or leaks and repairing them promptly can help mitigate water damage 
     over time.'''@en ;
-    hero:hasTimeInterval :time-interval-05> ;
+    hero:hasTimeInterval :time-interval-05 ;
     hero:hasType wd:Q2251595 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
+    hero:isCarriedOutBy :laura-casocchi ;
     hero:precedes :assessment-activity-07 .
 
 :assessment-activity-10 a hero:Activity ;
     hero:assigns :observation-32 ,
         :observation-33 ,
-        :observation-34> ;
-    hero:assignsTo :baptistery> ;
-    hero:hasLocation :ravenna> ;
+        :observation-34 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote '''Use fire-resistant materials: Consider using fire-resistant coatings, 
     fire-rated doors, and fireproof insulation to minimize fire damage.'''@en ;
-    hero:hasTimeInterval :time-interval-05> ;
+    hero:hasTimeInterval :time-interval-05 ;
     hero:hasType wd:Q2251595 ;
-    hero:isCarriedOutBy :sara-fiorentino> ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isMotivatedBy :concept-19, :concept-23 ;
     hero:precedes :assessment-activity-08 .
 
 :concept-29 a hero:InformationObject ;
@@ -658,12 +668,10 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
 
 :observation-24 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-19> ;
     hero:refersTo :concept-24 .
 
 :observation-26 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-23> ;
     hero:refersTo :concept-26 .
 
 :observation-29 a hero:LinguisticObject ;
@@ -691,14 +699,14 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
     hero:refersTo :concept-34 .
 
 :time-interval-05 a ti:TimeInterval ;
-    ti:hasIntervalEndDate \"2024-07-01T23:59:59Z\" ;
-    ti:hasIntervalStartDate \"2024-06-01T00:00:00Z\" .
+    ti:hasIntervalEndDate \"2024-07-01T23:59:59Z\"^^xsd:dateTime ;
+    ti:hasIntervalStartDate \"2024-06-01T00:00:00Z\"^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
@@ -851,12 +859,13 @@ What are the treatment actions, capital costs and maintenance costs being referr
         ?maintenance_cost hero:hasType wd:Q831940 ;
             hero:hasContent ?maintenance_cost_value .
     }
-
-  """@en ;
+    """@en ;
+                                          rdfs:label "HeRO"@en ;
                                           owl:incompatibleWith <https://w3id.org/sirius/ontology/hero/1.0.0/> ;
-                                          owl:priorVersion <https://w3id.org/sirius/ontology/hero/1.0.0/> ;
-                                          owl:versionInfo "2.0.0" ;
+                                          owl:priorVersion <https://w3id.org/sirius/ontology/hero/2.0.0/> ;
+                                          owl:versionInfo "2.1.0" ;
                                           <http://www.w3.org/2003/06/sw-vocab-status/ns#status> "work in progress"@en ;
+                                          <http://xmlns.com/foaf/0.1/fundedBy> <https://ror.org/01111rn36> ;
                                           <http://xmlns.com/foaf/0.1/logo> <https://github.com/sirius-org/hero/docs/current/logo.png> .
 
 #################################################################
@@ -891,12 +900,24 @@ What are the treatment actions, capital costs and maintenance costs being referr
 <http://purl.org/dc/terms/modified> rdf:type owl:AnnotationProperty .
 
 
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/terms/source
 <http://purl.org/dc/terms/source> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/title
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/ontology/bibo/doi
+<http://purl.org/ontology/bibo/doi> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/ontology/bibo/status
+<http://purl.org/ontology/bibo/status> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/example
@@ -929,6 +950,18 @@ What are the treatment actions, capital costs and maintenance costs being referr
 
 ###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+<http://www.w3.org/2004/02/skos/core#closeMatch> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+<http://www.w3.org/2004/02/skos/core#editorialNote> rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/fundedBy
+<http://xmlns.com/foaf/0.1/fundedBy> rdf:type owl:AnnotationProperty .
 
 
 ###  http://xmlns.com/foaf/0.1/logo
@@ -971,6 +1004,10 @@ xsd:date rdf:type rdfs:Datatype .
 <http://www.w3.org/ns/prov#influenced> rdf:type owl:ObjectProperty .
 
 
+###  http://www.w3.org/ns/prov#used
+<http://www.w3.org/ns/prov#used> rdf:type owl:ObjectProperty .
+
+
 ###  http://www.w3.org/ns/prov#wasDerivedFrom
 <http://www.w3.org/ns/prov#wasDerivedFrom> rdf:type owl:ObjectProperty .
 
@@ -985,17 +1022,20 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation> ;
          rdfs:range owl:Thing ;
          <http://purl.org/vocab/vann/example> """
-        ### An example of activity assigning an observation to a cultural heritage object
-        
-        :assessment-activity-01 a hero:Activity ;
-        hero:assigns :observation ;
-        hero:assignsTo :baptistery .
+    ### An example of activity assigning an observation to a cultural heritage object.
+    
+    :assessment-activity-01 a hero:Activity ;
+    hero:assigns :observation ;
+    hero:assignsTo :baptistery .
+
     """@en ;
          <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to link activities with the statements used during the activity to assess the object being examined."@en ;
          rdfs:comment "A relationship between an assessment activity and an observation, assertion or statement it assigns to some entity."@en ;
          rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
          rdfs:label "assigns"@en ;
-         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+         <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P37_assigned> ;
+         <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P37_assigned."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/assignsTo
@@ -1011,12 +1051,15 @@ xsd:date rdf:type rdfs:Datatype .
       hero:assignsTo :baptistery .
     
     :baptistery a obj:Object .
-  """@en ;
+
+    """@en ;
            <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to link activities with the object being examined during the assessment."@en ;
            rdfs:comment "A relationship between an assessment activity, expressed through a series of assertions, and an object being examined."@en ;
            rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
            rdfs:label "assigns to"@en ;
-           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+           <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to> ;
+           <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/carriesOut
@@ -1028,7 +1071,9 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:comment "The inverse property of 'hero:isCarriedOutBy'."@en ;
             rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
             rdfs:label "carries out"@en ;
-            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+            <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P14i_performed> ;
+            <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P14i_performed."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/documents
@@ -1044,7 +1089,9 @@ xsd:date rdf:type rdfs:Datatype .
            rdfs:comment "The inverse property of 'hero:isDocumentedBy'."@en ;
            rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
            rdfs:label "documents"@en ;
-           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+           <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+           <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P70_documents> ;
+           <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P70_documents."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/follows
@@ -1056,7 +1103,9 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:comment "The inverse property of 'hero:precedes'."@en ;
          rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
          rdfs:label "follows"@en ;
-         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+         <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P134_continued> ;
+         <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P134_continued."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasComponent
@@ -1085,12 +1134,15 @@ xsd:date rdf:type rdfs:Datatype .
     :high-estimate a hero:InformationObject ;
       hero:hasContent \"4.0\"^^rdfs:Literal ;
       hero:hasType wd:Q10578722 .
+
   """@en ;
               <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to allow modelling assessment concepts in more detail, such as measurements (frequency, magnitude, etc.), which in various risk assessment methodologies (like the ABC method) tend to be expressed through multiple estimates so as to take uncertainty into account."@en ;
               rdfs:comment "A relationship between two entities, expressing a non-transitive componency relation in which one entity is part of the other."@en ;
               rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
               rdfs:label "has component"@en ;
-              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+              <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of> ;
+              <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasLocation
@@ -1105,12 +1157,15 @@ xsd:date rdf:type rdfs:Datatype .
       hero:hasLocation :ravenna .
     
     :ravenna a place:Place .
+
   """@en ;
              <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to track geographic information of assessment activities, expressed as places where such activities are localized."@en ;
              rdfs:comment "A relationship between an assessment activity and a place where that activity is localized."@en ;
              rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
              rdfs:label "has location"@en ;
-             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+             <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location> ;
+             <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasParticipant
@@ -1126,12 +1181,15 @@ xsd:date rdf:type rdfs:Datatype .
       hero:hasParticipant :university-of-bologna .
 
     :university-of-bologna a foaf:Agent .
+
   """@en ;
                 <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to track the responsibility information of assessment activities, expressed as agents that somehow participated in such activities, with a varying degree of accountability."@en ;
                 rdfs:comment "A relationship between an assessment activity and an agent participating in it, either directly or indirectly."@en ;
                 rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                 rdfs:label "has participant"@en ;
-                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P11_had_participant> ;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P11_had_participant."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasTimeInterval
@@ -1140,18 +1198,22 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation> ;
                  rdfs:range <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval> ;
                  <http://purl.org/vocab/vann/example> """
+
     ### An example of activity occurring within the entirety of the 29th of April, 2024
     
     :assessment-activity-01 a hero:Activity ;
       hero:hasTimeInterval :2024-04-29 .
 
     :2024-04-29 a ti:TimeInterval .
+
   """@en ;
                  <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to track the temporal information of assessment activities, expressed as time intervals with a start date and an end date."@en ;
                  rdfs:comment "A relationship between an assessment activity and a time interval."@en ;
                  rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                  rdfs:label "has time interval"@en ;
-                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                 <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> ;
+                 <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasType
@@ -1160,17 +1222,21 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:domain owl:Thing ;
          rdfs:range :Type ;
          <http://purl.org/vocab/vann/example> """
+
     ### An example of assertion having the type 'descriptive note' (`aat:300435416`)
     
     :observation a hero:LinguisticObject ;
       hero:hasContent \"The Baptistery is externally visible on the N, NW, and NE sides.\"@en ;
       hero:hasType aat:300435416 .
+
   """@en ;
          <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to allow entity categorization in HeRO."@en ;
          rdfs:comment "A relationship between an entity and a conceptual category it can be classified with."@en ;
          rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
          rdfs:label "has type"@en ;
-         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+         <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> ;
+         <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P2_has_type."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isAssignedBy
@@ -1182,7 +1248,9 @@ xsd:date rdf:type rdfs:Datatype .
               rdfs:comment "The inverse property of 'hero:assigns'."@en ;
               rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
               rdfs:label "is assigned by"@en ;
-              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+              <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P37i_was_assigned_by> ;
+              <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P37i_was_assigned_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isAttributedBy
@@ -1194,7 +1262,9 @@ xsd:date rdf:type rdfs:Datatype .
                 rdfs:comment "The inverse property of 'hero:assignsTo'."@en ;
                 rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                 rdfs:label "is attributed by of"@en ;
-                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P140i_was_attributed_by> ;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P140i_was_attributed_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isCarriedOutBy
@@ -1203,18 +1273,20 @@ xsd:date rdf:type rdfs:Datatype .
                 rdfs:domain <http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event> ;
                 rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
                 <http://purl.org/vocab/vann/example> """
-    ### An example of activity being carried out by Sara Fiorentino
+    ### An example of activity being carried out by Laura Casocchi
 
     :assessment-activity-01 a hero:Activity ;
-      hero:isCarriedOutBy :sara-fiorentino .
+      hero:isCarriedOutBy :laura-casocchi .
 
-    :sara-fiorentino a foaf:Agent .
+    :laura-casocchi a foaf:Agent .
   """@en ;
                 <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to track responsibility information of assessment activities, expressed as agents that directly participated in such activities, with a major degree of accountability."@en ;
                 rdfs:comment "A relation between an assessment activity and the agent carrying it out directly."@en ;
                 rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                 rdfs:label "is carried out by"@en ;
-                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> ;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isComponentOf
@@ -1226,7 +1298,9 @@ xsd:date rdf:type rdfs:Datatype .
                rdfs:comment "The inverse property of 'hero:hasComponent'."@en ;
                rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                rdfs:label "is component of"@en ;
-               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+               <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of> ;
+               <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isDocumentedBy
@@ -1250,7 +1324,9 @@ xsd:date rdf:type rdfs:Datatype .
                 rdfs:comment "A relationship between an activity or an assertion and a document that records information about it."@en ;
                 rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                 rdfs:label "is documented by"@en ;
-                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in> ;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isLocationOf
@@ -1262,7 +1338,9 @@ xsd:date rdf:type rdfs:Datatype .
               rdfs:comment "The inverse property of 'hero:hasLocation'."@en ;
               rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
               rdfs:label "is location of"@en ;
-              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+              <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+              <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P53i_is_former_or_current_location_of> ;
+              <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P53i_is_former_or_current_location_of."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isMotivatedBy
@@ -1277,12 +1355,18 @@ xsd:date rdf:type rdfs:Datatype .
     ### which was motivated by the risk magnitude (`wd:Q2154759`) 
     ### referred to in another assertion
 
+    :activity-01 a hero:Activity ;
+        hero:assigns :observation-01 ;
+        hero:isMotivatedBy :risk-magnitude .
+
+    :activity-02 a hero:Activity ;
+        hero:assigns :observation-02 .
+
     :observation-01 a hero:LinguisticObject ;
       hero:hasType aat:300438433 ;
-      hero:isMotivatedBy :risk-magnitude ;
       hero:refersTo :high-priority-level .
 
-    observation-01 a hero:LinguisticObject ;
+    :observation-02 a hero:LinguisticObject ;
       hero:hasType aat:300435430 ;
       hero:refersTo :risk-magnitude .
 
@@ -1292,11 +1376,13 @@ xsd:date rdf:type rdfs:Datatype .
     :high-priority-level a hero:InformationObject ;
       hero:hasType wd:Q125584111 .
   """@en ;
-               <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to link entities (like assertions and concepts) in a way that expresses an existing cause-effect relationship between them (for example, during an evaluation activity a risk is given a high priority on the basis of the risk magnitude calculated during a previous analysis activity.) "@en ;
+               <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to link activities to any kind of entity in a way that expresses an existing cause-effect relationship between them (for example, during an evaluation activity a risk is given a high priority on the basis of the risk magnitude calculated during a previous analysis activity)."@en ;
                rdfs:comment "A relationship between two entities, expressing the fact that one entity somehow came into existence as an effect of using the other entity in some way."@en ;
                rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                rdfs:label "is motivated by"@en ;
-               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+               <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by> ;
+               <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isParticipantIn
@@ -1308,7 +1394,9 @@ xsd:date rdf:type rdfs:Datatype .
                  rdfs:comment "The inverse property of 'hero:hasParticipant'."@en ;
                  rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                  rdfs:label "is participant in"@en ;
-                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                 <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in> ;
+                 <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isReferredToBy
@@ -1320,7 +1408,9 @@ xsd:date rdf:type rdfs:Datatype .
                 rdfs:comment "The inverse property of 'hero:refersTo'."@en ;
                 rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                 rdfs:label "is referred to by"@en ;
-                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by> ;
+                <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/isTimeIntervalOf
@@ -1332,7 +1422,9 @@ xsd:date rdf:type rdfs:Datatype .
                   rdfs:comment "The inverse property of 'hero:hasTimeInterval'."@en ;
                   rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
                   rdfs:label "is time interval of"@en ;
-                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                  <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P4i_is_time-span_of> ;
+                  <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P4i_is_time-span_of."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/precedes
@@ -1352,7 +1444,9 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:comment "A relationship between two entities, expressing a sequence schema existing between them according to which the former entity precedes the latter."@en ;
           rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
           rdfs:label "precedes"@en ;
-          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P134i_was_continued_by> ;
+          <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P134i_was_continued_by."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/refersTo
@@ -1378,7 +1472,31 @@ xsd:date rdf:type rdfs:Datatype .
           rdfs:comment "A relationship between an assertion and the concept it refers to."@en ;
           rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
           rdfs:label "expresses"@en ;
-          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P67_refers_to> ;
+          <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P67_refers_to."@en .
+
+
+###  https://w3id.org/sirius/ontology/hero/uses
+:uses rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf <http://www.w3.org/ns/prov#used> ;
+      rdfs:domain <http://www.w3.org/ns/prov#Activity> ;
+      rdfs:range <http://www.w3.org/ns/prov#Entity> ;
+      <http://purl.org/vocab/vann/example> """
+    ### An example of assessment activity 
+    
+    :assessment-activity-01 a hero:Activity ;
+        hero:uses :dataset .
+
+    :dataset a foaf:Document .
+  """@en ;
+      <http://www.linkedmodel.org/schema/vaem#rationale> "This property was added to link an activity with any object used during said activity in order to carry it out or to better contextualize it and its assertions."@en ;
+      rdfs:comment "A relationship between an activity and an object used to carry it out."@en ;
+      rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
+      rdfs:label "uses"@en ;
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+      <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object> ;
+      <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object."@en .
 
 
 #################################################################
@@ -1406,7 +1524,9 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                    rdfs:comment "A property specifying the end date of a time interval."@en ;
                                                                                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl> ;
                                                                                    rdfs:label "interval has end date"@en ;
-                                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                                                                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                                                                   <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> ;
+                                                                                   <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end."@en .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#hasIntervalStartDate
@@ -1426,7 +1546,9 @@ xsd:date rdf:type rdfs:Datatype .
                                                                                      rdfs:comment "A property specifying the start date of a time interval."@en ;
                                                                                      rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl> ;
                                                                                      rdfs:label "interval has start date"@en ;
-                                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                                                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                                                                     <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> ;
+                                                                                     <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin."@en .
 
 
 ###  http://www.w3.org/ns/prov#value
@@ -1450,7 +1572,9 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:comment "A property expressing the content or value of an entity."@en ;
             rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
             rdfs:label "has content"@en ;
-            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+            <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+            <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> ;
+            <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/hasNote
@@ -1477,7 +1601,9 @@ xsd:date rdf:type rdfs:Datatype .
          rdfs:comment "A property that attaches a textual description to an entity."@en ;
          rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
          rdfs:label "has note"@en ;
-         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+         <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+         <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> ;
+         <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P3_has_note."@en .
 
 
 #################################################################
@@ -1495,7 +1621,9 @@ xsd:date rdf:type rdfs:Datatype .
                                                                rdfs:comment "A geographic location."@en ;
                                                                rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/place.owl> ;
                                                                rdfs:label "Place"@en ;
-                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                                               <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                                               <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> ;
+                                                               <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E53_Place."@en .
 
 
 ###  http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation
@@ -1515,7 +1643,9 @@ xsd:date rdf:type rdfs:Datatype .
                                                                              rdfs:comment "A dimensional space representing time as a period delimited by a start date time and an end date time."@en ;
                                                                              rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl> ;
                                                                              rdfs:label "Time interval"@en ;
-                                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                                                             <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                                                             <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> ;
+                                                                             <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span."@en .
 
 
 ###  http://www.w3.org/2002/07/owl#Thing
@@ -1533,9 +1663,9 @@ owl:Thing rdf:type owl:Class .
 ###  http://xmlns.com/foaf/0.1/Agent
 <http://xmlns.com/foaf/0.1/Agent> rdf:type owl:Class ;
                                   <http://purl.org/vocab/vann/example> """
-    ### Examples of agents: Sara Fiorentino (a person), University of Bologna (an organization)
+    ### Examples of agents: Laura Casocchi (a person), University of Bologna (an organization)
 
-    :sara-fiorentino a foaf:Agent .
+    :laura-casocchi a foaf:Agent .
 
     :university-of-bologna a foaf:Agent .
   """@en ;
@@ -1543,7 +1673,9 @@ owl:Thing rdf:type owl:Class .
                                   rdfs:comment "An entity with the capability of performing actions (eg. person, group, software, etc.)."@en ;
                                   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
                                   rdfs:label "Agent"@en ;
-                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                  <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> ;
+                                  <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E39_Actor."@en .
 
 
 ###  http://xmlns.com/foaf/0.1/Document
@@ -1557,7 +1689,9 @@ owl:Thing rdf:type owl:Class .
                                      rdfs:comment "A written, drawn, presented, or memorialized representation of information."@en ;
                                      rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> ;
                                      rdfs:label "Document"@en ;
-                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                                     <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                                     <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E31_Document> ;
+                                     <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E31_Document."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/Activity
@@ -1586,7 +1720,7 @@ owl:Thing rdf:type owl:Class .
       hero:hasParticipant :universita-di-bologna ;
       hero:hasTimeInterval :2024-04-29 ;
       hero:hasType wd:Q1137655 ;
-      hero:isCarriedOutBy :sara-fiorentino .
+      hero:isCarriedOutBy :laura-casocchi .
   """@en ;
           <http://www.linkedmodel.org/schema/vaem#rationale> "This class was added to represent the core entity of HeRO, a detailed description of a risk assessment sub-process in which both descriptive elements (assertions, concepts, notes, content, etc.) and provenance (who carried out and/or participated in the activity, when, where, how)."@en ;
           rdfs:comment """
@@ -1594,7 +1728,9 @@ owl:Thing rdf:type owl:Class .
     """@en ;
           rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
           rdfs:label "Activity"@en ;
-          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+          <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+          <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment> ;
+          <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/InformationObject
@@ -1602,7 +1738,7 @@ owl:Thing rdf:type owl:Class .
                    rdfs:subClassOf <http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject> ;
                    <http://purl.org/vocab/vann/example> """
     ### An example of information object (the concept of 
-    ### 'pysical properties', expressed through `wd:Q4373292`)
+    ### 'physical properties', expressed through `wd:Q4373292`)
     
     :concept-01 a hero:InformationObject ;
       hero:hasType wd:Q4373292 .
@@ -1613,7 +1749,9 @@ owl:Thing rdf:type owl:Class .
     """@en ;
                    rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl> ;
                    rdfs:label "Information object"@en ;
-                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                   <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                   <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> ;
+                   <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/LinguisticObject
@@ -1638,7 +1776,9 @@ owl:Thing rdf:type owl:Class .
     """@en ;
                   rdfs:isDefinedBy <http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl> ;
                   rdfs:label "Linguistic object"@en ;
-                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
+                  <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+                  <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object> ;
+                  <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object."@en .
 
 
 ###  https://w3id.org/sirius/ontology/hero/Type
@@ -1656,16 +1796,9 @@ owl:Thing rdf:type owl:Class .
       rdfs:comment "A categorization of an entity according to a shared conceptualization."@en ;
       rdfs:isDefinedBy <https://w3id.org/sirius/ontology/hero> ;
       rdfs:label "Type"@en ;
-      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  https://w3id.org/sirius/ontology/hero/
-<https://w3id.org/sirius/ontology/hero/> rdf:type owl:NamedIndividual ;
-                                         <http://purl.org/dc/terms/description> "The Heritage Risk Assessment Ontology (HeRO, https://w3id.org/sirius/ontology/hero) is an OWL 2 DL ontology for describing risk assessment activities related to heritage in a FAIR-compliant, machine-actionable format."@en .
+      <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> <http://purl.org/linked-data/registry#statusExperimental> ;
+      <http://www.w3.org/2004/02/skos/core#closeMatch> <http://www.cidoc-crm.org/cidoc-crm/E55_Type> ;
+      <http://www.w3.org/2004/02/skos/core#editorialNote> "Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E55_Type."@en .
 
 
 ###  Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/

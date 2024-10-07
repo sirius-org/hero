@@ -1,0 +1,44 @@
+@prefix aat: <http://vocab.getty.edu/page/aat/> .
+@prefix hero: <https://w3id.org/sirius/ontology/hero/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+<https://w3id.org/sirius/ontology/data/09/> a owl:Ontology ;
+    owl:imports hero: .
+
+<https://w3id.org/sirius/ontology/data/09/assessment-activity-05> a hero:Activity ;
+    hero:assigns <https://w3id.org/sirius/ontology/data/09/observation-19> ;
+    hero:assignsTo <https://w3id.org/sirius/ontology/data/09/baptistery> ;
+    hero:hasType wd:Q217602 ;
+    hero:uses <https://w3id.org/sirius/ontology/data/09/dati_subsidenza_2011-2016> .
+
+<https://w3id.org/sirius/ontology/data/09/assessment-activity-07> a hero:Activity ;
+    hero:assigns <https://w3id.org/sirius/ontology/data/09/observation-24> ;
+    hero:assignsTo <https://w3id.org/sirius/ontology/data/09/baptistery> ;
+    hero:hasType wd:Q1379672 ;
+    hero:isMotivatedBy <https://w3id.org/sirius/ontology/data/09/concept-19> .
+
+<https://w3id.org/sirius/ontology/data/09/concept-19b> a hero:InformationObject ;
+    hero:hasContent "10.5"^^rdfs:Literal ;
+    hero:hasType wd:Q226995 .
+
+<https://w3id.org/sirius/ontology/data/09/concept-24> a hero:InformationObject ;
+    hero:hasType wd:Q125584111 .
+
+<https://w3id.org/sirius/ontology/data/09/dati_subsidenza_2011-2016> a owl:Thing .
+
+<https://w3id.org/sirius/ontology/data/09/observation-19> a hero:LinguisticObject ;
+    hero:hasType aat:300435430 ;
+    hero:refersTo <https://w3id.org/sirius/ontology/data/09/concept-19> .
+
+<https://w3id.org/sirius/ontology/data/09/observation-24> a hero:LinguisticObject ;
+    hero:hasType aat:300438433 ;
+    hero:refersTo <https://w3id.org/sirius/ontology/data/09/concept-24> .
+
+<https://w3id.org/sirius/ontology/data/09/baptistery> a owl:Thing .
+
+<https://w3id.org/sirius/ontology/data/09/concept-19> a hero:InformationObject ;
+    hero:hasComponent <https://w3id.org/sirius/ontology/data/09/concept-19b> ;
+    hero:hasType wd:Q2154759 .
+

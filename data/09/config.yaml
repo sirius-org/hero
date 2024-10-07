@@ -1,0 +1,48 @@
+namespaces:
+  old_ns: 
+    tbox: "https://w3id.org/sirius/ontology/development/09/schema/"
+    abox: "https://w3id.org/sirius/ontology/development/09/data/"
+  new_ns: 
+    aat: "http://vocab.getty.edu/page/aat/"
+    comp: "http://www.ontologydesignpatterns.org/cp/owl/componency.owl#"
+    dcterms: "http://purl.org/dc/terms/"
+    dul: "http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+    hero: "https://w3id.org/sirius/ontology/hero/"
+    abox: "https://w3id.org/sirius/ontology/data/09/"
+    foaf: "http://xmlns.com/foaf/0.1/"
+    freq: "http://publications.europa.eu/resource/authority/frequency/"
+    part: "http://www.ontologydesignpatterns.org/cp/owl/participation.owl#"
+    place: "http://www.ontologydesignpatterns.org/cp/owl/place.owl#"
+    planex: "http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#"
+    provo: "http://www.w3.org/ns/prov#"
+    seq: "http://www.ontologydesignpatterns.org/cp/owl/sequence.owl#"
+    ti: "http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#"
+    tisit: "http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#"
+    wd: "http://www.wikidata.org/entity/"
+
+mapping_rules:
+  # Instances
+  "https://w3id.org/sirius/ontology/development/09/data/": "https://w3id.org/sirius/ontology/data/09/"
+  "https://w3id.org/sirius/ontology/development/09/schema/": "https://w3id.org/sirius/ontology/hero/"
+  # Thing
+  "https://w3id.org/sirius/ontology/development/09/schema/Thing": "http://www.w3.org/2002/07/owl#Thing"
+  # AssessmentActivity, Statement, InformationObject
+  "https://w3id.org/sirius/ontology/development/09/schema/AssessmentActivity": "https://w3id.org/sirius/ontology/hero/Activity" #http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#Action
+  "https://w3id.org/sirius/ontology/development/09/schema/hasType": "https://w3id.org/sirius/ontology/hero/hasType" #http://purl.org/dc/terms/type
+  "https://w3id.org/sirius/ontology/development/09/schema/assigns": "https://w3id.org/sirius/ontology/hero/assigns" #http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#forEntity
+  "https://w3id.org/sirius/ontology/development/09/schema/assignsTo": "https://w3id.org/sirius/ontology/hero/assignsTo" #http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#includesObject
+  "https://w3id.org/sirius/ontology/development/09/schema/isComposedOf": "https://w3id.org/sirius/ontology/hero/hasComponent" #http://www.ontologydesignpatterns.org/cp/owl/componency.owl#hasComponent
+  "https://w3id.org/sirius/ontology/development/09/schema/hasValue": "https://w3id.org/sirius/ontology/hero/hasContent" #http://www.w3.org/ns/prov#value
+  "https://w3id.org/sirius/ontology/development/09/schema/refersTo": "https://w3id.org/sirius/ontology/hero/refersTo" #http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#expresses
+  "https://w3id.org/sirius/ontology/development/09/schema/InformationObject": "https://w3id.org/sirius/ontology/hero/InformationObject" #http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject
+  "https://w3id.org/sirius/ontology/development/09/schema/Statement": "https://w3id.org/sirius/ontology/hero/LinguisticObject" #
+  "https://w3id.org/sirius/ontology/development/09/schema/isMotivatedBy": "https://w3id.org/sirius/ontology/hero/isMotivatedBy" #http://www.w3.org/ns/prov#wasDerivedFrom
+  "https://w3id.org/sirius/ontology/development/09/schema/uses": "https://w3id.org/sirius/ontology/hero/uses" #http://www.ontologydesignpatterns.org/cp/owl/participation.owl#uses
+  # Named Individuals
+  "https://w3id.org/sirius/ontology/development/09/schema/risk-analysis": "http://www.wikidata.org/entity/Q217602"
+  "https://w3id.org/sirius/ontology/development/09/schema/risk-evaluation": "http://www.wikidata.org/entity/Q1379672"
+  "https://w3id.org/sirius/ontology/development/09/schema/probable-estimate": "http://www.wikidata.org/entity/Q226995"
+  "https://w3id.org/sirius/ontology/development/09/schema/risk-magnitude": "http://www.wikidata.org/entity/Q2154759"
+  "https://w3id.org/sirius/ontology/development/09/schema/high-priority-level": "http://www.wikidata.org/entity/Q125584111"
+  "https://w3id.org/sirius/ontology/development/09/schema/dimensions-description": "http://vocab.getty.edu/page/aat/300435430"
+  "https://w3id.org/sirius/ontology/development/09/schema/diagnosis": "http://vocab.getty.edu/page/aat/300438433"

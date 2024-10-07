@@ -1,0 +1,51 @@
+@prefix : <https://w3id.org/sirius/ontology/development/09/data/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tbox: <https://w3id.org/sirius/ontology/development/09/schema/> .
+@base <https://w3id.org/sirius/ontology/development/09/data/> .
+
+<https://w3id.org/sirius/ontology/development/09/data/> rdf:type owl:Ontology ;
+                                                        owl:imports <https://w3id.org/sirius/ontology/development/09/schema/> .
+
+#################################################################
+#    Individuals
+#################################################################
+
+:baptistery a tbox:Thing .
+
+:dati_subsidenza_2011-2016 a tbox:Thing .
+
+:assessment-activity-05 a tbox:AssessmentActivity ;
+    tbox:hasType tbox:risk-analysis ;
+    tbox:assignsTo :baptistery ;
+    tbox:uses :dati_subsidenza_2011-2016 ;
+    tbox:assigns :observation-19 .
+
+:observation-19 a tbox:Statement ;
+    tbox:hasType tbox:dimensions-description ;
+    tbox:refersTo :concept-19 .
+
+:concept-19 a tbox:InformationObject ;
+    tbox:hasType tbox:risk-magnitude ;
+    tbox:isComposedOf :concept-19b .
+
+:concept-19b a tbox:InformationObject ;
+    tbox:hasType tbox:probable-estimate ;
+    tbox:hasValue "10.5"^^rdfs:Literal .
+
+:assessment-activity-07 a tbox:AssessmentActivity ;
+    tbox:hasType tbox:risk-evaluation ;
+    tbox:assignsTo :baptistery ;
+    tbox:isMotivatedBy :concept-19 ;
+    tbox:assigns :observation-24 .
+
+:observation-24 a tbox:Statement ;
+    tbox:hasType tbox:diagnosis ;
+    tbox:refersTo :concept-24 .
+
+:concept-24 a tbox:InformationObject ;
+    tbox:hasType tbox:high-priority-level .
+

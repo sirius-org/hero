@@ -61,11 +61,11 @@ An assessment activity `:assessment-activity-05`, consisting in the analysis of 
     * low estimate (`:concept-17a`), with a value of "4.5";
     * probable estimate (`:concept-17b`), with a value of "5.0";
     * high estimate (`:concept-17c`), with a value of "5.0".
-3. `:observation-18`, , which is a dimensions description referring to the exposure determined by the risk occurrence (`:concept-18`). In turn, the exposure is composed of three other concepts:
+3. `:observation-18`, which is a dimensions description referring to the exposure determined by the risk occurrence (`:concept-18`). In turn, the exposure is composed of three other concepts:
     * low estimate (`:concept-18a`), with a value of "1.5";
     * probable estimate (`:concept-18b`), with a value of "2.0";
     * high estimate (`:concept-18c`), with a value of "2.5".
-4. `:observation-19`, , which is a dimensions description referring to the magnitude of the risk occurrence (`:concept-19`). In turn, the magnitude is composed of three other concepts:
+4. `:observation-19`, which is a dimensions description referring to the magnitude of the risk occurrence (`:concept-19`). In turn, the magnitude is composed of three other concepts:
     * low estimate (`:concept-19a`), with a value of "9.0";
     * probable estimate (`:concept-19b`), with a value of "10.5";
     * high estimate (`:concept-19c`), with a value of "11.5".
@@ -90,10 +90,10 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 
 ## Example 04
 An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: "The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2." It consists of one statement assigned to the CHO in question:
-1. `:observation-24`, which is a diagnosis motivated by `:parameter-19` and referring to a high level of priority(`:concept-24`).
+1. `:observation-24`, which is a diagnosis motivated by `:concept-19` and referring to a high level of priority(`:concept-24`).
 
 Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: "The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2." It consists of one statement assigned to the CHO in question:
-1. `:observation-26`, which is a diagnosis motivated by  `:parameter-23` and referring to a extreme level of priority (`:concept-26`).
+1. `:observation-26`, which is a diagnosis motivated by `:concept-23` and referring to a extreme level of priority (`:concept-26`).
 
 ## Example 05
 An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: "One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time". It consists of three statements, each assigned to the CHO in question:

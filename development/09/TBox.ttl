@@ -1,0 +1,100 @@
+@prefix : <https://w3id.org/sirius/ontology/development/09/schema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/sirius/ontology/development/08/schema/> .
+
+<https://w3id.org/sirius/ontology/development/09/schema/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/08/schema/hasType
+:hasType rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/assigns
+:assigns rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/assignsTo
+:assignsTo rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/isMotivatedBy
+:isMotivatedBy rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/uses
+:uses rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/refersTo
+:refersTo rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/08/schema/hasValue
+:hasValue rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/08/schema/Thing
+:Thing rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/Statement
+:Statement rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/InformationObject
+:InformationObject rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/Type
+:Type rdf:type owl:Class .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/AssessmentActivity
+:AssessmentActivity rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/sirius/ontology/development/08/schema/risk-analysis
+:risk-analysis rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/risk-evaluation
+:risk-evaluation rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/probable-estimate
+:probable-estimate rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/risk-magnitude
+:risk-magnitude rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/diagnosis
+:diagnosis rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/high-priority-level
+:high-priority-level rdf:type :Type .
+
+
+###  https://w3id.org/sirius/ontology/development/08/schema/dimensions-description
+:dimensions-description rdf:type :Type .

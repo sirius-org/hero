@@ -6,15 +6,17 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:bibo="http://purl.org/ontology/bibo/"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:vaem="http://www.linkedmodel.org/schema/vaem#"
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:schema="http://schema.org/"
      xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#">
     <owl:Ontology rdf:about="https://w3id.org/sirius/ontology/hero/">
-        <owl:versionIRI rdf:resource="https://w3id.org/sirius/ontology/hero/2.0.0/"/>
+        <owl:versionIRI rdf:resource="https://w3id.org/sirius/ontology/hero/2.1.0/"/>
         <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/basicplanexecution.owl#"/>
         <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#"/>
         <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#"/>
@@ -28,7 +30,8 @@
         <terms:creator rdf:resource="https://orcid.org/0000-0002-0799-1527"/>
         <terms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-11-30</terms:issued>
         <terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
-        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-04-30</terms:modified>
+        <terms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-10-07</terms:modified>
+        <terms:publisher rdf:resource="https://zenodo.org/"/>
         <terms:source xml:lang="en">
 https://doi.org/10.6084/M9.FIGSHARE.3189769.V2
 </terms:source>
@@ -39,6 +42,8 @@ https://www.canada.ca/en/conservation-institute/services/risk-management-heritag
 https://www.iccrom.org/sites/default/files/2017-12/risk_manual_2016-eng.pdf
 </terms:source>
         <terms:title xml:lang="en">Heritage Risk Assessment Ontology (HeRO)</terms:title>
+        <bibo:doi>10.5281/zenodo.13857429</bibo:doi>
+        <bibo:status rdf:resource="http://purl.org/ontology/bibo/status/published"/>
         <vann:preferredNamespacePrefix xml:lang="en">hero</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri xml:lang="en">https://w3id.org/sirius/ontology/hero/</vann:preferredNamespaceUri>
         <schema:codeRepository rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://github.com/sirius-org/hero</schema:codeRepository>
@@ -78,16 +83,16 @@ The next subsections provide a quick overview of all the entities defined, some 
 ### Assessment activities
 In HeRO, the concept of assessment activity represents the core abstraction around which the rest of the ontology is built. As shown in the following diagram, an assessment activity is a first-class object related to a series of other entities that populate and signify its context. 
 
-![A diagram of an assessment activity, the core entity of HeRO.](diagrams/assessment-activity.png)
+![A diagram of an assessment activity, the core entity of HeRO.](/docs/current/diagrams/assessment-activity.png)
 
 As previously mentioned, HeRO draws constructs from ODPs and uses them as super classes and super properties of its own entities to accurately represent the processes outlined by a risk assessment endeavor, as well as the concepts and relations implicitly expressed in such processes. In particular, an assessment activity (`hero:Activity`) is a situated action that involves gaining and producing scientific knowledge about some entity being observed by assigning to that entity a series of assertions referring to concepts used to make the assessment. As a result, it has been modelled as a subclass of `tisit:TimeIndexedSituation` and `planex:Action` that assigns to a object (`owl:Thing`) a series of &quot;linguistic objects&quot; (`hero:LinguisticObject`) representing scientific observations, statements or assertions related to that object. Multiple activities can be sequentialized one after the other with `hero:precedes`. In addition, an assessment activity is enriched with a packet of additional information covering its type (`hero:Type`), its temporal horizon (`ti:TimeInterval`), its geographic context (`place:Place`), the agents involved in its realization (`foaf:Agent`), the material documenting how the activity was carried out and based on what sources (`foaf:Document`), and its textual description (`hero:hasNote`).
 
 ### Scientific assertions and concepts
-As illustrated in the previous section, an assessment activity assigns a series of assertions to the objects being examined. As shown in the following diagram, an assertion (`hero:LinguisticObject`) is modelled as a subclass of `hero:InformationObject`, thus incorporating the idea of an assertion as a piece of information, independently from how it is concretely realized. In turn, an assertion refers to some qualitative, quantitative or interpretative conceptual object (`hero:InformationObject`), modelled as a subclass of `intensionextension:InformationObject`, that carries some information that is deemed relevant in the context of risk assessment.
+As illustrated in the previous section, an assessment activity assigns a series of assertions to the objects being examined. As shown in the following diagram, an assertion (`hero:LinguisticObject`) is modelled as a subclass of `hero:InformationObject`, thus incorporating the idea of an assertion as a piece of information, independently from how it is concretely realized. In turn, an assertion refers to some qualitative, quantitative or interpretative conceptual object (`hero:InformationObject`), modelled as a subclass of `intensionextension:InformationObject`, that carries some information that is deemed relevant in the context of risk assessment. Finally, an assessment activity can be motivated by any entity that corroborates it, and can use any kind of object in order to be carried out or as a basis for its assertions.
 
-![A diagram of a linguistic object and an information object, the other core entities of HeRO.](diagrams/objects.png)
+![A diagram of a linguistic object and an information object, the other core entities of HeRO.](/docs/current/diagrams/objects.png)
 
-In addition to referring to some concept, an assertion can be classified according to external categorization schemes (`hero:Type`), can be documented by some document (`foaf:Document`), can be also motivated by other concepts referred to in other assertions, and expresses some kind of content or value (`hero:hasContent`). A concept, while also being characterized by a type (`hero:Type`) and a content (`hero:hasContent`), can be composed of other conceptual objects (`hero:hasComponent`).
+In addition to referring to some concept, an assertion can be classified according to external categorization schemes (`hero:Type`), can be documented by some document (`foaf:Document`), and expresses some kind of content or value (`hero:hasContent`). A concept, while also being characterized by a type (`hero:Type`) and a content (`hero:hasContent`), can be composed of other conceptual objects (`hero:hasComponent`).
 
 ## Examples of use
 HeRO can be used for modelling scenarios related to heritage risk assessment. Note that, due to the wide scope of the classes and properties it uses, the way it has been modelled, and its dependency on external vocabularies for typification, HeRO can be used to model any situation involving assigning scientific assertions expressing some kind of conceptual content to an object in order to examine it. 
@@ -108,7 +113,7 @@ The prefixes that are used in all the examples provided below are defined as fol
     @prefix wd: &lt;http://www.wikidata.org/entity/&gt; .
 
 ### Scenario 1
-An assessment activity `:assessment-activity-01` consisting in the context description of a CHO `:baptistery`, is taking place in Ravenna, is being carried out by the expert Sara Fiorentino (with the involvement of other stakeholders, such as Comune di Ravenna, Soprintendenza di Ravenna and Università di Bologna), in the time interval starting from 2024-02-01 to 2024-03-01, and is being annotated with the following text: &quot;Octagonal building with sloping roof, featuring four apsidioles corresponding to the cardinal points (partially buried). The mosaic decoration is preserved only on the dome, creating a striking contrast with the rough surface of exposed bricks in the lower part. The mosaic depicts in the center the baptism of Christ in the River Jordan, surrounded by a band with the twelve apostles parading in two rows, meeting at the throne of the etimasia, symbol of the invisible presence of Christ.&quot;
+An assessment activity `:assessment-activity-01` consisting in the context description of a CHO `:baptistery`, is taking place in Ravenna, is being carried out by the expert Laura Casocchi (with the involvement of other stakeholders, such as Comune di Ravenna, Soprintendenza di Ravenna and Università di Bologna), in the time interval starting from 2024-02-01 to 2024-03-01, and is being annotated with the following text: &quot;Octagonal building with sloping roof, featuring four apsidioles corresponding to the cardinal points (partially buried). The mosaic decoration is preserved only on the dome, creating a striking contrast with the rough surface of exposed bricks in the lower part. The mosaic depicts in the center the baptism of Christ in the River Jordan, surrounded by a band with the twelve apostles parading in two rows, meeting at the throne of the etimasia, symbol of the invisible presence of Christ.&quot;
 It is composed of six statements, each assigned to the CHO in question:
 1. `:observation-01`, which is a descriptive statement referring to the physical properties of the CHO (`:concept-01`) with the following content: &quot;The Baptistery is externally visible on the N, NW, and NE sides. The west side overlooks the gardens of a private residence, while the south, SW, and SE sides overlook the garden of the Department of Cultural Heritage (University of Bologna).&quot;
 2. `:observation-02`, which is a descriptive statement referring to the social environment surrounding the CHO (`:concept-02`) with the following content: &quot;Monumental site in an urban area, open to tourists (with prior admission ticket). The small square where the building is located suffers from a bad reputation, being labeled as a &apos;socially risky area and a neglected place&apos; (reported incident of an abandoned bed frame found at night in the Baptistery&apos;s trench, 11.07.2006, Source: Zaccarini, 2015). Despite the establishment of regulations in 2012 restricting vehicle access to the square, transit and parking for loading/unloading goods are still permitted.&quot;
@@ -124,9 +129,9 @@ It is composed of six statements, each assigned to the CHO in question:
         :observation-03 ,
         :observation-04 ,
         :observation-05 ,
-        :observation-06&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-06 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;Octagonal building with sloping roof, featuring four apsidioles corresponding
      to the cardinal points (partially buried). The mosaic decoration is preserved only on the
      dome, creating a striking contrast with the rough surface of exposed bricks in the lower
@@ -134,12 +139,12 @@ It is composed of six statements, each assigned to the CHO in question:
      surrounded by a band with the twelve apostles parading in two rows, meeting at the throne
      of the etimasia, symbol of the invisible presence of Christ.&apos;&apos;&apos;@en ;
     hero:hasParticipant :comune-di-ravenna ,
-        :sara-fiorentino ,
+        :laura-casocchi ,
         :soprintendenza-di-ravenna ,
-        :universita-di-bologna&gt; ;
-    hero:hasTimeInterval :time-interval-01&gt; ;
+        :universita-di-bologna ;
+    hero:hasTimeInterval :time-interval-01 ;
     hero:hasType wd:Q1137655 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :concept-01 a hero:InformationObject ;
     hero:hasType wd:Q4373292 .
@@ -182,7 +187,7 @@ It is composed of six statements, each assigned to the CHO in question:
     hero:hasContent &apos;&apos;&apos;The monument is often a subject of debate among various political parties 
     and the Municipality of Ravenna.&apos;&apos;&apos;@en ;
     hero:hasType aat:300435416 ;
-    hero:isDocumentedBy :document-01&gt; ;
+    hero:isDocumentedBy :document-01 ;
     hero:refersTo :concept-03 .
 
 :observation-04 a hero:LinguisticObject ;
@@ -199,19 +204,22 @@ It is composed of six statements, each assigned to the CHO in question:
     hero:refersTo :concept-05 .
 
 :observation-06 a hero:LinguisticObject ;
-    hero:hasContent &quot;The Law No. 77 of February 20, 2006, establishes that UNESCO sites are excellences of the Italian cultural, landscape, and natural heritage, fundamental elements of our country&apos;s representation at the international level, and states that interventions on them have priority even in terms of the allocation of financial resources.&quot;@en ;
+    hero:hasContent &apos;&apos;&apos;The Law No. 77 of February 20, 2006, establishes that UNESCO sites are 
+    excellences of the Italian cultural, landscape, and natural heritage, fundamental elements 
+    of our country&apos;s representation at the international level, and states that interventions on 
+    them have priority even in terms of the allocation of financial resources.&apos;&apos;&apos;@en ;
     hero:hasType aat:300435416 ;
     hero:refersTo :concept-06 .
 
 :time-interval-01 a ti:TimeInterval ;
-    ti:hasIntervalEndDate &quot;2024-03-01T23:59:59Z&quot; ;
-    ti:hasIntervalStartDate &quot;2024-02-01T00:00:00Z&quot; .
+    ti:hasIntervalEndDate &quot;2024-03-01T23:59:59Z&quot;^^xsd:dateTime ;
+    ti:hasIntervalStartDate &quot;2024-02-01T00:00:00Z&quot;^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 :soprintendenza-di-ravenna a foaf:Agent .
 
@@ -220,7 +228,7 @@ It is composed of six statements, each assigned to the CHO in question:
 ```
 
 ### Scenario 2
-Two assessment activities consisting in the identification of risks related to the CHO `:baptistery`, are taking place in Ravenna and are being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-03-01 to 2024-04-01. They are:
+Two assessment activities consisting in the identification of risks related to the CHO `:baptistery`, are taking place in Ravenna and are being carried out by the expert Laura Casocchi, in the time interval starting from 2024-03-01 to 2024-04-01. They are:
 * `assessment-activity-03`, annotated with the text &quot;Floods and heavy rains induce erosion of the baptistery walls&quot;. It is composed of three statements assigned to the CHO:
     1. `:observation-10`, which is a condition description referring to the potential damage of water-related hazards (`:concept-10`);
     2. `:observation-11`, which is a dimensions description referring to the annual occurrence of the potential hazardous event (`:concept-11`);
@@ -235,23 +243,23 @@ Two assessment activities consisting in the identification of risks related to t
 :assessment-activity-03 a hero:Activity ;
     hero:assigns :observation-10 ,
         :observation-11 ,
-        :observation-12&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-12 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &quot;Floods and heavy rains induce erosion of the baptistery walls.&quot;@en ;
-    hero:hasTimeInterval :time-interval-02&gt; ;
+    hero:hasTimeInterval :time-interval-02 ;
     hero:hasType wd:Q5687675 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :assessment-activity-04 a hero:Activity ;
     hero:assigns :observation-13 ,
         :observation-14 ,
-        :observation-15&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
-    hero:hasTimeInterval :time-interval-02&gt; ;
+        :observation-15 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
+    hero:hasTimeInterval :time-interval-02 ;
     hero:hasType wd:Q5687675 ;
-    hero:isCarriedOutBy :sara-fiorentino .
+    hero:isCarriedOutBy :laura-casocchi .
 
 :concept-10 a hero:InformationObject ;
     hero:hasType wd:Q19289049 .
@@ -296,19 +304,19 @@ Two assessment activities consisting in the identification of risks related to t
     hero:refersTo :concept-15 .
 
 :time-interval-02 a ti:TimeInterval ;
-    ti:hasIntervalEndDate &quot;2024-04-01T23:59:59Z&quot; ;
-    ti:hasIntervalStartDate &quot;2024-03-01T00:00:00Z&quot; .
+    ti:hasIntervalEndDate &quot;2024-04-01T23:59:59Z&quot;^^xsd:dateTime ;
+    ti:hasIntervalStartDate &quot;2024-03-01T00:00:00Z&quot;^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 ### Scenario 3
-An assessment activity `:assessment-activity-05`, consisting in the analysis of risks related to a CHO `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-03`. It is annotated with the following text: &quot;A flood event is expected in the baptistery approximately once every 25 years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.&quot; It is composed of four statements, each assigned to the CHO in question:
+An assessment activity `:assessment-activity-05`, consisting in the analysis of risks related to a CHO `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-03`. It is annotated with the following text: &quot;A flood event is expected in the baptistery approximately once every 25 years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.&quot; Moreover, it uses a dataset `:dati_subsidenza_2011-2016.zip` as a basis for its analysis. It is composed of four statements, each assigned to the CHO in question:
 1. `:observation-16`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-16`). In turn, the frequency is composed of three other concepts:
     * low estimate (`:concept-16a`), with a value of &quot;3.0&quot;;
     * probable estimate (`:concept-16b`), with a value of &quot;3.5&quot;;
@@ -326,7 +334,7 @@ An assessment activity `:assessment-activity-05`, consisting in the analysis of 
     * probable estimate (`:concept-19b`), with a value of &quot;10.5&quot;;
     * high estimate (`:concept-19c`), with a value of &quot;11.5&quot;.
 
-Another assessment activity `:assessment-activity-06`, consisting in the analysis of risks related to  `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-04`. It is annotated with the following text: &quot;A large fire event is expected in the museum approximately once every 300 years, with the fire affecting all or most of the heritage asset value, causing total or almost total loss of value in each affected item.&quot; It consists of four statements:
+Another assessment activity `:assessment-activity-06`, consisting in the analysis of risks related to  `:baptistery`, is taking place in Ravenna, is documented in the document `:document-03` and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-04-01 to 2024-05-01, continuing `:assessment-activity-04`. It is annotated with the following text: &quot;A large fire event is expected in the museum approximately once every 300 years, with the fire affecting all or most of the heritage asset value, causing total or almost total loss of value in each affected item.&quot; It consists of four statements:
 1. `:observation-20`, which is a dimensions description referring to the frequency of the risk occurrence (`:concept-20`). In turn, the frequency is composed of three other concepts:
     * low estimate (`:concept-20a`), with a value of &quot;2.0&quot;;
     * probable estimate (`:concept-20b`), with a value of &quot;2.5&quot;;
@@ -349,15 +357,15 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:assigns :observation-16 ,
         :observation-17 ,
         :observation-18 ,
-        :observation-19&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-19 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;A flood event is expected in the baptistery approximately once every 25 
     years, most likely affecting the whole heritage asset value per event, resulting in a partial loss.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-03&gt; ;
+    hero:hasTimeInterval :time-interval-03 ;
     hero:hasType wd:Q217602 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
-    hero:isDocumentedBy :document-03&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isDocumentedBy :document-03 ;
     hero:precedes :assessment-activity-03 .
 
 :document-03 a foaf:Document .
@@ -366,22 +374,22 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:assigns :observation-20 ,
         :observation-21 ,
         :observation-22 ,
-        :observation-23&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-23 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;A large fire event is expected in the museum approximately once every 300 
     years, with the fire affecting all or most of the heritage asset value, causing total or 
     almost total loss of value in each affected item.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-03&gt; ;
+    hero:hasTimeInterval :time-interval-03 ;
     hero:hasType wd:Q217602 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
-    hero:isDocumentedBy :document-03&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isDocumentedBy :document-03 ;
     hero:precedes :assessment-activity-04 .
 
 :concept-16 a hero:InformationObject ;
     hero:hasComponent :concept-16a ,
         :concept-16b ,
-        :concept-16c&gt; ;
+        :concept-16c ;
     hero:hasType wd:Q11652 .
 
 :concept-16a a hero:InformationObject ;
@@ -399,7 +407,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-17 a hero:InformationObject ;
     hero:hasComponent :concept-17a ,
         :concept-17b ,
-        :concept-17c&gt; ;
+        :concept-17c ;
     hero:hasType wd:Q7523953 .
 
 :concept-17a a hero:InformationObject ;
@@ -417,7 +425,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-18 a hero:InformationObject ;
     hero:hasComponent :concept-18a ,
         :concept-18b ,
-        :concept-18c&gt; ;
+        :concept-18c ;
     hero:hasType wd:Q107642367 .
 
 :concept-18a a hero:InformationObject ;
@@ -435,13 +443,13 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-19 a hero:InformationObject ;
     hero:hasComponent :concept-19a ,
         :concept-19b ,
-        :concept-19c&gt; ;
+        :concept-19c ;
     hero:hasType wd:Q2154759 .
 
 :concept-23 a hero:InformationObject ;
     hero:hasComponent :concept-23a ,
         :concept-23b ,
-        :concept-23c&gt; ;
+        :concept-23c ;
     hero:hasType wd:Q2154759 .
 
 :concept-19a a hero:InformationObject ;
@@ -459,7 +467,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-20 a hero:InformationObject ;
     hero:hasComponent :concept-20a ,
         :concept-20b ,
-        :concept-20c&gt; ;
+        :concept-20c ;
     hero:hasType wd:Q11652 .
 
 :concept-20a a hero:InformationObject ;
@@ -477,7 +485,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-21 a hero:InformationObject ;
     hero:hasComponent :concept-21a ,
         :concept-21b ,
-        :concept-21c&gt; ;
+        :concept-21c ;
     hero:hasType wd:Q7523953 .
 
 :concept-21a a hero:InformationObject ;
@@ -495,7 +503,7 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
 :concept-22 a hero:InformationObject ;
     hero:hasComponent :concept-22a ,
         :concept-22b ,
-        :concept-22c&gt; ;
+        :concept-22c ;
     hero:hasType wd:Q107642367 .
 
 :concept-22a a hero:InformationObject ;
@@ -523,53 +531,58 @@ Another assessment activity `:assessment-activity-06`, consisting in the analysi
     hero:hasType wd:Q10578722 .
 
 :time-interval-03 a ti:TimeInterval ;
-    ti:hasIntervalEndDate &quot;2024-05-01T23:59:59Z&quot; ;
-    ti:hasIntervalStartDate &quot;2024-04-01T00:00:00Z&quot; .
+    ti:hasIntervalEndDate &quot;2024-05-01T23:59:59Z&quot;^^xsd:dateTime ;
+    ti:hasIntervalStartDate &quot;2024-04-01T00:00:00Z&quot;^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 #### Scenario 4
-An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: &quot;The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2.&quot; It consists of one statement assigned to the CHO in question:
-1. `:observation-24`, which is a diagnosis motivated by `:parameter-19` and referring to a high level of priority(`:concept-24`).
+An assessment activity `:assessment-activity-07` consisting in the evaluation of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-05-01 to 2024-06-01, continuing `:assessment-activity-05`. It is annotated with the following text: &quot;The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value every 100 years (or 3% per millennium). The museum direction considers this level of risk as just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and the value of uncertainty is higher than 2.&quot; It consists of one statement assigned to the CHO in question:
+1. `:observation-24`, which is a diagnosis referring to a high level of priority(`:concept-24`).
 
-Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: &quot;The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2.&quot; It consists of one statement assigned to the CHO in question:
-1. `:observation-26`, which is a diagnosis motivated by  `:parameter-23` and referring to a extreme level of priority (`:concept-26`).
+This assessment activity is motivated by the magnitude of risk calculated in a previous activity (`:concept-19`).
+
+Another assessment activity `:assessment-activity-08` consisting in the evaluation of risks related to the CHO `:baptistery` is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-05-01 to 2024-06-01, following `:assessment-activity-06`. It is annotated with the following text: &quot;The risk of a large fire affecting the baptistery and its contents (MR = 12.5) has an extreme priority. The uncertainty that has been measured amounts to a value equal to 1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value every 10 years (or 30% per century, or 100% in about 300 years). The museum direction considers this level of risk as ‘not acceptable’, since as a condition the value of MR is higher than 10 and the value of uncertainty is lower than 2.&quot; It consists of one statement assigned to the CHO in question:
+1. `:observation-26`, which is a diagnosis referring to a extreme level of priority (`:concept-26`).
+
+This assessment activity is motivated by the magnitude of risk calculated in a previous activity (`:concept-23`).
 
 ```
 :assessment-activity-07 a hero:Activity ;
-    hero:assigns :observation-24&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+    hero:assigns :observation-24 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;The risk of flood (MR = 10.5) has a high priority. It is 100 times smaller 
     than the fire risk. The uncertainty that has been measured amounts to a value equal to 2.5. 
     A risk of this magnitude is equivalent to losing about 0.3% of the heritage asset value 
     every 100 years (or 3% per millennium). The museum direction considers this level of risk as 
     just beyond acceptable, since as a condition the value of MR is slightly higher than 10 and 
     the value of uncertainty is higher than 2.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-04&gt; ;
+    hero:hasTimeInterval :time-interval-04 ;
     hero:hasType wd:Q1379672 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
     hero:precedes :assessment-activity-05 .
 
 :assessment-activity-08 a hero:Activity ;
-    hero:assigns :observation-26&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+    hero:assigns :observation-26 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;The risk of a large fire affecting the baptistery and its contents (MR = 12.5) 
     has an extreme priority. The uncertainty that has been measured amounts to a value equal to 
     1.0. A risk of this magnitude is equivalent to losing about 3% of the heritage asset value 
     every 10 years (or 30% per century, or 100% in about 300 years). The museum direction 
     considers this level of risk as ‘not acceptable’, since as a condition the value of MR is 
     higher than 10 and the value of uncertainty is lower than 2.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-04&gt; ;
+    hero:hasTimeInterval :time-interval-04 ;
     hero:hasType wd:Q1379672 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isMotivatedBy :concept-19, :concept-23 ;
     hero:precedes :assessment-activity-06 .
 
 :concept-24 a hero:InformationObject ;
@@ -580,33 +593,31 @@ Another assessment activity `:assessment-activity-08` consisting in the evaluati
 
 :observation-24 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-19&gt; ;
     hero:refersTo :concept-24 .
 
 :observation-26 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-23&gt; ;
     hero:refersTo :concept-26 .
 
 :time-interval-04 a ti:TimeInterval ;
-    ti:hasIntervalEndDate &quot;2024-06-01T23:59:59Z&quot; ;
-    ti:hasIntervalStartDate &quot;2024-05-01T00:00:00Z&quot; .
+    ti:hasIntervalEndDate &quot;2024-06-01T23:59:59Z&quot;^^xsd:dateTime ;
+    ti:hasIntervalStartDate &quot;2024-05-01T00:00:00Z&quot;^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
 #### Scenario 5
-An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time&quot;. It consists of three statements, each assigned to the CHO in question:
+An assessment activity `:assessment-activity-09` consisting in the treatment of risks related to a CHO `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;One possible action to protect a baptistery from water damage could be to install a waterproof membrane or coating on the exterior surfaces. This would help prevent water infiltration and damage to the structure. Additionally, regular maintenance such as inspecting for cracks or leaks and repairing them promptly can help mitigate water damage over time&quot;. It consists of three statements, each assigned to the CHO in question:
 1. `:observation-29`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-29`);
 2. `:observation-30`, which is a budget description referring to a capital cost (`:concept-30`) to implement such action, amounting to &quot;3200&quot; euros.
 3. `:observation-31`, which is a budget description referring to a maintenance cost (`:concept-31`) to implement such action, amounting to &quot;120&quot; euros.
 
-Another assessment activity `:assessment-activity-10` consisting in the treatment of risks related to a heritage asset `:baptistery`, is taking place in Ravenna and is being carried out by the expert Sara Fiorentino, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;Use fire-resistant materials: Consider using fire-resistant coatings, fire-rated doors, and fireproof insulation to minimize fire damage.&quot; It consists of three statements, each assigned to the CHO in question:
+Another assessment activity `:assessment-activity-10` consisting in the treatment of risks related to a heritage asset `:baptistery`, is taking place in Ravenna and is being carried out by the expert Laura Casocchi, in the time interval starting from 2024-06-01 to 2024-07-01, following `:assessment-activity-07`. It is annotated with the following text: &quot;Use fire-resistant materials: Consider using fire-resistant coatings, fire-rated doors, and fireproof insulation to minimize fire damage.&quot; It consists of three statements, each assigned to the CHO in question:
 1. `:observation-32`, which is a plan description referring to a blocking action to try managing the described risks (`:concept-32`);
 2. `:observation-33`, which is a budget description referring to a capital cost (`:concept-33`) amounting to &quot;5000&quot; euros;
 3. `:observation-34`, which is a budget description referring to a maintenance cost (`:concept-34`), amounting to &quot;375&quot; euros per month.
@@ -615,30 +626,31 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
 :assessment-activity-09 a hero:Activity ;
     hero:assigns :observation-29 ,
         :observation-30 ,
-        :observation-31&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-31 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;One possible action to protect a baptistery from water damage could be to 
     install a waterproof membrane or coating on the exterior surfaces. This would help prevent 
     water infiltration and damage to the structure. Additionally, regular maintenance such as 
     inspecting for cracks or leaks and repairing them promptly can help mitigate water damage 
     over time.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-05&gt; ;
+    hero:hasTimeInterval :time-interval-05 ;
     hero:hasType wd:Q2251595 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
     hero:precedes :assessment-activity-07 .
 
 :assessment-activity-10 a hero:Activity ;
     hero:assigns :observation-32 ,
         :observation-33 ,
-        :observation-34&gt; ;
-    hero:assignsTo :baptistery&gt; ;
-    hero:hasLocation :ravenna&gt; ;
+        :observation-34 ;
+    hero:assignsTo :baptistery ;
+    hero:hasLocation :ravenna ;
     hero:hasNote &apos;&apos;&apos;Use fire-resistant materials: Consider using fire-resistant coatings, 
     fire-rated doors, and fireproof insulation to minimize fire damage.&apos;&apos;&apos;@en ;
-    hero:hasTimeInterval :time-interval-05&gt; ;
+    hero:hasTimeInterval :time-interval-05 ;
     hero:hasType wd:Q2251595 ;
-    hero:isCarriedOutBy :sara-fiorentino&gt; ;
+    hero:isCarriedOutBy :laura-casocchi ;
+    hero:isMotivatedBy :concept-19, :concept-23 ;
     hero:precedes :assessment-activity-08 .
 
 :concept-29 a hero:InformationObject ;
@@ -665,12 +677,10 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
 
 :observation-24 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-19&gt; ;
     hero:refersTo :concept-24 .
 
 :observation-26 a hero:LinguisticObject ;
     hero:hasType aat:300438433 ;
-    hero:isMotivatedBy :concept-23&gt; ;
     hero:refersTo :concept-26 .
 
 :observation-29 a hero:LinguisticObject ;
@@ -698,14 +708,14 @@ Another assessment activity `:assessment-activity-10` consisting in the treatmen
     hero:refersTo :concept-34 .
 
 :time-interval-05 a ti:TimeInterval ;
-    ti:hasIntervalEndDate &quot;2024-07-01T23:59:59Z&quot; ;
-    ti:hasIntervalStartDate &quot;2024-06-01T00:00:00Z&quot; .
+    ti:hasIntervalEndDate &quot;2024-07-01T23:59:59Z&quot;^^xsd:dateTime ;
+    ti:hasIntervalStartDate &quot;2024-06-01T00:00:00Z&quot;^^xsd:dateTime .
 
 :baptistery a owl:Thing .
 
 :ravenna a place:Place .
 
-:sara-fiorentino a foaf:Agent .
+:laura-casocchi a foaf:Agent .
 
 ```
 
@@ -858,12 +868,13 @@ What are the treatment actions, capital costs and maintenance costs being referr
         ?maintenance_cost hero:hasType wd:Q831940 ;
             hero:hasContent ?maintenance_cost_value .
     }
-
-  </rdfs:comment>
+    </rdfs:comment>
+        <rdfs:label xml:lang="en">HeRO</rdfs:label>
         <owl:incompatibleWith rdf:resource="https://w3id.org/sirius/ontology/hero/1.0.0/"/>
-        <owl:priorVersion rdf:resource="https://w3id.org/sirius/ontology/hero/1.0.0/"/>
-        <owl:versionInfo>2.0.0</owl:versionInfo>
+        <owl:priorVersion rdf:resource="https://w3id.org/sirius/ontology/hero/2.0.0/"/>
+        <owl:versionInfo>2.1.0</owl:versionInfo>
         <ns:status xml:lang="en">work in progress</ns:status>
+        <foaf:fundedBy rdf:resource="https://ror.org/01111rn36"/>
         <foaf:logo rdf:resource="https://github.com/sirius-org/hero/docs/current/logo.png"/>
     </owl:Ontology>
     
@@ -930,6 +941,13 @@ What are the treatment actions, capital costs and maintenance costs being referr
     
 
 
+    <!-- http://purl.org/dc/terms/publisher -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    
+
+
     <!-- http://purl.org/dc/terms/source -->
 
 
@@ -941,6 +959,20 @@ What are the treatment actions, capital costs and maintenance costs being referr
 
 
     <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/ontology/bibo/doi -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/ontology/bibo/doi"/>
+    
+
+
+    <!-- http://purl.org/ontology/bibo/status -->
+
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/ontology/bibo/status"/>
     
 
 
@@ -997,6 +1029,27 @@ What are the treatment actions, capital costs and maintenance costs being referr
 
 
     <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#closeMatch -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#closeMatch"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#editorialNote -->
+
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#editorialNote"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/fundedBy -->
+
+
+    <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/fundedBy"/>
     
 
 
@@ -1080,6 +1133,13 @@ What are the treatment actions, capital costs and maintenance costs being referr
     
 
 
+    <!-- http://www.w3.org/ns/prov#used -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#used"/>
+    
+
+
     <!-- http://www.w3.org/ns/prov#wasDerivedFrom -->
 
 
@@ -1102,17 +1162,20 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <vann:example xml:lang="en">
-        ### An example of activity assigning an observation to a cultural heritage object
-        
-        :assessment-activity-01 a hero:Activity ;
-        hero:assigns :observation ;
-        hero:assignsTo :baptistery .
+    ### An example of activity assigning an observation to a cultural heritage object.
+    
+    :assessment-activity-01 a hero:Activity ;
+    hero:assigns :observation ;
+    hero:assignsTo :baptistery .
+
     </vann:example>
         <vaem:rationale xml:lang="en">This property was added to link activities with the statements used during the activity to assess the object being examined.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an assessment activity and an observation, assertion or statement it assigns to some entity.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">assigns</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P37_assigned"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P37_assigned.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1132,12 +1195,15 @@ What are the treatment actions, capital costs and maintenance costs being referr
       hero:assignsTo :baptistery .
     
     :baptistery a obj:Object .
-  </vann:example>
+
+    </vann:example>
         <vaem:rationale xml:lang="en">This property was added to link activities with the object being examined during the assessment.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an assessment activity, expressed through a series of assertions, and an object being examined.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">assigns to</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P140_assigned_attribute_to.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1154,6 +1220,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">carries out</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P14i_performed"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P14i_performed.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1177,6 +1245,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">documents</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P70_documents"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P70_documents.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1193,6 +1263,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">follows</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P134_continued"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P134_continued.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1225,12 +1297,15 @@ What are the treatment actions, capital costs and maintenance costs being referr
     :high-estimate a hero:InformationObject ;
       hero:hasContent &quot;4.0&quot;^^rdfs:Literal ;
       hero:hasType wd:Q10578722 .
+
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to allow modelling assessment concepts in more detail, such as measurements (frequency, magnitude, etc.), which in various risk assessment methodologies (like the ABC method) tend to be expressed through multiple estimates so as to take uncertainty into account.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between two entities, expressing a non-transitive componency relation in which one entity is part of the other.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has component</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1249,12 +1324,15 @@ What are the treatment actions, capital costs and maintenance costs being referr
       hero:hasLocation :ravenna .
     
     :ravenna a place:Place .
+
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to track geographic information of assessment activities, expressed as places where such activities are localized.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an assessment activity and a place where that activity is localized.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has location</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P53_has_former_or_current_location.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1274,12 +1352,15 @@ What are the treatment actions, capital costs and maintenance costs being referr
       hero:hasParticipant :university-of-bologna .
 
     :university-of-bologna a foaf:Agent .
+
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to track the responsibility information of assessment activities, expressed as agents that somehow participated in such activities, with a varying degree of accountability.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an assessment activity and an agent participating in it, either directly or indirectly.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has participant</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P11_had_participant"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P11_had_participant.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1292,18 +1373,22 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl#TimeIndexedSituation"/>
         <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
         <vann:example xml:lang="en">
+
     ### An example of activity occurring within the entirety of the 29th of April, 2024
     
     :assessment-activity-01 a hero:Activity ;
       hero:hasTimeInterval :2024-04-29 .
 
     :2024-04-29 a ti:TimeInterval .
+
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to track the temporal information of assessment activities, expressed as time intervals with a start date and an end date.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an assessment activity and a time interval.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has time interval</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1316,17 +1401,21 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:range rdf:resource="https://w3id.org/sirius/ontology/hero/Type"/>
         <vann:example xml:lang="en">
+
     ### An example of assertion having the type &apos;descriptive note&apos; (`aat:300435416`)
     
     :observation a hero:LinguisticObject ;
       hero:hasContent &quot;The Baptistery is externally visible on the N, NW, and NE sides.&quot;@en ;
       hero:hasType aat:300435416 .
+
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to allow entity categorization in HeRO.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between an entity and a conceptual category it can be classified with.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has type</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P2_has_type"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P2_has_type.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1343,6 +1432,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is assigned by</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P37i_was_assigned_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P37i_was_assigned_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1359,6 +1450,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is attributed by of</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P140i_was_attributed_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P140i_was_attributed_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1371,18 +1464,20 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/participation.owl#Event"/>
         <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
         <vann:example xml:lang="en">
-    ### An example of activity being carried out by Sara Fiorentino
+    ### An example of activity being carried out by Laura Casocchi
 
     :assessment-activity-01 a hero:Activity ;
-      hero:isCarriedOutBy :sara-fiorentino .
+      hero:isCarriedOutBy :laura-casocchi .
 
-    :sara-fiorentino a foaf:Agent .
+    :laura-casocchi a foaf:Agent .
   </vann:example>
         <vaem:rationale xml:lang="en">This property was added to track responsibility information of assessment activities, expressed as agents that directly participated in such activities, with a major degree of accountability.</vaem:rationale>
         <rdfs:comment xml:lang="en">A relation between an assessment activity and the agent carrying it out directly.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is carried out by</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1399,6 +1494,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is component of</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1430,6 +1527,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is documented by</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1446,6 +1545,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is location of</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P53i_is_former_or_current_location_of"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P53i_is_former_or_current_location_of.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1464,12 +1565,18 @@ What are the treatment actions, capital costs and maintenance costs being referr
     ### which was motivated by the risk magnitude (`wd:Q2154759`) 
     ### referred to in another assertion
 
+    :activity-01 a hero:Activity ;
+        hero:assigns :observation-01 ;
+        hero:isMotivatedBy :risk-magnitude .
+
+    :activity-02 a hero:Activity ;
+        hero:assigns :observation-02 .
+
     :observation-01 a hero:LinguisticObject ;
       hero:hasType aat:300438433 ;
-      hero:isMotivatedBy :risk-magnitude ;
       hero:refersTo :high-priority-level .
 
-    observation-01 a hero:LinguisticObject ;
+    :observation-02 a hero:LinguisticObject ;
       hero:hasType aat:300435430 ;
       hero:refersTo :risk-magnitude .
 
@@ -1479,11 +1586,13 @@ What are the treatment actions, capital costs and maintenance costs being referr
     :high-priority-level a hero:InformationObject ;
       hero:hasType wd:Q125584111 .
   </vann:example>
-        <vaem:rationale xml:lang="en">This property was added to link entities (like assertions and concepts) in a way that expresses an existing cause-effect relationship between them (for example, during an evaluation activity a risk is given a high priority on the basis of the risk magnitude calculated during a previous analysis activity.) </vaem:rationale>
+        <vaem:rationale xml:lang="en">This property was added to link activities to any kind of entity in a way that expresses an existing cause-effect relationship between them (for example, during an evaluation activity a risk is given a high priority on the basis of the risk magnitude calculated during a previous analysis activity).</vaem:rationale>
         <rdfs:comment xml:lang="en">A relationship between two entities, expressing the fact that one entity somehow came into existence as an effect of using the other entity in some way.</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is motivated by</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P17_was_motivated_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1500,6 +1609,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is participant in</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P11i_participated_in.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1516,6 +1627,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is referred to by</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P67i_is_referred_to_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1532,6 +1645,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">is time interval of</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P4i_is_time-span_of"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P4i_is_time-span_of.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1556,6 +1671,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">precedes</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P134i_was_continued_by"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P134i_was_continued_by.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1586,6 +1703,34 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">expresses</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P67_refers_to"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P67_refers_to.</skos:editorialNote>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/sirius/ontology/hero/uses -->
+
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/sirius/ontology/hero/uses">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/prov#used"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <vann:example xml:lang="en">
+    ### An example of assessment activity 
+    
+    :assessment-activity-01 a hero:Activity ;
+        hero:uses :dataset .
+
+    :dataset a foaf:Document .
+  </vann:example>
+        <vaem:rationale xml:lang="en">This property was added to link an activity with any object used during said activity in order to carry it out or to better contextualize it and its assertions.</vaem:rationale>
+        <rdfs:comment xml:lang="en">A relationship between an activity and an object used to carry it out.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
+        <rdfs:label xml:lang="en">uses</rdfs:label>
+        <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P16_used_specific_object.</skos:editorialNote>
     </owl:ObjectProperty>
     
 
@@ -1629,6 +1774,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
         <rdfs:label xml:lang="en">interval has end date</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end.</skos:editorialNote>
     </owl:DatatypeProperty>
     
 
@@ -1653,6 +1800,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
         <rdfs:label xml:lang="en">interval has start date</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin.</skos:editorialNote>
     </owl:DatatypeProperty>
     
 
@@ -1684,6 +1833,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has content</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content.</skos:editorialNote>
     </owl:DatatypeProperty>
     
 
@@ -1715,6 +1866,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">has note</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/P3_has_note"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/P3_has_note.</skos:editorialNote>
     </owl:DatatypeProperty>
     
 
@@ -1745,6 +1898,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/place.owl"/>
         <rdfs:label xml:lang="en">Place</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E53_Place.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1772,6 +1927,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
         <rdfs:label xml:lang="en">Time interval</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1802,9 +1959,9 @@ What are the treatment actions, capital costs and maintenance costs being referr
 
     <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
         <vann:example xml:lang="en">
-    ### Examples of agents: Sara Fiorentino (a person), University of Bologna (an organization)
+    ### Examples of agents: Laura Casocchi (a person), University of Bologna (an organization)
 
-    :sara-fiorentino a foaf:Agent .
+    :laura-casocchi a foaf:Agent .
 
     :university-of-bologna a foaf:Agent .
   </vann:example>
@@ -1813,6 +1970,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
         <rdfs:label xml:lang="en">Agent</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E39_Actor"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E39_Actor.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1831,6 +1990,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
         <rdfs:label xml:lang="en">Document</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E31_Document"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E31_Document.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1863,7 +2024,7 @@ What are the treatment actions, capital costs and maintenance costs being referr
       hero:hasParticipant :universita-di-bologna ;
       hero:hasTimeInterval :2024-04-29 ;
       hero:hasType wd:Q1137655 ;
-      hero:isCarriedOutBy :sara-fiorentino .
+      hero:isCarriedOutBy :laura-casocchi .
   </vann:example>
         <vaem:rationale xml:lang="en">This class was added to represent the core entity of HeRO, a detailed description of a risk assessment sub-process in which both descriptive elements (assertions, concepts, notes, content, etc.) and provenance (who carried out and/or participated in the activity, when, where, how).</vaem:rationale>
         <rdfs:comment xml:lang="en">
@@ -1872,6 +2033,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">Activity</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E13_Attribute_Assignment.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1883,7 +2046,7 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject"/>
         <vann:example xml:lang="en">
     ### An example of information object (the concept of 
-    ### &apos;pysical properties&apos;, expressed through `wd:Q4373292`)
+    ### &apos;physical properties&apos;, expressed through `wd:Q4373292`)
     
     :concept-01 a hero:InformationObject ;
       hero:hasType wd:Q4373292 .
@@ -1895,6 +2058,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl"/>
         <rdfs:label xml:lang="en">Information object</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1924,6 +2089,8 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl"/>
         <rdfs:label xml:lang="en">Linguistic object</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object.</skos:editorialNote>
     </owl:Class>
     
 
@@ -1946,28 +2113,9 @@ What are the treatment actions, capital costs and maintenance costs being referr
         <rdfs:isDefinedBy rdf:resource="https://w3id.org/sirius/ontology/hero"/>
         <rdfs:label xml:lang="en">Type</rdfs:label>
         <ns:term_status rdf:resource="http://purl.org/linked-data/registry#statusExperimental"/>
+        <skos:closeMatch rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E55_Type"/>
+        <skos:editorialNote xml:lang="en">Can be aligned to http://www.cidoc-crm.org/cidoc-crm/E55_Type.</skos:editorialNote>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- https://w3id.org/sirius/ontology/hero/ -->
-
-
-    <owl:NamedIndividual rdf:about="https://w3id.org/sirius/ontology/hero/">
-        <terms:description xml:lang="en">The Heritage Risk Assessment Ontology (HeRO, https://w3id.org/sirius/ontology/hero) is an OWL 2 DL ontology for describing risk assessment activities related to heritage in a FAIR-compliant, machine-actionable format.</terms:description>
-    </owl:NamedIndividual>
 </rdf:RDF>
 
 

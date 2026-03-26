@@ -1,0 +1,4 @@
+[codespell]
+skip = .git*,*.css,*.min.*,.codespellrc
+check-hidden = true
+ignore-words-list = intension

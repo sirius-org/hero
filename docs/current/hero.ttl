@@ -48,7 +48,7 @@ Both HeRO and its [documentation](https://w3id.org/sirius/ontology/hero) are liv
 
 Currently, HeRO is able to describe the following entities:
 * Assessment activities and their provenance information (who carried out or participated in an activity, when, where, what was done, and how);
-* Linguistic objects (scientific observations, statements, assertions, speculations, etc.), assigned to objects being examined during assessment activites;
+* Linguistic objects (scientific observations, statements, assertions, speculations, etc.), assigned to objects being examined during assessment activities;
 * Information objects (concepts, classifications, categories, etc.), referred to by the linguistic objects and representing the aspects and attributes related in some way to the objects being examined during assessment activities.
 
 The current version of HeRO reuses a series of Ontology Design Patterns (ODPs) by defining its own set of classes and properties and conceptualizing them as subclasses and subproperties of the reused ODPs' entities. More specifically, HeRO reuses the following models:
@@ -69,7 +69,7 @@ The current version of HeRO reuses a series of Ontology Design Patterns (ODPs) b
 
 A full version of HeRO is available at [https://w3id.org/sirius/ontology/hero](https://w3id.org/sirius/ontology/hero).
 
-The next subsections provide a quick overview of all the entities defined, some exemple of usage, and some of the queries that HeRO can answer.
+The next subsections provide a quick overview of all the entities defined, some example of usage, and some of the queries that HeRO can answer.
 
 ### Assessment activities
 In HeRO, the concept of assessment activity represents the core abstraction around which the rest of the ontology is built. As shown in the following diagram, an assessment activity is a first-class object related to a series of other entities that populate and signify its context. 
@@ -748,7 +748,7 @@ What are the statements assigned to a cultural heritage object that are part of 
 
 
 #### Question 2
-Which are the hazards, the types of risk occurence and the risk locations referred to by statements assigned to a cultural heritage object by identification activities?
+Which are the hazards, the types of risk occurrence and the risk locations referred to by statements assigned to a cultural heritage object by identification activities?
 
     SELECT ?activity ?hazard_type ?occurrence_type ?location_type ?agent ?place ?start_date ?end_date
     WHERE {
